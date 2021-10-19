@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectLocation">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/SelectYourLocation"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="25sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose your City"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:textStyle="bold"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="11dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/registerback"
+                android:elevation="5dp">
+                <Spinner
+                    android:id="@+id/spinner_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:spinnerMode="dropdown"
+                    android:backgroundTint="@color/black"
+                    ></Spinner>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose your Pincode"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:textStyle="bold"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="11dp"
+                android:background="@drawable/registerback"
+                android:elevation="5dp">
+
+                <Spinner
+                    android:id="@+id/spinner_pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:spinnerMode="dropdown"
+                    android:backgroundTint="@color/black"></Spinner>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="@dimen/detailsPayment_button_width"
+        android:layout_height="@dimen/detailsPayment_button_height"
+        android:background="@drawable/button_back"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="@color/btntextcolor"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"></Button>
+
+</RelativeLayout>

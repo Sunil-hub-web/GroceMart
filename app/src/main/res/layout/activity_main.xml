@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/serachLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="25dp"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/locimage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/baseline_location_on" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/locimage"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+        <!--<TextView
+            android:id="@+id/addressdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/locimage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"></TextView>-->
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_below="@+id/address"
+            android:layout_marginTop="5dp"
+            android:background="#515151" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottomNavigation"
+        android:layout_below="@id/serachLocation">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/serach"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/serach_back"
+                    android:padding="9dp"
+                    android:layout_margin="10dp"
+                    android:focusable="false"
+                    android:layout_centerHorizontal="true"
+                    android:hint="Search"></EditText>
+
+                <HorizontalScrollView
+                    android:id="@+id/scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_below="@id/serach">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginBottom="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/cardback"
+                                >
+
+                                <TextView
+                                    android:id="@+id/imagename"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="@string/Grocery"
+                                    android:textColor="#000000"
+                                    android:textSize="@dimen/textSize" />
+
+                                <ImageView
+                                    android:id="@+id/imageview"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
+                                    android:layout_below="@id/imagename"
+                                    android:layout_margin="10dp"
+                                    android:scaleType="fitStart"
+                                    android:src="@drawable/food" />
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_toRightOf="@id/card1"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginBottom="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/cardback">
+
+                                <TextView
+                                    android:id="@+id/imagename1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="@string/Restaurant"
+                                    android:textColor="#000000"
+                                    android:textSize="@dimen/textSize" />
+
+                                <ImageView
+                                    android:id="@+id/imageview1"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
+                                    android:layout_below="@id/imagename1"
+                                    android:layout_margin="10dp"
+                                    android:scaleType="fitStart"
+                                    android:src="@drawable/grocerry" />
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_toRightOf="@id/card2"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginBottom="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/cardback">
+
+                                <TextView
+                                    android:id="@+id/imagename3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="@string/Meat"
+                                    android:textColor="#000000"
+                                    android:textSize="@dimen/textSize" />
+
+                                <ImageView
+                                    android:id="@+id/imageview3"
+                                    android:layout_width="@dimen/image_width"
+                                    android:layout_height="@dimen/image_height"
+                                    android:layout_below="@id/imagename3"
+                                    android:layout_margin="10dp"
+                                    android:scaleType="fitStart"
+                                    android:src="@drawable/meat" />
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
+
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_below="@id/scroll"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/banner"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/grocery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/banner"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/cardback"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/Grocery"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textSize"
+                        android:textStyle="bold" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/recycler"
+                                android:layout_marginTop="10dp"
+                                android:layout_below="@id/text">
+
+                            </androidx.recyclerview.widget.RecyclerView>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/restaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/grocery"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/cardback"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/Restaurant"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textSize"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"/>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/recycler1"
+                                android:layout_marginTop="10dp"
+                                android:layout_below="@id/text1">
+
+                            </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/restaurant"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/cardback"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/Meat"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textSize"
+                        android:textStyle="bold" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text3"
+                        android:layout_marginTop="@dimen/margin_lay"
+                        android:scrollbars="none">
+
+                        <RelativeLayout
+                            android:id="@+id/r3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/homecard_back">
+
+                            <RelativeLayout
+                                android:id="@+id/clicl_product5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/product_image5"
+                                    android:layout_width="@dimen/home_image_width"
+                                    android:layout_height="@dimen/home_image_height"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/meat"
+                                    android:layout_centerHorizontal="true"></ImageView>
+
+                                <TextView
+                                    android:id="@+id/topProduct5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/product_image5"
+                                    android:layout_marginTop="10dp"
+                                    android:text="@string/BBRoyal"
+                                    android:textColor="@color/black"
+                                    android:textSize="13dp"
+                                    android:textStyle="bold"
+                                    android:maxEms="8"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:scrollHorizontally="true"></TextView>
+
+                                <!-- <TextView
+                                     android:id="@+id/price"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginRight="10dp"
+                                     android:textColor="@color/black"
+                                     android:textSize="15dp"
+                                     android:layout_below="@id/topProduct"
+                                     android:textStyle="bold"></TextView>-->
+
+                            </RelativeLayout>
+
+                            <Button
+                                android:id="@+id/addtocart5"
+                                android:layout_width="@dimen/home_button_width"
+                                android:layout_height="@dimen/home_button_height"
+                                android:layout_below="@id/clicl_product5"
+                                android:layout_margin="@dimen/margin_lay_btn"
+                                android:background="@drawable/button_back"
+                                android:text="Go To Shop"
+                                android:textColor="@color/white"
+                                android:textAllCaps="false"
+                                android:textSize="15dp"
+                                android:layout_centerHorizontal="true"></Button>
+
+
+                        </RelativeLayout>
+
+                    </HorizontalScrollView>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#EDEAEA"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_navigation">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>

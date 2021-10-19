@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialogback">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/address"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="25sp"/>
+
+        <LinearLayout
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/text"
+            android:layout_marginTop="40dp">
+
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/registerback"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:ems="10"
+                android:drawablePadding="20dp"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:paddingLeft="20dp"
+                android:hint="Your First Name"
+                android:textStyle="normal"
+                android:elevation="5dp"/>
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/registerback"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:ems="10"
+                android:paddingLeft="20dp"
+                android:drawablePadding="20dp"
+                android:hint="Your Last Name"
+                android:textStyle="normal"
+                android:elevation="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/registerback"
+                android:elevation="5dp">
+                <Spinner
+                    android:id="@+id/spinner_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:spinnerMode="dropdown"
+                    android:backgroundTint="@color/black"
+                    ></Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/registerback"
+                android:elevation="5dp">
+
+                <Spinner
+                    android:id="@+id/spinner_pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:spinnerMode="dropdown"
+                    android:backgroundTint="@color/black"></Spinner>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/contactNo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/registerback"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:ems="10"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:paddingLeft="20dp"
+                android:drawablePadding="20dp"
+                android:hint="Contact No"
+                android:textStyle="normal"
+                android:elevation="5dp"/>
+
+            <EditText
+                android:id="@+id/emailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/registerback"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:ems="10"
+                android:textSize="18dp"
+                android:paddingLeft="20dp"
+                android:drawablePadding="20dp"
+                android:hint="Email Address"
+                android:textStyle="normal"
+                android:elevation="5dp" />
+
+            <TextView
+                android:id="@+id/loc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/loc"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/saveaddress"
+            android:layout_width="@dimen/detailsPayment_button_width"
+            android:layout_height="@dimen/detailsPayment_button_height"
+            android:background="@drawable/button_back"
+            android:text="Save Address"
+            android:textColor="@color/btntextcolor"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:textAllCaps="false"
+            android:layout_below="@+id/address"
+            android:layout_margin="30dp"></Button>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

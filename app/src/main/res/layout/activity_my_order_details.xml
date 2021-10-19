@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyOrderDetails">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/MYORDER"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="25sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_above="@+id/continueShoping">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/r1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rel_height"
+                android:layout_marginTop="30dp"
+
+                android:background="@drawable/homecard_back"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="@dimen/myorder_image_width"
+                    android:layout_height="@dimen/myorder_image_height"
+                    android:layout_marginLeft="@dimen/marginleft"
+                    android:src="@drawable/royal"
+                    android:layout_margin="10dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/productImage"
+                    android:text="BB Royal Organic-Toor Dal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/productImage"
+                    android:text="Q :1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/quantity"
+                    android:text="1kg"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="₹150.00"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"
+                    android:layout_alignParentRight="true"></TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/r2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rel_height"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/r1"
+                android:background="@drawable/homecard_back"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:id="@+id/productImage1"
+                    android:layout_width="@dimen/myorder_image_width"
+                    android:layout_height="@dimen/myorder_image_height"
+                    android:layout_marginLeft="@dimen/marginleft"
+                    android:src="@drawable/biriyani"
+                    android:layout_margin="10dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/productName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/productImage1"
+                    android:text="Bharathi Super Store"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/quantity1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/productImage1"
+                    android:text="Q :1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/tt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/quantity1"
+                    android:text="1kg"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="₹150.00"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"
+                    android:layout_alignParentRight="true"></TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/r3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rel_height"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/r2"
+                android:background="@drawable/homecard_back"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:id="@+id/productImage2"
+                    android:layout_width="@dimen/myorder_image_width"
+                    android:layout_height="@dimen/myorder_image_height"
+                    android:layout_marginLeft="@dimen/marginleft"
+                    android:src="@drawable/biriyani"
+                    android:layout_margin="10dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/productName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/productImage2"
+                    android:text="Bharathi Super Store"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/quantity2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/productImage2"
+                    android:text="Q :1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/tt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/quantity2"
+                    android:text="1kg"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/price2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="₹150.00"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"
+                    android:layout_alignParentRight="true"></TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/r4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/r3"
+                android:background="@drawable/homecard_back"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:id="@+id/productImage3"
+                    android:layout_width="@dimen/myorder_image_width"
+                    android:layout_height="@dimen/myorder_image_height"
+                    android:layout_marginLeft="@dimen/marginleft"
+                    android:src="@drawable/chicken"
+                    android:layout_margin="10dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/productName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/productImage3"
+                    android:text="Bharathi Super Store"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/quantity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/productImage3"
+                    android:text="Q :1"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/tt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/productName3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/quantity3"
+                    android:text="1kg"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"></TextView>
+
+                <TextView
+                    android:id="@+id/price3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="₹150.00"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize"
+                    android:layout_alignParentRight="true"></TextView>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/continueShoping"
+        android:layout_width="175dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_back"
+        android:text="Continue shoping"
+        android:textColor="@color/btntextcolor"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"></Button>
+</RelativeLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/arrow"
+        android:layout_margin="15dp"
+        android:id="@+id/back"></ImageView>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/userProfile"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="25sp"/>
+
+    <RelativeLayout
+        android:id="@+id/pic"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/text">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/profileimage_width"
+            android:layout_height="@dimen/profileimage_height"
+            android:src="@drawable/profileimage"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/profile_image"
+            android:layout_marginRight="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/add_a_photo"
+            android:layout_marginTop="-50dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/pic"
+        android:layout_marginTop="50dp">
+
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:ems="10"
+            android:drawablePadding="20dp"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:paddingLeft="20dp"
+            android:hint="Your Full Name"
+            android:textStyle="normal"
+            android:elevation="5dp"/>
+
+        <EditText
+            android:id="@+id/contactNo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:ems="10"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:paddingLeft="20dp"
+            android:drawablePadding="20dp"
+            android:hint="Contact No"
+            android:textStyle="normal"
+            android:elevation="5dp"/>
+
+        <EditText
+            android:id="@+id/emailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:textColor="#000000"
+            android:ems="10"
+            android:textSize="18dp"
+            android:paddingLeft="20dp"
+            android:drawablePadding="20dp"
+            android:hint="Email Address"
+            android:textStyle="normal"
+            android:elevation="5dp"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="@dimen/detailsPayment_button_width"
+        android:layout_height="@dimen/detailsPayment_button_height"
+        android:background="@drawable/button_update"
+        android:text="update"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"></Button>
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddressDetails">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/arrow"
+        android:layout_margin="15dp"
+        android:id="@+id/back"></ImageView>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/address"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="25sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/homecard_back"
+        android:layout_below="@id/back"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/topProduct2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="samir owner 1984samirsahoo@gmail.com,
+ 919658437202,Bhubaneswar,750017"
+            android:textColor="@color/black"
+            android:textSize="20dp"></TextView>
+
+        <Button
+            android:id="@+id/click"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="#E32113"
+            android:text="Delete"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"></Button>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/addaddress"
+        android:layout_width="@dimen/detailsPayment_button_width"
+        android:layout_height="@dimen/detailsPayment_button_height"
+        android:background="@drawable/button_back"
+        android:text="Add Address"
+        android:textColor="@color/btntextcolor"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"></Button>
+</RelativeLayout>

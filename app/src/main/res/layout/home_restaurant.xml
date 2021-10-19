@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/r"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/homecard_back"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:id="@+id/clicl_product3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_lay"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="@dimen/home_image_width"
+                android:layout_height="@dimen/home_image_height"
+                android:scaleType="fitCenter"
+                android:src="@drawable/chicken"></ImageView>
+
+            <TextView
+                android:id="@+id/topProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_image"
+                android:layout_marginTop="10dp"
+                android:text="@string/BBRoyal"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                android:maxEms="7"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:layout_centerHorizontal="true"></TextView>
+
+            <!-- <TextView
+                 android:id="@+id/price"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="10dp"
+                 android:textColor="@color/black"
+                 android:textSize="15dp"
+                 android:layout_below="@id/topProduct"
+                 android:textStyle="bold"></TextView>-->
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/gotoshop"
+            android:layout_width="@dimen/home_button_width"
+            android:layout_height="@dimen/home_button_height"
+            android:layout_below="@id/clicl_product3"
+            android:layout_margin="@dimen/margin_lay_btn"
+            android:background="@drawable/button_back"
+            android:text="Go To Shop"
+            android:textColor="@color/btntextcolor"
+            android:textAllCaps="false"
+            android:textSize="15dp"></Button>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

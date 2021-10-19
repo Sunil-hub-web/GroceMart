@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/first"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/homecard_back">
+
+        <ImageView
+            android:id="@+id/imagecart"
+            android:layout_width="@dimen/cartimage_width"
+            android:layout_height="@dimen/cartimage_height"
+            android:src="@drawable/royal"
+            android:layout_margin="5dp"></ImageView>
+
+        <TextView
+            android:id="@+id/topProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/BBRoyal"
+            android:layout_toRightOf="@id/imagecart"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"></TextView>
+        <TextView
+            android:id="@+id/shopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/ShopNmae"
+            android:layout_below="@id/topProduct"
+            android:layout_toRightOf="@id/imagecart"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 kg"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="15dp"
+            android:layout_below="@id/shopName"
+            android:layout_toRightOf="@id/imagecart"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="15dp"
+            android:layout_below="@id/shopName"
+            android:layout_toRightOf="@id/quantity"
+            android:textStyle="bold"></TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/inc"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/serach_back"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/t3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="+"
+                    android:background="#0A2CE8"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/t2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/t1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="-"
+                    android:background="#0A2CE8"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/trash"
+                android:id="@+id/back"
+                android:layout_below="@id/inc"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"></ImageView>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

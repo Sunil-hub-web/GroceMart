@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SerachPage">
+
+    <EditText
+        android:id="@+id/serach"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/serach_back"
+        android:padding="9dp"
+        android:layout_margin="15dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Serach For restaurants and food"></EditText>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/serachRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serach"
+        android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#EDEAEA"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_navigation">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>

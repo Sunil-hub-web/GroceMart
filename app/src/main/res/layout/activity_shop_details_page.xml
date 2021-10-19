@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShopDetailsPage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/homecard_back"
+        android:id="@+id/shopaddress"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Narendra Shop"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:id="@+id/shop">
+            <Button
+                android:id="@+id/GROCERY"
+                android:layout_width="145dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#7EE140"
+                android:text="GROCERY"
+                android:textSize="@dimen/textSize"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_marginRight="15dp"></Button>
+
+            <Button
+                android:id="@+id/RESTAURANT"
+                android:layout_width="155dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#7EE140"
+                android:text="RESTAURANT"
+                android:textSize="@dimen/textSize"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_toRightOf="@id/GROCERY"></Button>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/addres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="16, Saheed Nagar, Bhubaneswar, Odisha 751007, India"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_below="@id/shop"/>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shopaddress"
+        android:layout_marginTop="20dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/itemname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Fruits&amp;vegitables"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+
+
+                <TextView
+                    android:id="@+id/itemname1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Dairy&amp;Bakery"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginTop="300dp"
+                    android:layout_below="@id/itemname"/>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/itemname1"
+                    android:id="@+id/Staples">
+                    <TextView
+                        android:id="@+id/itemname2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Staples"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:layout_marginTop="300dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="280dp"
+                        android:background="@drawable/registerback"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="40dp"
+                        android:id="@+id/first"
+                        android:layout_below="@id/itemname2">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="95dp"
+                            android:background="@drawable/back_loc"
+                            android:id="@+id/shopdetails">
+
+                            <TextView
+                                android:id="@+id/shopname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Narendra Shop"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="8dp"
+                                android:textColor="@color/black"></TextView>
+
+                            <Button
+                                android:id="@+id/addtocart5"
+                                android:layout_width="130dp"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/button_back"
+                                android:text="Go To Shop"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/white"
+                                android:layout_marginRight="10dp"
+                                android:textSize="13dp"
+                                ></Button>
+
+                            <TextView
+                                android:id="@+id/address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="16, Saheed Nagar, Bhubaneswar, Odisha 751007, India"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="18dp"
+                                android:layout_below="@id/shopname"
+                                android:drawableLeft="@drawable/location_1"
+                                android:drawablePadding="10dp"
+                                android:textColor="@color/black"></TextView>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/productname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BB Royal Organic-Toor Dal"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_below="@id/shopdetails"
+                            android:textColor="@color/black"></TextView>
+
+                        <LinearLayout
+                            android:id="@+id/spiner"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/spiner_back"
+                            android:layout_below="@id/productname">
+                            <Spinner
+                                android:id="@+id/spinner_offer"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:spinnerMode="dropdown"
+                                android:backgroundTint="@color/black"></Spinner>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/inc"
+                            android:layout_width="150dp"
+                            android:layout_height="35dp"
+                            android:orientation="horizontal"
+                            android:weightSum="3"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/serach_back"
+                            android:layout_marginRight="10dp"
+                            android:layout_below="@+id/spiner"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:id="@+id/t3"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="+"
+                                android:background="#0A2CE8"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/t2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/t1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="-"
+                                android:background="#0A2CE8"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/gotoshop"
+                            android:layout_width="130dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/button_back"
+                            android:text="Add To cart"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="13dp"
+                            android:layout_below="@id/spiner"
+                            android:layout_toRightOf="@id/inc"
+                            android:layout_marginBottom="10dp"></Button>
+
+                        <ImageView
+                            android:id="@+id/imagecart"
+                            android:layout_width="@dimen/cartimage_width"
+                            android:layout_height="@dimen/cartimage_height"
+                            android:src="@drawable/royal"
+                            android:layout_below="@id/shopdetails"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"></ImageView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="280dp"
+                        android:background="@drawable/registerback"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/first"
+                        android:id="@+id/second">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="95dp"
+                            android:background="@drawable/back_loc"
+                            android:id="@+id/shopdetails1">
+
+                            <TextView
+                                android:id="@+id/shopname1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bharathi Super Store"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="8dp"
+                                android:textColor="@color/black"></TextView>
+
+                            <Button
+                                android:id="@+id/addtocart"
+                                android:layout_width="130dp"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/button_back"
+                                android:text="Go To Shop"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/white"
+                                android:layout_marginRight="10dp"
+                                android:textSize="13dp"
+                                ></Button>
+
+                            <TextView
+                                android:id="@+id/address1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="I Agraharam, Salem, Tamil Nadu 636001, India"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="18dp"
+                                android:layout_below="@id/shopname1"
+                                android:drawableLeft="@drawable/location_1"
+                                android:drawablePadding="10dp"
+                                android:textColor="@color/black"></TextView>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/productname1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aachi Biriyani Masala"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_below="@id/shopdetails1"
+                            android:textColor="@color/black"></TextView>
+
+                        <LinearLayout
+                            android:id="@+id/inc1"
+                            android:layout_width="150dp"
+                            android:layout_height="35dp"
+                            android:orientation="horizontal"
+                            android:weightSum="3"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/serach_back"
+                            android:layout_marginRight="10dp"
+                            android:layout_below="@+id/productname1"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:id="@+id/t4"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="+"
+                                android:background="#0A2CE8"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/t5"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/t6"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="-"
+                                android:background="#0A2CE8"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/gotoshop1"
+                            android:layout_width="130dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="100dp"
+                            android:background="@drawable/button_back"
+                            android:text="Add To cart"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="13dp"
+                            android:layout_below="@id/productname1"
+                            android:layout_toRightOf="@id/inc1"
+                            android:layout_marginBottom="10dp"></Button>
+
+                        <ImageView
+                            android:id="@+id/imagecart1"
+                            android:layout_width="@dimen/cartimage_width"
+                            android:layout_height="@dimen/cartimage_height"
+                            android:src="@drawable/biriyani"
+                            android:layout_below="@id/shopdetails1"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"></ImageView>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/itemname4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Veg"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginTop="100dp"
+                    android:layout_below="@id/Staples"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/itemname4"
+                    android:id="@+id/NonVeg"
+                    android:layout_marginTop="300dp">
+                    <TextView
+                        android:id="@+id/itemname5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Non-Veg"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:textSize="20sp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="280dp"
+                        android:background="@drawable/registerback"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="40dp"
+                        android:id="@+id/first3"
+                        android:layout_below="@id/itemname5">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="95dp"
+                            android:background="@drawable/back_loc"
+                            android:id="@+id/shopdetails2">
+
+                            <TextView
+                                android:id="@+id/shopname2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Narendra Shop"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="8dp"
+                                android:textColor="@color/black"></TextView>
+
+                            <Button
+                                android:id="@+id/addtocart2"
+                                android:layout_width="130dp"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/button_back"
+                                android:text="Go To Shop"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/white"
+                                android:layout_marginRight="10dp"
+                                android:textSize="13dp"
+                                ></Button>
+
+                            <TextView
+                                android:id="@+id/address2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="16, Saheed Nagar, Bhubaneswar, Odisha 751007, India"
+                                android:textSize="15dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="18dp"
+                                android:layout_below="@id/shopname2"
+                                android:drawableLeft="@drawable/location_1"
+                                android:drawablePadding="10dp"
+                                android:textColor="@color/black"></TextView>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/productname2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hyderabadi Chicken Biriyani"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_below="@id/shopdetails2"
+                            android:textColor="@color/black"></TextView>
+
+                        <LinearLayout
+                            android:id="@+id/spiner2"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/spiner_back"
+                            android:layout_below="@id/productname2">
+                            <Spinner
+                                android:id="@+id/spinner_offer2"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:spinnerMode="dropdown"
+                                android:backgroundTint="@color/black"></Spinner>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/inc2"
+                            android:layout_width="150dp"
+                            android:layout_height="35dp"
+                            android:orientation="horizontal"
+                            android:weightSum="3"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/serach_back"
+                            android:layout_marginRight="10dp"
+                            android:layout_below="@+id/spiner2"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="+"
+                                android:background="#0A2CE8"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="-"
+                                android:background="#0A2CE8"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/gotoshop2"
+                            android:layout_width="130dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/button_back"
+                            android:text="Add To cart"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="13dp"
+                            android:layout_below="@id/spiner2"
+                            android:layout_toRightOf="@id/inc2"
+                            android:layout_marginBottom="10dp"></Button>
+
+                        <ImageView
+                            android:id="@+id/imagecart2"
+                            android:layout_width="@dimen/cartimage_width"
+                            android:layout_height="@dimen/cartimage_height"
+                            android:src="@drawable/chicken"
+                            android:layout_below="@id/shopdetails2"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"></ImageView>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

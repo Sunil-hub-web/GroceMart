@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".RegisterPage"
+    android:background="@drawable/back">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/register"
+        android:textStyle="bold"
+        android:textColor="#58E8B6"
+        android:textSize="25sp"/>
+
+    <LinearLayout
+        android:id="@+id/reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/text"
+        android:layout_marginTop="50dp">
+
+        <EditText
+            android:id="@+id/edit_fullName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textView_height"
+            android:layout_margin="@dimen/textView_margin"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:ems="10"
+            android:drawableLeft="@drawable/baseline_person"
+            android:drawablePadding="@dimen/textView_drawpadding"
+            android:textSize="@dimen/textSize"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:textColor="#000000"
+            android:hint="Your Full Name"
+            android:textStyle="normal"
+            android:elevation="5dp"/>
+
+        <EditText
+            android:id="@+id/edit_contactNo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textView_height"
+            android:layout_margin="@dimen/textView_margin"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:ems="10"
+            android:drawableLeft="@drawable/baseline_smartphone"
+            android:textColor="#000000"
+            android:drawablePadding="@dimen/textView_drawpadding"
+            android:textSize="@dimen/textSize"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:hint="Contact No"
+            android:textStyle="normal"
+            android:elevation="5dp"/>
+
+        <EditText
+            android:id="@+id/edit_emailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textView_height"
+            android:layout_margin="@dimen/textView_margin"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/baseline_markunread"
+            android:textColor="#000000"
+            android:ems="10"
+            android:drawablePadding="@dimen/textView_drawpadding"
+            android:textSize="@dimen/textSize"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:hint="Email Address"
+            android:textStyle="normal"
+            android:elevation="5dp"/>
+
+        <EditText
+            android:id="@+id/edit_userName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textView_height"
+            android:layout_margin="@dimen/textView_margin"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/baseline_person"
+            android:textColor="#000000"
+            android:ems="10"
+            android:drawablePadding="@dimen/textView_drawpadding"
+            android:textSize="@dimen/textSize"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:hint="User Name"
+            android:textStyle="normal"
+            android:elevation="5dp"/>
+
+        <EditText
+            android:id="@+id/edit_setPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textView_height"
+            android:layout_margin="@dimen/textView_margin"
+            android:background="@drawable/registerback"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/baseline_lock"
+            android:textColor="#000000"
+            android:ems="10"
+            android:drawablePadding="@dimen/textView_drawpadding"
+            android:textSize="@dimen/textSize"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:hint="Set a Password"
+            android:textStyle="normal"
+            android:elevation="5dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="* Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            android:textColor="#FFFFFF"
+            android:textSize="13dp" />
+
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text=" I agree the Terms and Conditions.">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="@dimen/detailsPayment_button_width"
+            android:layout_height="@dimen/detailsPayment_button_height"
+            android:background="@drawable/button_back"
+            android:text="Signup"
+            android:textAllCaps="false"
+            android:textColor="@color/btntextcolor"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@id/reg"
+            android:textStyle="bold"></Button>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/submit"
+            android:layout_gravity="center"
+            android:id="@+id/r"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/login1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:textColor="#000000"
+                android:textSize="@dimen/textSize"/>
+
+            <TextView
+                android:id="@+id/signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textStyle="bold"
+                android:textColor="#58E8B6"
+                android:textSize="@dimen/textSize"
+                android:layout_toRightOf="@id/login1"/>
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

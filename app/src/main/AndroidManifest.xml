@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.grocemart">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <application
+        android:allowBackup="true"
+        android:allowClearUserData="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GroceMart"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ForgotPasswordPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".RegisterPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".ForgotPassword"
+            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
+        <activity
+            android:name=".SigninPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
+        <activity
+            android:name=".CheckoutPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".SerachPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".ShopDetailsPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".MyOrderDetails"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".WalletPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".ProductShopDetails"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".CartPage"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".ChangePassword"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".UserProfile"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".AddressDetails"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".UserDashboard"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".SelectLocation"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".ShowLocation"
+            android:label="@string/title_activity_show_location"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.GroceMart.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

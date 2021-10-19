@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserDashboard"
+    android:id="@+id/drawer">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/dashbord"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="25sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/frame"
+            android:background="@drawable/homecard_back"
+            android:orientation="vertical"
+            android:layout_below="@id/text"
+            android:layout_margin="30dp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/order"
+                            android:layout_width="@dimen/deshboard_image_width"
+                            android:layout_height="@dimen/deshboard_image_height"
+                            android:src="@drawable/shopping_bag"></ImageView>
+
+                        <TextView
+                            android:id="@+id/nav_myorder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/MYORDER"
+                            android:textColor="#5F5E5E"
+                            android:textSize="@dimen/textSize"
+                            android:textStyle="bold"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:layout_toRightOf="@id/order"
+                            android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/profile"
+                            android:layout_width="@dimen/deshboard_image_width"
+                            android:layout_height="@dimen/deshboard_image_height"
+                            android:src="@drawable/user_1"></ImageView>
+
+                        <TextView
+                            android:id="@+id/nav_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/PROFILE"
+                            android:textColor="#5F5E5E"
+                            android:textSize="@dimen/textSize"
+                            android:textStyle="bold"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:layout_toRightOf="@id/profile"
+                            android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/address"
+                            android:layout_width="@dimen/deshboard_image_width"
+                            android:layout_height="@dimen/deshboard_image_height"
+                            android:src="@drawable/address"></ImageView>
+
+                        <TextView
+                            android:id="@+id/nav_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ADDRESS"
+                            android:textColor="#5F5E5E"
+                            android:textSize="@dimen/textSize"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/address"
+                            android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/changepassword"
+                            android:layout_width="@dimen/deshboard_image_width"
+                            android:layout_height="@dimen/deshboard_image_height"
+                            android:src="@drawable/padlock"></ImageView>
+
+                        <TextView
+                            android:id="@+id/nav_changepassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/CHANGEPASSWORD"
+                            android:textColor="#5F5E5E"
+                            android:textSize="@dimen/textSize"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/changepassword"
+                            android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/wallet"
+                            android:layout_width="@dimen/deshboard_image_width"
+                            android:layout_height="@dimen/deshboard_image_height"
+                            android:src="@drawable/wallet"></ImageView>
+
+                        <TextView
+                            android:id="@+id/nav_wallet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/WALLET"
+                            android:textColor="#5F5E5E"
+                            android:textSize="@dimen/textSize"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/wallet"
+                            android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/logout"
+                            android:layout_width="@dimen/deshboard_image_width"
+                            android:layout_height="@dimen/deshboard_image_height"
+                            android:src="@drawable/logout"></ImageView>
+
+                        <TextView
+                            android:id="@+id/nav_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/LOGOUT"
+                            android:textColor="#5F5E5E"
+                            android:textSize="@dimen/textSize"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/logout"
+                            android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
+                </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#EDEAEA"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_navigation">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>

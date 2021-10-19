@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=7E:94:B7:55:A1:6B:DE:EE:F9:AB:D8:BA:77:FE:68:D2:CD:7C:AD:97%3Bcom.example.swiggyappdesign
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.example.swiggyappdesign
+
+    SHA-1 certificate fingerprint:
+    7E:94:B7:55:A1:6B:DE:EE:F9:AB:D8:BA:77:FE:68:D2:CD:7C:AD:97
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBvkokkyWwFiRmijlIQ7aZ-Sb0gAcIG5NM</string>
+</resources>
