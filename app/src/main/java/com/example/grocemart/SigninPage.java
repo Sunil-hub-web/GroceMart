@@ -155,4 +155,11 @@ public class SigninPage extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent ( SigninPage.this, MainActivity.class );
+        startActivity (intent);
+    }
 }

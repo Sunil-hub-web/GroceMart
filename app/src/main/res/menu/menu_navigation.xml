@@ -15,7 +15,6 @@
         android:title="@string/Cart"
         android:icon="@drawable/baseline_shopping_cart"/>
 
-
     <item
         android:id="@+id/dashboard"
         android:title="@string/Account"
