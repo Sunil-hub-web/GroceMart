@@ -41,7 +41,7 @@ public class SigninPage extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin_page);
+        setContentView(R.layout.activity_signin_page1);
 
         text_CreateAccount = findViewById(R.id.createaccount);
         text_ForgotPassword = findViewById(R.id.forgtPassword);
