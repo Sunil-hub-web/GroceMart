@@ -25,9 +25,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ForgotPasswordPage"
-            android:theme="@style/Theme.GroceMart.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
         <activity
             android:name=".RegisterPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />

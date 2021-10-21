@@ -27,7 +27,7 @@ public class SelectLocation extends AppCompatActivity {
 
         spiner_City = findViewById(R.id.spinner_city);
         spiner_pincode = findViewById(R.id.spinner_pincode);
-        btn_submit = findViewById(R.id.submit);
+        btn_submit = findViewById(R.id.Next);
 
         ArrayAdapter reson_for_city = new ArrayAdapter(this,android.R.layout.simple_spinner_item,reason);
         // Drop down layout style - list view with radio button
