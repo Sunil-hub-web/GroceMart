@@ -6,11 +6,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -121,8 +127,7 @@ public class UserDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                SharedPrefManager.getInstance(UserDashboard.this).logout();
-                finish();
+                logout_Condition();
             }
         });
 
@@ -137,5 +142,38 @@ public class UserDashboard extends AppCompatActivity {
             Intent intent = new Intent ( UserDashboard.this, SigninPage.class );
             startActivity (intent);
         }
+    }
+
+    public void logout_Condition() {
+        //Show Your Another AlertDialog
+        final Dialog dialog = new Dialog(UserDashboard.this);
+        dialog.setContentView(R.layout.condition_logout);
+        dialog.setCancelable(false);
+        Button btn_No = dialog.findViewById(R.id.no);
+        TextView textView = dialog.findViewById(R.id.editText);
+        Button btn_Yes = dialog.findViewById(R.id.yes);
+
+        btn_Yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPrefManager.getInstance(UserDashboard.this).logout();
+                finish();
+                dialog.dismiss();
+            }
+        });
+        btn_No.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawableResource(R.drawable.homecard_back);
+
     }
 }

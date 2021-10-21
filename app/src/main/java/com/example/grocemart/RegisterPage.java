@@ -116,10 +116,12 @@ public class RegisterPage extends AppCompatActivity {
     public void userRegister(String name,String contact,String email,String username,String password){
 
         ProgressDialog progressDialog = new ProgressDialog(RegisterPage.this);
-        progressDialog.setContentView (R.layout.progress_dialog);
-        progressDialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
-        progressDialog.setCancelable(false);
         progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Register Please wait...");
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.setCancelable(false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.Register, new Response.Listener<String>() {
             @Override

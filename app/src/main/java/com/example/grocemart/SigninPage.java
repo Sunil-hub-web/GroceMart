@@ -41,7 +41,7 @@ public class SigninPage extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin_page1);
+        setContentView(R.layout.activity_signin_page);
 
         text_CreateAccount = findViewById(R.id.createaccount);
         text_ForgotPassword = findViewById(R.id.forgtPassword);
@@ -92,10 +92,13 @@ public class SigninPage extends AppCompatActivity {
     public void userLogin(String userNmae, String password) {
 
         ProgressDialog progressDialog = new ProgressDialog(SigninPage.this);
+        progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Login Please wait...");
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCancelable(false);
-        progressDialog.show();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.Login, new Response.Listener<String>() {
             @Override

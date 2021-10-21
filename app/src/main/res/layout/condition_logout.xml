@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cardback">
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Do You Want Logout Your application"
+        android:textColor="#0C0C0C"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/no"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="No"
+        android:textSize="15sp"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_update"/>
+
+        <Button
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Yes"
+            android:textSize="15sp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/editText"
+            android:background="@drawable/button_back"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

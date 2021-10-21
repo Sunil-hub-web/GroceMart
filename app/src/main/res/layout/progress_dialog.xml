@@ -20,9 +20,9 @@
             android:layout_marginRight="25dp" />
 
         <TextView
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registering Please wait..."
             android:textSize="20sp"
             android:textStyle="bold"></TextView>
 
