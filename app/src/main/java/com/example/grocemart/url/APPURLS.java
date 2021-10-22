@@ -7,6 +7,7 @@ public class APPURLS {
    public static final String getUserDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getProfile";
    public static final String updateUserDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=UpProfile";
    public static final String forgotPassword = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=forgetpassword";
+   public static final String selectLocation = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getLocations";
 
 
 }
