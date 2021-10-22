@@ -66,4 +66,9 @@ public class AddressDetails extends AppCompatActivity {
         window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawableResource(R.drawable.dialogback);
     }
+
+
+    public  void deleteAddress(String AddressId){
+
+    }
 }

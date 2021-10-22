@@ -66,7 +66,7 @@ public class RegisterPage extends AppCompatActivity {
 
        awesomeValidation.addValidation (RegisterPage.this,R.id.edit_fullName,"^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$",R.string.entername);
        awesomeValidation.addValidation (RegisterPage.this,R.id.edit_userName,"^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$",R.string.entername);
-       awesomeValidation.addValidation (RegisterPage.this,R.id.edit_contactNo,"^[+]?[0-9]{1,10}$",R.string.entercontact);
+       awesomeValidation.addValidation (RegisterPage.this,R.id.edit_contactNo,"^[+]?[0-9]{10}$",R.string.entercontact);
        awesomeValidation.addValidation (RegisterPage.this,R.id.edit_emailAddress, Patterns.EMAIL_ADDRESS,R.string.enteremail);
        awesomeValidation.addValidation (RegisterPage.this,R.id.edit_setPassword,"^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",R.string.enterpassword);
 

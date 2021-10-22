@@ -31,7 +31,9 @@
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".ForgotPassword"
-            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar">
+
+        </activity>
         <activity
             android:name=".SigninPage"
             android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
@@ -61,7 +63,9 @@
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".UserProfile"
-            android:theme="@style/Theme.GroceMart.NoActionBar" />
+            android:theme="@style/Theme.GroceMart.NoActionBar">
+
+        </activity>
         <activity
             android:name=".AddressDetails"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
@@ -71,11 +75,6 @@
         <activity
             android:name=".SelectLocation"
             android:theme="@style/Theme.GroceMart.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShowLocation"
@@ -89,7 +88,11 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.GroceMart.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
