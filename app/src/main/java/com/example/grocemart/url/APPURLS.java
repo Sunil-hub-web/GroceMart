@@ -9,6 +9,8 @@ public class APPURLS {
    public static final String forgotPassword = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=forgetpassword";
    public static final String selectLocation = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getLocations";
    public static final String addAddress = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=AddAddress";
-
+   public static final String getAddressDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getAddress";
+   public static final String uploadProfilePic = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=uploadProfilePic";
+   public static final String deleteAddress = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=delAddress";
 
 }

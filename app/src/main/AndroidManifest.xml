@@ -69,11 +69,7 @@
         <activity
             android:name=".activity.AddressDetails"
             android:theme="@style/Theme.GroceMart.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.UserDashboard"
@@ -95,7 +91,11 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.GroceMart.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

@@ -5,9 +5,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/homecard_back"
-        android:layout_margin="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
         android:orientation="vertical">
 
         <TextView
@@ -20,16 +22,17 @@
             android:textSize="20dp"></TextView>
 
         <Button
-            android:id="@+id/deleteButton"
+            android:id="@+id/btn_Delete"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:background="#E32113"
             android:text="Delete"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"></Button>
+            android:layout_below="@id/addressdetails"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"></Button>
 
     </RelativeLayout>
 

@@ -32,6 +32,7 @@ import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.grocemart.R;
 import com.example.grocemart.SharedPrefManager;
 import com.example.grocemart.url.APPURLS;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +53,7 @@ public class UserProfile extends AppCompatActivity {
     EditText edit_Name,edit_Email,edit_Contact_no;
     Button btn_Update;
 
-    String id,name,email,contact_no,msg,user_id,profile_photo,Name,Email,Contact_no;
+    String id,name,email,contact_no,msg,user_id,profile_photo,Name,Email,Contact_no,image_profile;
 
     Uri imageUri;
 
@@ -126,7 +127,8 @@ public class UserProfile extends AppCompatActivity {
 
                     if(imageUri != null){
 
-                        updateProfile(user_id,Name,Email,Contact_no,profile_photo);
+                        updateProfile(user_id,Name,Email,Contact_no);
+                        uploadProfileImage(user_id,profile_photo);
 
                     }else{
 
@@ -190,14 +192,16 @@ public class UserProfile extends AppCompatActivity {
                             email = jsonObject.getString("email");
                             contact_no = jsonObject.getString("contact_no");
                             msg = jsonObject.getString("msg");
+                            image_profile = jsonObject.getString("img");
+
+                            Picasso.with (UserProfile.this)
+                                    .load (image_profile)
+                                    .placeholder (R.drawable.profileimage)
+                                    .into (circleImageView);
 
                             edit_Name.setText(name);
                             edit_Contact_no.setText(contact_no);
                             edit_Email.setText(email);
-
-                            byte[] decodedString = Base64.decode(image, Base64.DEFAULT);
-                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                            circleImageView.setImageBitmap (decodedByte);
 
                         }
                     }
@@ -255,7 +259,7 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
-    public void updateProfile(String id, String name, String email, String contactno,String profile){
+    public void updateProfile(String id, String name, String email, String contactno){
 
         ProgressDialog progressDialog = new ProgressDialog(UserProfile.this);
         progressDialog.show();
@@ -305,7 +309,61 @@ public class UserProfile extends AppCompatActivity {
                 params.put("name",name);
                 params.put("email",email);
                 params.put("contact_no",contactno);
-                params.put("img",profile);
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(UserProfile.this);
+        requestQueue.add(stringRequest);
+    }
+
+    public void uploadProfileImage(String userId,String profileImage){
+
+        ProgressDialog progressDialog = new ProgressDialog(UserProfile.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Profile Update Please wait...");
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.setCancelable(false);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.uploadProfilePic, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String message = jsonObject.getString("success");
+
+                    if(message.equals("true")){
+
+                        Toast.makeText(UserProfile.this, "Profile image Updated Successfully..", Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                error.printStackTrace ();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("user_id ",userId);
+                params.put("img",profileImage);
                 return params;
             }
         };

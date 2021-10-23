@@ -38,6 +38,7 @@ import com.example.grocemart.adapter.PincodeSpinerAdapter;
 import com.example.grocemart.adapter.ViewaddressDetailsAdapter;
 import com.example.grocemart.modelclass.City_ModelClass;
 import com.example.grocemart.modelclass.PinCode_ModelClass;
+import com.example.grocemart.modelclass.ViewAddressDetails_ModelClass;
 import com.example.grocemart.url.APPURLS;
 
 import org.json.JSONArray;
@@ -55,7 +56,8 @@ public class AddressDetails extends AppCompatActivity {
     ImageView image_back;
     Button btn_AddAddress;
     String str_Name,str_Email,str_MobileNo,str_City,str_Area,str_Address,
-            str_PinCode,userId,cityid,City_id,city_Name,pincode_id,pincode_Name;
+            str_PinCode,userId,cityid,City_id,city_Name,pincode_Name,
+            Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id;
     Button btn_SaveAddress;
     EditText edit_Name,edit_Email,edit_Address,edit_MobileNo,edit_Area;
     Spinner spiner_City,spiner_Pincode;
@@ -68,6 +70,8 @@ public class AddressDetails extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     ViewaddressDetailsAdapter viewaddressDetailsAdapter;
 
+    ArrayList<ViewAddressDetails_ModelClass> addressDetails = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +83,7 @@ public class AddressDetails extends AppCompatActivity {
         linearLayoutManager =  new LinearLayoutManager(AddressDetails.this,LinearLayoutManager.VERTICAL,false);
 
         userId = SharedPrefManager.getInstance(AddressDetails.this).getUser().getId();
-        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        getaddressDetails(userId);
 
         btn_AddAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +155,7 @@ public class AddressDetails extends AppCompatActivity {
                     str_Area = edit_Area.getText().toString().trim();
                     str_Address = edit_Address.getText().toString().trim();
                     str_PinCode = pincode_Name;
-                    str_City = city_Name;
+                    str_City = City_id;
 
 
                     addAddress(userId,str_Name,str_MobileNo,str_City,str_Address,str_Area,str_Email,str_PinCode);
@@ -192,6 +196,8 @@ public class AddressDetails extends AppCompatActivity {
 
                        Toast.makeText(AddressDetails.this, "Address Insterted Success Fully..", Toast.LENGTH_SHORT).show();
                        dialog.dismiss();
+                       getaddressDetails(userId);
+
                    }
                } catch (JSONException e) {
                    e.printStackTrace();
@@ -229,6 +235,92 @@ public class AddressDetails extends AppCompatActivity {
        };
 
        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+       RequestQueue requestQueue = Volley.newRequestQueue(AddressDetails.this);
+       requestQueue.add(stringRequest);
+
+   }
+
+   public void getaddressDetails(String userid){
+
+       ProgressDialog progressDialog = new ProgressDialog(AddressDetails.this);
+       progressDialog.show();
+       progressDialog.setContentView(R.layout.progress_dialog);
+       TextView textView = progressDialog.findViewById(R.id.text);
+       textView.setText("View Address Please wait...");
+       progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+       progressDialog.setCancelable(false);
+
+       StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getAddressDetails, new Response.Listener<String>() {
+           @Override
+           public void onResponse(String response) {
+
+               progressDialog.dismiss();
+
+               try {
+                   JSONObject jsonObject = new JSONObject(response);
+
+                   String message = jsonObject.getString("success");
+
+                   if(message.equals("true")){
+
+                       String address = jsonObject.getString("All_address");
+
+                       JSONArray jsonArray = new JSONArray(address);
+
+                       for(int i=0;i<jsonArray.length();i++){
+
+                           JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+
+                           addressId = jsonObject1.getString("addres_id");
+                           Name = jsonObject1.getString("name");
+                           city_id = jsonObject1.getString("city_id");
+                           City = jsonObject1.getString("city_name");
+                           Area = jsonObject1.getString("area");
+                           PinCode = jsonObject1.getString("pincode");
+                           MobileNo = jsonObject1.getString("number");
+                           Address = jsonObject1.getString("address");
+                           Email = jsonObject1.getString("email");
+
+
+                           ViewAddressDetails_ModelClass viewAddressDetails_modelClass = new ViewAddressDetails_ModelClass(
+                                   addressId,city_id,Name,City,Area,PinCode,MobileNo,Address,Email
+                           );
+
+                           addressDetails.add(viewAddressDetails_modelClass);
+                       }
+
+                       AddressRecycler.setLayoutManager(linearLayoutManager);
+                       AddressRecycler.setHasFixedSize(true);
+                       viewaddressDetailsAdapter = new ViewaddressDetailsAdapter(AddressDetails.this,addressDetails);
+                       AddressRecycler.setAdapter(viewaddressDetailsAdapter);
+
+                   }
+               } catch (JSONException e) {
+                   e.printStackTrace();
+               }
+
+
+           }
+       }, new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse(VolleyError error) {
+
+               progressDialog.dismiss();
+               error.printStackTrace ();
+
+           }
+       }){
+           @Override
+           protected Map<String, String> getParams() throws AuthFailureError {
+
+               Map<String,String> params = new HashMap<>();
+
+               params.put("id",userid);
+               return params;
+           }
+       };
+
+       stringRequest.setRetryPolicy(new DefaultRetryPolicy( 50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
        RequestQueue requestQueue = Volley.newRequestQueue(AddressDetails.this);
        requestQueue.add(stringRequest);
 
@@ -322,25 +414,10 @@ public class AddressDetails extends AppCompatActivity {
                             JSONArray jsinArrayPincode = jsonObject1.getJSONArray("pincode_list");
                             cityid = jsonObject1.getString("city_id");
 
-                            /*for(int j=0;j<jsinArrayPincode.length();j++) {
-
-                                JSONObject jsonObjPincode = jsinArrayPincode.getJSONObject(j);
-                                String pin_id = jsonObjPincode.getString("pin_id");
-                                String pincode = jsonObjPincode.getString("pincode");
-
-                                //create module class for the pin id and pincode
-
-                                PinCode_ModelClass pincodeSetgger = new PinCode_ModelClass(pincode,pin_id);
-                                arrayListPincode.add(pincodeSetgger);
-                            }*/
-
                             City_ModelClass city_modelClass = new City_ModelClass
                                     (jsonObject1.getString("city_name"), cityid);
 
                             list_city.add(city_modelClass);
-
-                            //hashmap_picode.put(cityid, arrayListPincode);
-//                            Log.d("arrayListPincode",arrayListPincode.toString());
 
                         }
 
@@ -368,36 +445,8 @@ public class AddressDetails extends AppCompatActivity {
 
                             City_id = mystate.getCity_id();
                             city_Name = mystate.getCity();
-
                             Log.d("R_Pincode", City_id);
-
-                          /*  PinCode_ModelClass cityidpinname= arrayListPincode.get(position);
-                            String pincode= cityidpinname.getPincode();
-                            ArrayList<PinCode_ModelClass> janamam = hashmap_picode.get(City_id);*/
-
-                           /* for (Map.Entry<String, ArrayList<PinCode_ModelClass>> ee : hashmap_picode.entrySet()) {
-                                String key = ee.getKey();
-                                ArrayList<PinCode_ModelClass> janamama = ee.getValue();
-                                // TODO: Do something.
-
-                                if(key.equalsIgnoreCase(City_id)) {
-                                    for (int k = 0; k < janamama.size(); k++) {
-
-                                        String pincodeDropDown = janamama.get(k).getPincode();
-                                        ArrayList<String> arraypincode = new ArrayList<>();
-                                        arraypincode.add(pincodeDropDown);
-                                        Log.d("Pinocde_array", pincodeDropDown);
-                                        Log.d("Pinocde_array", arraypincode.size() + "");
-                                    }
-                                }
-
-                            }*/
-
-
-                            //Log.d("Pinocde_array",janamam.toString());
-
                             GetPincode(City_id);
-
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -409,7 +458,6 @@ public class AddressDetails extends AppCompatActivity {
 
                     }
                 });
-
 
             }
         }, new Response.ErrorListener() {
