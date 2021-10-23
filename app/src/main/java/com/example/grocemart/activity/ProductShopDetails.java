@@ -1,4 +1,4 @@
-package com.example.grocemart;
+package com.example.grocemart.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.grocemart.R;
 import com.example.grocemart.adapter.ProductShopAdapter;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 

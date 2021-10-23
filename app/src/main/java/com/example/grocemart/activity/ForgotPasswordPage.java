@@ -1,4 +1,4 @@
-package com.example.grocemart;
+package com.example.grocemart.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.example.grocemart.R;
 
 public class ForgotPasswordPage extends AppCompatActivity {
 

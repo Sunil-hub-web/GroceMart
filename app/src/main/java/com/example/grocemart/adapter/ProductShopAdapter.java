@@ -15,8 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.grocemart.CartPage;
-import com.example.grocemart.ProductShopDetails;
+import com.example.grocemart.activity.CartPage;
+import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.R;
 

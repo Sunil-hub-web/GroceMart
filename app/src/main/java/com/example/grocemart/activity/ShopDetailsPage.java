@@ -1,4 +1,4 @@
-package com.example.grocemart;
+package com.example.grocemart.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.grocemart.R;
 
 public class ShopDetailsPage extends AppCompatActivity {
 

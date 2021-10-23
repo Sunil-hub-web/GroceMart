@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddressDetails">
+    tools:context=".activity.AddressDetails">
 
     <ImageView
         android:layout_width="20dp"
@@ -26,34 +26,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:background="@drawable/homecard_back"
-        android:layout_below="@id/back"
-        android:layout_margin="15dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_above="@id/addaddress"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/topProduct2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:text="samir owner 1984samirsahoo@gmail.com,
- 919658437202,Bhubaneswar,750017"
-            android:textColor="@color/black"
-            android:textSize="20dp"></TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/addressRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/click"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:background="#E32113"
-            android:text="Delete"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"></Button>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
 

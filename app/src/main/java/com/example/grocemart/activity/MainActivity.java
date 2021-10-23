@@ -1,4 +1,4 @@
-package com.example.grocemart;
+package com.example.grocemart.activity;
 
 import android.Manifest;
 import android.content.Context;
@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.grocemart.R;
 import com.example.grocemart.adapter.GroceryAdapter;
 import com.example.grocemart.adapter.RestaurantAdapter;
 import com.google.android.gms.location.FusedLocationProviderClient;

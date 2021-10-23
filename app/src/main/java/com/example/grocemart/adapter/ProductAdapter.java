@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.grocemart.CartPage;
+import com.example.grocemart.activity.CartPage;
 import com.example.grocemart.R;
 
 import org.jetbrains.annotations.NotNull;

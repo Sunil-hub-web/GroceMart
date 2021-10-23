@@ -12,8 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.grocemart.MainActivity;
-import com.example.grocemart.ProductShopDetails;
+import com.example.grocemart.activity.MainActivity;
+import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.R;
 
 import org.jetbrains.annotations.NotNull;

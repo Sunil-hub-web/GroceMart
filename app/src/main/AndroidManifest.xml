@@ -24,56 +24,50 @@
         android:theme="@style/Theme.GroceMart"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ForgotPasswordPage"
+            android:name=".activity.ForgotPasswordPage"
             android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
         <activity
-            android:name=".RegisterPage"
+            android:name=".activity.RegisterPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".ForgotPassword"
+            android:name=".activity.ForgotPassword"
             android:theme="@style/Theme.GroceMart.NoActionBar">
 
         </activity>
         <activity
-            android:name=".SigninPage"
+            android:name=".activity.SigninPage"
             android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
         <activity
-            android:name=".CheckoutPage"
+            android:name=".activity.CheckoutPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".SerachPage"
+            android:name=".activity.SerachPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".ShopDetailsPage"
+            android:name=".activity.ShopDetailsPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".MyOrderDetails"
+            android:name=".activity.MyOrderDetails"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".WalletPage"
+            android:name=".activity.WalletPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".ProductShopDetails"
+            android:name=".activity.ProductShopDetails"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".CartPage"
+            android:name=".activity.CartPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".ChangePassword"
+            android:name=".activity.ChangePassword"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
-            android:name=".UserProfile"
+            android:name=".activity.UserProfile"
             android:theme="@style/Theme.GroceMart.NoActionBar">
 
         </activity>
         <activity
-            android:name=".AddressDetails"
-            android:theme="@style/Theme.GroceMart.NoActionBar" />
-        <activity
-            android:name=".UserDashboard"
-            android:theme="@style/Theme.GroceMart.NoActionBar" />
-        <activity
-            android:name=".SelectLocation"
+            android:name=".activity.AddressDetails"
             android:theme="@style/Theme.GroceMart.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,7 +76,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShowLocation"
+            android:name=".activity.UserDashboard"
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
+        <activity
+            android:name=".activity.SelectLocation"
+            android:theme="@style/Theme.GroceMart.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".activity.ShowLocation"
             android:label="@string/title_activity_show_location"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
 
@@ -91,7 +93,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:theme="@style/Theme.GroceMart.NoActionBar">
 
         </activity>

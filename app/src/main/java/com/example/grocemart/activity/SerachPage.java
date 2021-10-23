@@ -1,4 +1,4 @@
-package com.example.grocemart;
+package com.example.grocemart.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.example.grocemart.R;
 import com.example.grocemart.adapter.SerachAdapter;
 import com.example.grocemart.modelclass.Serach_ModelClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

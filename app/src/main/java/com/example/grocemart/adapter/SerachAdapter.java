@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grocemart.R;
-import com.example.grocemart.SerachPage;
+import com.example.grocemart.activity.SerachPage;
 import com.example.grocemart.modelclass.Serach_ModelClass;
 
 import org.jetbrains.annotations.NotNull;

@@ -1,16 +1,14 @@
-package com.example.grocemart;
+package com.example.grocemart.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Selection;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.grocemart.R;
 import com.example.grocemart.adapter.CitySpinerAdapter;
 import com.example.grocemart.adapter.PincodeSpinerAdapter;
 import com.example.grocemart.modelclass.City_ModelClass;
@@ -32,7 +31,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class SelectLocation extends AppCompatActivity {
 
