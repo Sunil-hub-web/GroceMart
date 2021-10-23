@@ -36,7 +36,7 @@ public class SelectLocation extends AppCompatActivity {
 
     Spinner spiner_City, spiner_pincode;
     Button btn_submit;
-    String item, City_id;
+    String item, City_id,City_Name;
     String cityid;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
@@ -58,7 +58,7 @@ public class SelectLocation extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(SelectLocation.this, MainActivity.class);
-                intent.putExtra("item", item);
+                intent.putExtra("item", City_Name);
                 startActivity(intent);
 
             }
@@ -144,6 +144,7 @@ public class SelectLocation extends AppCompatActivity {
                             City_ModelClass mystate = (City_ModelClass) parent.getSelectedItem();
 
                             City_id = mystate.getCity_id();
+                            City_Name = mystate.getCity();
                             Log.d("R_Pincode", City_id);
 
                           /*  PinCode_ModelClass cityidpinname= arrayListPincode.get(position);

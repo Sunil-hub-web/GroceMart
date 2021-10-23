@@ -23,20 +23,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceMart"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".activity.ForgotPasswordPage"
-            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.RegisterPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.ForgotPassword"
-            android:theme="@style/Theme.GroceMart.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.SigninPage"
-            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.CheckoutPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
@@ -63,21 +62,21 @@
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.UserProfile"
-            android:theme="@style/Theme.GroceMart.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.AddressDetails"
-            android:theme="@style/Theme.GroceMart.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.UserDashboard"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.SelectLocation"
             android:theme="@style/Theme.GroceMart.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.ShowLocation"
@@ -91,11 +90,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.GroceMart.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
