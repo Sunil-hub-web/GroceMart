@@ -59,9 +59,7 @@ public class AddressDetails extends AppCompatActivity {
             str_PinCode,userId,cityid,City_id,city_Name,pincode_Name,
             Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id;
     Button btn_SaveAddress;
-    EditText edit_Name,edit_Email,edit_Address,edit_MobileNo,edit_Area;
     Spinner spiner_City,spiner_Pincode;
-    AwesomeValidation awesomeValidation;
     Dialog dialog;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
@@ -112,40 +110,39 @@ public class AddressDetails extends AppCompatActivity {
         dialog.setContentView(R.layout.address_details);
         dialog.setCancelable(false);
         btn_SaveAddress = dialog.findViewById(R.id.saveaddress);
-        edit_Name = dialog.findViewById(R.id.fullName);
-        edit_Email = dialog.findViewById(R.id.emailAddress);
-        edit_Address = dialog.findViewById(R.id.Address);
-        edit_MobileNo = dialog.findViewById(R.id.contactNo);
+        EditText edit_Name = dialog.findViewById(R.id.fullName);
+        EditText edit_Email = dialog.findViewById(R.id.emailAddress);
+        EditText edit_Address = dialog.findViewById(R.id.Address);
+        EditText edit_MobileNo = dialog.findViewById(R.id.contactNo);
         spiner_City = dialog.findViewById(R.id.spinner_city);
         spiner_Pincode = dialog.findViewById(R.id.spinner_pincode);
-        edit_Area = dialog.findViewById(R.id.area);
+        EditText edit_Area = dialog.findViewById(R.id.area);
 
         getCity();
-
 
         btn_SaveAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(edit_Name.getText().toString().trim().equals("") && isValideFullName(edit_Name.getText().toString().trim())){
+                if(edit_Name.getText().toString().trim().equals("")){
 
-                    edit_Name.setError("enter valide name");
+                    edit_Name.setError("Please Enter Name");
 
-                }else if(TextUtils.isEmpty(edit_Email.getText()) && isValideEmailAddress(edit_Email.getText().toString().trim())) {
+                }else if (TextUtils.isEmpty(edit_Email.getText())){
 
-                    edit_Email.setError("enter valide Email");
+                    edit_Email.setError("Please Enter Email");
 
-                }else if(TextUtils.isEmpty(edit_MobileNo.getText()) && isValideMobileNumber(edit_MobileNo.getText().toString().trim())){
+                }else if (TextUtils.isEmpty(edit_MobileNo.getText()) && edit_MobileNo.getText().toString().trim().length() == 10) {
 
-                    edit_MobileNo.setError("enter valide Mobileno");
+                    edit_MobileNo.setError("Please Enter MobileNumber");
 
-                }else if(TextUtils.isEmpty(edit_Area.getText()) && isValideCityAreaAddress(edit_Area.getText().toString().trim())){
+                }else if (TextUtils.isEmpty(edit_Area.getText())) {
 
-                    edit_Area.setError("enter valide area");
+                    edit_Area.setError("Please Enter Area");
 
-                }else if(TextUtils.isEmpty(edit_Address.getText()) && isValideCityAreaAddress(edit_Address.getText().toString().trim())){
+                }else if (TextUtils.isEmpty(edit_Address.getText())) {
 
-                    edit_Address.setError("enter valide address");
+                    edit_Address.setError("Please Enter Address");
 
                 }else{
 
@@ -156,7 +153,6 @@ public class AddressDetails extends AppCompatActivity {
                     str_Address = edit_Address.getText().toString().trim();
                     str_PinCode = pincode_Name;
                     str_City = City_id;
-
 
                     addAddress(userId,str_Name,str_MobileNo,str_City,str_Address,str_Area,str_Email,str_PinCode);
 
@@ -325,10 +321,6 @@ public class AddressDetails extends AppCompatActivity {
        requestQueue.add(stringRequest);
 
    }
-
-    public  void deleteAddress(String AddressId){
-
-    }
 
     public boolean isValideFullName(final String fullName){
 
