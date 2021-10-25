@@ -30,7 +30,7 @@
             <RelativeLayout
                 android:id="@+id/r1"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/rel_height"
+                android:layout_height="@dimen/hundred"
                 android:layout_marginTop="30dp"
 
                 android:background="@drawable/homecard_back"
@@ -39,9 +39,9 @@
 
                 <ImageView
                     android:id="@+id/productImage"
-                    android:layout_width="@dimen/myorder_image_width"
-                    android:layout_height="@dimen/myorder_image_height"
-                    android:layout_marginLeft="@dimen/marginleft"
+                    android:layout_width="@dimen/ninety"
+                    android:layout_height="@dimen/eighty"
+                    android:layout_marginLeft="@dimen/ten"
                     android:src="@drawable/royal"
                     android:layout_margin="10dp">
 
@@ -56,7 +56,7 @@
                     android:layout_toRightOf="@id/productImage"
                     android:text="BB Royal Organic-Toor Dal"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/textsize"
                     android:textStyle="bold"></TextView>
 
                 <TextView
@@ -69,7 +69,7 @@
                     android:text="Q :1"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
                 <TextView
                     android:id="@+id/weight"
                     android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                     android:text="1kg"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/price"
@@ -91,7 +91,7 @@
                     android:layout_marginTop="45dp"
                     android:layout_marginRight="20dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/textsize"
                     android:layout_alignParentRight="true"></TextView>
 
             </RelativeLayout>
@@ -99,7 +99,7 @@
             <RelativeLayout
                 android:id="@+id/r2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/rel_height"
+                android:layout_height="@dimen/hundred"
                 android:layout_marginTop="15dp"
                 android:layout_below="@id/r1"
                 android:background="@drawable/homecard_back"
@@ -110,7 +110,7 @@
                     android:id="@+id/productImage1"
                     android:layout_width="@dimen/ninety"
                     android:layout_height="@dimen/eighty"
-                    android:layout_marginLeft="@dimen/marginleft"
+                    android:layout_marginLeft="@dimen/ten"
                     android:src="@drawable/biriyani"
                     android:layout_margin="10dp">
 
@@ -138,7 +138,7 @@
                     android:text="Q :1"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/tt"
@@ -150,7 +150,7 @@
                     android:text="1kg"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/price1"
@@ -161,7 +161,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_marginRight="20dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/textsize"
                     android:layout_alignParentRight="true"></TextView>
 
             </RelativeLayout>
@@ -169,7 +169,7 @@
             <RelativeLayout
                 android:id="@+id/r3"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/rel_height"
+                android:layout_height="@dimen/hundred"
                 android:layout_marginTop="15dp"
                 android:layout_below="@id/r2"
                 android:background="@drawable/homecard_back"
@@ -178,9 +178,9 @@
 
                 <ImageView
                     android:id="@+id/productImage2"
-                    android:layout_width="@dimen/myorder_image_width"
-                    android:layout_height="@dimen/myorder_image_height"
-                    android:layout_marginLeft="@dimen/marginleft"
+                    android:layout_width="@dimen/eighty"
+                    android:layout_height="@dimen/ninety"
+                    android:layout_marginLeft="@dimen/ten"
                     android:src="@drawable/biriyani"
                     android:layout_margin="10dp">
 
@@ -208,7 +208,7 @@
                     android:text="Q :1"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/tt1"
@@ -220,7 +220,7 @@
                     android:text="1kg"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/price2"
@@ -231,7 +231,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_marginRight="20dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/textsize"
                     android:layout_alignParentRight="true"></TextView>
 
             </RelativeLayout>
@@ -248,9 +248,9 @@
 
                 <ImageView
                     android:id="@+id/productImage3"
-                    android:layout_width="@dimen/myorder_image_width"
-                    android:layout_height="@dimen/myorder_image_height"
-                    android:layout_marginLeft="@dimen/marginleft"
+                    android:layout_width="@dimen/ninety"
+                    android:layout_height="@dimen/eighty"
+                    android:layout_marginLeft="@dimen/ten"
                     android:src="@drawable/chicken"
                     android:layout_margin="10dp">
 
@@ -278,7 +278,7 @@
                     android:text="Q :1"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/tt2"
@@ -290,7 +290,7 @@
                     android:text="1kg"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"></TextView>
+                    android:textSize="@dimen/textsize"></TextView>
 
                 <TextView
                     android:id="@+id/price3"
@@ -301,7 +301,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_marginRight="20dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/textsize"
                     android:layout_alignParentRight="true"></TextView>
 
             </RelativeLayout>

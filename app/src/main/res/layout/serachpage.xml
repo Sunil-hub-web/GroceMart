@@ -25,7 +25,7 @@
             android:layout_marginLeft="@dimen/twenty"
             android:layout_toRightOf="@id/productImage"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:textStyle="bold"></TextView>
         <TextView
             android:id="@+id/shopName"
@@ -36,7 +36,7 @@
             android:layout_below="@id/topProduct"
             android:layout_toRightOf="@id/productImage"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:layout_marginLeft="@dimen/twenty"
             android:textStyle="bold"></TextView>
 
@@ -48,7 +48,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/ten"
             android:layout_marginLeft="@dimen/twenty"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:layout_below="@id/shopName"
             android:layout_toRightOf="@id/productImage"
             android:textStyle="bold"></TextView>
@@ -61,7 +61,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/ten"
             android:layout_marginLeft="@dimen/twenty"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:layout_below="@id/shopName"
             android:layout_toRightOf="@id/quantity"
             android:textStyle="bold"></TextView>

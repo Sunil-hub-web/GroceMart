@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:text="SubTotal"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"></TextView>
             <TextView
                 android:id="@+id/quantity1"
@@ -129,7 +129,7 @@
                 android:layout_marginLeft="@dimen/ten"
                 android:text="1x"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:layout_toRightOf="@id/productName1"></TextView>
             <TextView
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:text="₹ 150.00"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></TextView>
         </RelativeLayout>
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:text="Shipping Crage"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"></TextView>
 
             <TextView
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:text="Total"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"></TextView>
 
             <TextView
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:text="₹ 151.00"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></TextView>
         </RelativeLayout>
@@ -221,7 +221,7 @@
         android:text="Add Address"
         android:textColor="@color/btntextcolor"
         android:textAllCaps="false"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/textsize"
         android:layout_marginLeft="@dimen/twenty"
         android:layout_below="@+id/amount"
         android:textStyle="bold"></Button>
@@ -269,7 +269,7 @@
                 android:button="@xml/custom_check_box"
                 android:checked="false"
                 android:paddingLeft="10dp"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:text="Cash On Delivery"></RadioButton>
             <RadioButton
                 android:id="@+id/ch2"
@@ -281,7 +281,7 @@
                 android:layout_toRightOf="@id/ch1"
                 android:checked="false"
                 android:paddingLeft="10dp"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:text="Pay Online"></RadioButton>
 
         </RadioGroup>
@@ -304,18 +304,18 @@
             android:text="Continue Shoping"
             android:textColor="@color/btntextcolor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:layout_marginLeft="@dimen/twenty"
             android:textStyle="bold"></Button>
         <Button
             android:id="@+id/procedtocheckout"
             android:layout_width="@dimen/hundred_ninety"
-            android:layout_height="@dimen/detailsPayment_button_height"
+            android:layout_height="@dimen/forty_five"
             android:background="@drawable/shopingback"
             android:text="Proceed To Checkout"
             android:textColor="@color/white"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:layout_marginLeft="@dimen/twenty"
             android:textStyle="bold"
             android:layout_toRightOf="@id/shoping"></Button>

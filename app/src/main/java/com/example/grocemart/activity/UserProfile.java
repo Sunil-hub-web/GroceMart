@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -127,8 +128,8 @@ public class UserProfile extends AppCompatActivity {
 
                     if(imageUri != null){
 
-                        updateProfile(user_id,Name,Email,Contact_no,profile_photo);
-                        //uploadProfileImage(user_id,profile_photo);
+                        updateProfile(user_id,Name,Email,Contact_no);
+                        uploadProfileImage(user_id,profile_photo);
 
                     }else{
 
@@ -194,10 +195,13 @@ public class UserProfile extends AppCompatActivity {
                             msg = jsonObject.getString("msg");
                             image_profile = jsonObject.getString("img");
 
-                            Picasso.with (UserProfile.this)
-                                    .load (image_profile)
-                                    .placeholder (R.drawable.profileimage)
-                                    .into (circleImageView);
+                            Log.d("image",image_profile);
+
+                            String url = "https://"+image_profile;
+
+                            Picasso.with(UserProfile.this).load(url)
+                                    .placeholder(R.drawable.profileimage)
+                                    .into(circleImageView);
 
                             edit_Name.setText(name);
                             edit_Contact_no.setText(contact_no);
@@ -259,7 +263,7 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
-    public void updateProfile(String id, String name, String email, String contactno,String profile){
+    public void updateProfile(String id, String name, String email, String contactno){
 
         ProgressDialog progressDialog = new ProgressDialog(UserProfile.this);
         progressDialog.show();
@@ -309,7 +313,6 @@ public class UserProfile extends AppCompatActivity {
                 params.put("name",name);
                 params.put("email",email);
                 params.put("contact_no",contactno);
-                params.put("img",profile);
                 return params;
             }
         };
@@ -363,7 +366,7 @@ public class UserProfile extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<>();
 
-                params.put("user_id ",userId);
+                params.put("user_id",userId);
                 params.put("img",profileImage);
                 return params;
             }

@@ -32,15 +32,15 @@
 
             <Button
                 android:id="@+id/gotoshop2"
-                android:layout_width="@dimen/gotoshop_button_width"
-                android:layout_height="@dimen/gotoshop_button_height"
+                android:layout_width="@dimen/hundred"
+                android:layout_height="@dimen/forty_five"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/button_back"
                 android:text="Go To Shop"
                 android:textColor="@color/btntextcolor"
-                android:textSize="@dimen/gotoshop_btn_textSize"></Button>
+                android:textSize="@dimen/textsize"></Button>
 
             <TextView
                 android:id="@+id/address1"
@@ -67,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:text="Aachi Biriyani Masala"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:textStyle="bold"></TextView>
 
         <LinearLayout
@@ -121,8 +121,8 @@
 
         <Button
             android:id="@+id/addtocart1"
-            android:layout_width="@dimen/gotoshop_button_width"
-            android:layout_height="@dimen/gotoshop_button_height"
+            android:layout_width="@dimen/hundred"
+            android:layout_height="@dimen/forty_five"
             android:layout_below="@id/productname1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="90dp"
@@ -131,12 +131,12 @@
             android:background="@drawable/button_back"
             android:text="Add To cart"
             android:textColor="@color/btntextcolor"
-            android:textSize="@dimen/gotoshop_btn_textSize"></Button>
+            android:textSize="@dimen/textsize"></Button>
 
         <ImageView
             android:id="@+id/imagecart1"
-            android:layout_width="@dimen/cartimage_width"
-            android:layout_height="@dimen/cartimage_height"
+            android:layout_width="@dimen/eighty"
+            android:layout_height="@dimen/ninety"
             android:layout_below="@id/shopdetails1"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"

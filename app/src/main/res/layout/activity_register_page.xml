@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/account"
                 android:textColor="#000000"
-                android:textSize="@dimen/textSize" />
+                android:textSize="@dimen/textsize" />
 
             <TextView
                 android:id="@+id/signin"

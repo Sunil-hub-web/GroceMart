@@ -145,7 +145,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Narendra Shop"
-                                android:textSize="@dimen/textSize"
+                                android:textSize="@dimen/textsize"
                                 android:textStyle="bold"
                                 android:layout_marginLeft="@dimen/ten"
                                 android:layout_marginTop="@dimen/eight"
@@ -161,7 +161,7 @@
                                 android:layout_alignParentRight="true"
                                 android:textColor="@color/btntextcolor"
                                 android:layout_marginRight="@dimen/ten"
-                                android:textSize="@dimen/textSize"
+                                android:textSize="@dimen/textsize"
                                 ></Button>
 
                             <TextView
@@ -169,7 +169,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="16, Saheed Nagar, Bhubaneswar, Odisha 751007, India"
-                                android:textSize="@dimen/textSize"
+                                android:textSize="@dimen/textsize"
                                 android:textStyle="bold"
                                 android:layout_marginLeft="@dimen/ten"
                                 android:layout_marginTop="@dimen/twenty_four"
@@ -185,7 +185,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="BB Royal Organic-Toor Dal"
-                            android:textSize="@dimen/textSize"
+                            android:textSize="@dimen/textsize"
                             android:textStyle="bold"
                             android:layout_marginLeft="@dimen/fifteen"
                             android:layout_marginTop="@dimen/eight"
@@ -268,7 +268,7 @@
                             android:text="Add To cart"
                             android:textColor="@color/btntextcolor"
                             android:layout_marginLeft="@dimen/ten"
-                            android:textSize="@dimen/gotoshop_btn_textSize"
+                            android:textSize="@dimen/textsize"
                             android:layout_below="@id/spiner"
                             android:layout_toRightOf="@id/inc"
                             android:layout_marginBottom="@dimen/ten"></Button>
@@ -418,8 +418,8 @@
 
                         <ImageView
                             android:id="@+id/imagecart1"
-                            android:layout_width="@dimen/cartimage_width"
-                            android:layout_height="@dimen/cartimage_height"
+                            android:layout_width="@dimen/ninety"
+                            android:layout_height="@dimen/eighty"
                             android:src="@drawable/biriyani"
                             android:layout_below="@id/shopdetails1"
                             android:layout_alignParentRight="true"
@@ -606,8 +606,8 @@
 
                         <ImageView
                             android:id="@+id/imagecart2"
-                            android:layout_width="@dimen/cartimage_width"
-                            android:layout_height="@dimen/cartimage_height"
+                            android:layout_width="@dimen/ninety"
+                            android:layout_height="@dimen/eighty"
                             android:src="@drawable/chicken"
                             android:layout_below="@id/shopdetails2"
                             android:layout_alignParentRight="true"

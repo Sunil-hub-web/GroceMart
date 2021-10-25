@@ -33,7 +33,7 @@
                 android:layout_marginTop="@dimen/ten"
                 android:text="@string/BBRoyal"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:maxEms="7"
                 android:ellipsize="end"
@@ -63,7 +63,7 @@
             android:text="Go To Shop"
             android:textColor="@color/btntextcolor"
             android:textAllCaps="false"
-            android:textSize="@dimen/textSize"></Button>
+            android:textSize="@dimen/textsize"></Button>
 
 
     </RelativeLayout>

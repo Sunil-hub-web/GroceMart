@@ -89,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:text="SubTotal"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
-                android:textStyle="bold"></TextView>
+                android:textSize="@dimen/textsize"
+                                                               android:textStyle="bold"></TextView>
             <TextView
                 android:id="@+id/quantity1"
                 android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:text="Shipping"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"></TextView>
 
             <TextView
@@ -147,7 +147,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/twenty"
             android:layout_marginLeft="@dimen/fifteen"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/textsize"
             android:layout_below="@+id/r7"
             android:textStyle="bold"></TextView>
         <RelativeLayout
@@ -175,7 +175,7 @@
                 android:text="Apply"
                 android:textAllCaps="false"
                 android:textColor="#0A22A1"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></Button>
         </RelativeLayout>

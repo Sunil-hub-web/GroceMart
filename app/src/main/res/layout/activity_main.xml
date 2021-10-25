@@ -112,7 +112,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/Grocery"
                                     android:textColor="#000000"
-                                    android:textSize="@dimen/textSize" />
+                                    android:textSize="@dimen/textsize" />
 
                                 <ImageView
                                     android:id="@+id/imageview"
@@ -148,7 +148,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/Restaurant"
                                     android:textColor="#000000"
-                                    android:textSize="@dimen/textSize" />
+                                    android:textSize="@dimen/textsize" />
 
                                 <ImageView
                                     android:id="@+id/imageview1"
@@ -184,7 +184,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/Meat"
                                     android:textColor="#000000"
-                                    android:textSize="@dimen/textSize" />
+                                    android:textSize="@dimen/textsize" />
 
                                 <ImageView
                                     android:id="@+id/imageview3"
@@ -233,7 +233,7 @@
                         android:layout_marginTop="@dimen/ten"
                         android:text="@string/Grocery"
                         android:textColor="#000000"
-                        android:textSize="@dimen/textSize"
+                        android:textSize="@dimen/textsize"
                         android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -265,7 +265,7 @@
                         android:layout_marginTop="@dimen/ten"
                         android:text="@string/Restaurant"
                         android:textColor="#000000"
-                        android:textSize="@dimen/textSize"
+                        android:textSize="@dimen/textsize"
                         android:textStyle="bold"
                         android:layout_marginBottom="@dimen/ten"/>
 
@@ -296,7 +296,7 @@
                         android:layout_marginTop="@dimen/ten"
                         android:text="@string/Meat"
                         android:textColor="#000000"
-                        android:textSize="@dimen/textSize"
+                        android:textSize="@dimen/textsize"
                         android:textStyle="bold" />
 
                     <HorizontalScrollView
@@ -367,7 +367,7 @@
                                 android:text="Go To Shop"
                                 android:textColor="@color/white"
                                 android:textAllCaps="false"
-                                android:textSize="@dimen/textSize"
+                                android:textSize="@dimen/textsize"
                                 android:layout_centerHorizontal="true"></Button>
 
 
