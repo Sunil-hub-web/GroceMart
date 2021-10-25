@@ -127,8 +127,8 @@ public class UserProfile extends AppCompatActivity {
 
                     if(imageUri != null){
 
-                        updateProfile(user_id,Name,Email,Contact_no);
-                        uploadProfileImage(user_id,profile_photo);
+                        updateProfile(user_id,Name,Email,Contact_no,profile_photo);
+                        //uploadProfileImage(user_id,profile_photo);
 
                     }else{
 
@@ -259,7 +259,7 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
-    public void updateProfile(String id, String name, String email, String contactno){
+    public void updateProfile(String id, String name, String email, String contactno,String profile){
 
         ProgressDialog progressDialog = new ProgressDialog(UserProfile.this);
         progressDialog.show();
@@ -309,6 +309,7 @@ public class UserProfile extends AppCompatActivity {
                 params.put("name",name);
                 params.put("email",email);
                 params.put("contact_no",contactno);
+                params.put("img",profile);
                 return params;
             }
         };

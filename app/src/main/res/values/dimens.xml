@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="text_height">14dp</dimen>
 
     <dimen name="image_height">70dp</dimen>
@@ -61,8 +62,6 @@
     <dimen name="textView_paddingLeft">20dp</dimen>
     <dimen name="textView_drawpadding">20dp</dimen>
     <dimen name="textView_textSize">18dp</dimen>
-
-
 
 
 </resources>
