@@ -25,10 +25,10 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, SelectLocation.class);
                 startActivity(i);
                 finish();
             }
-        }, 6000);
+        }, 5000);
     }
 }
