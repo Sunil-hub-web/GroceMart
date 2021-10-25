@@ -47,43 +47,44 @@
             <EditText
                 android:id="@+id/edit_fullname"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="@dimen/fifty"
+                android:layout_below="@id/edit_fullname"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginRight="@dimen/twenty"
+                android:layout_marginBottom="@dimen/ten"
                 android:background="@drawable/registerback"
-                android:drawableLeft="@drawable/baseline_person"
-                android:drawablePadding="20dp"
+                android:drawablePadding="@dimen/twenty"
                 android:elevation="5dp"
                 android:ems="10"
                 android:hint="UserName or Mobile No"
+                android:drawableLeft="@drawable/baseline_person"
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:paddingLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="18dp"
+                android:textSize="@dimen/edittextsize"
                 android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/edit_password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/fifty"
                 android:layout_below="@id/edit_fullname"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginTop="@dimen/twenty"
+                android:layout_marginRight="@dimen/twenty"
+                android:layout_marginBottom="@dimen/ten"
                 android:background="@drawable/registerback"
-                android:drawableLeft="@drawable/baseline_lock"
-                android:drawablePadding="20dp"
+                android:drawablePadding="@dimen/twenty"
                 android:elevation="5dp"
                 android:ems="10"
                 android:hint="Password"
+                android:drawableLeft="@drawable/baseline_lock"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="18dp"
+                android:textSize="@dimen/edittextsize"
                 android:textStyle="normal" />
 
             <TextView
@@ -92,18 +93,18 @@
                 android:layout_margin="20dp"
                 android:text="* Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                 android:textColor="#FFFFFF"
-                android:textSize="13dp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/forgtPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/edit_password"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginTop="@dimen/twenty"
+                android:layout_marginRight="@dimen/twenty"
                 android:text="@string/ForgotPassword"
                 android:textColor="#58E8B6"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:layout_gravity="right"/>
 
@@ -111,14 +112,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="@dimen/sixty"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="@dimen/fifteen">
 
                 <Button
                     android:id="@+id/signin"
-                    android:layout_width="@dimen/detailsPayment_button_width"
-                    android:layout_height="@dimen/detailsPayment_button_height"
+                    android:layout_width="@dimen/three_hundred"
+                    android:layout_height="@dimen/forty_five"
                     android:layout_below="@id/log"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
@@ -143,8 +144,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/Notregistered"
                         android:textColor="#050505"
-                        android:textSize="@dimen/textSize"
-                        />
+                        android:textSize="@dimen/textsize"/>
 
                     <TextView
                         android:id="@+id/createaccount"
@@ -153,9 +153,8 @@
                         android:layout_toRightOf="@id/login1"
                         android:text="@string/Createanaccount"
                         android:textColor="#58E8B6"
-                        android:textSize="@dimen/textSize"
+                        android:textSize="@dimen/textsize"
                         android:textStyle="bold" />
-
 
                 </RelativeLayout>
 
@@ -163,9 +162,6 @@
 
         </LinearLayout>
 
-
-
     </RelativeLayout>
-
 
 </RelativeLayout>

@@ -7,10 +7,10 @@
     tools:context=".activity.AddressDetails">
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/twenty"
+        android:layout_height="@dimen/twenty"
         android:src="@drawable/arrow"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/fifteen"
         android:id="@+id/back"></ImageView>
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty"
         android:text="@string/address"
         android:textStyle="bold"
         android:textColor="#000000"
@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:layout_above="@id/addaddress"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginBottom="@dimen/ten">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/addressRecycler"
@@ -43,16 +43,16 @@
 
     <Button
         android:id="@+id/addaddress"
-        android:layout_width="@dimen/detailsPayment_button_width"
-        android:layout_height="@dimen/detailsPayment_button_height"
+        android:layout_width="@dimen/three_hundred"
+        android:layout_height="@dimen/forty_five"
         android:background="@drawable/button_back"
         android:text="Add Address"
         android:textColor="@color/btntextcolor"
         android:textAllCaps="false"
-        android:textSize="18dp"
+        android:textSize="@dimen/textsize"
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="@dimen/thirty"
         android:layout_alignParentBottom="true"
         android:textStyle="bold"></Button>
 </RelativeLayout>

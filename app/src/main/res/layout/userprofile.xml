@@ -4,10 +4,10 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/twenty"
+        android:layout_height="@dimen/twenty"
         android:src="@drawable/arrow"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/fifteen"
         android:id="@+id/back"></ImageView>
 
     <TextView
@@ -23,17 +23,17 @@
 
     <RelativeLayout
         android:id="@+id/pic"
-        android:layout_width="180dp"
+        android:layout_width="@dimen/hundred_eighty"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty"
         android:layout_below="@id/text">
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="@dimen/profileimage_width"
-            android:layout_height="@dimen/profileimage_height"
+            android:layout_width="@dimen/hundred_fifty"
+            android:layout_height="@dimen/hundred_fifty"
             android:src="@drawable/profileimage"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"/>
@@ -42,9 +42,9 @@
             android:id="@+id/imageview"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/profile_image"
-            android:layout_marginRight="30dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_marginRight="@dimen/thirty"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/forty"
             android:src="@drawable/add_a_photo"
             android:layout_marginTop="-50dp"/>
 
@@ -55,23 +55,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/pic"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="@dimen/fifty">
 
         <EditText
             android:id="@+id/fullname"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="@dimen/fifty"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/twenty"
             android:background="@drawable/registerback"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:ems="10"
             android:drawablePadding="20dp"
             android:textColor="#000000"
-            android:textSize="18dp"
-            android:paddingLeft="20dp"
+            android:textSize="@dimen/edittextsize"
+            android:paddingLeft="@dimen/twenty"
             android:hint="Your Full Name"
             android:textStyle="normal"
             android:elevation="5dp"/>
@@ -79,18 +79,18 @@
         <EditText
             android:id="@+id/contactNo"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="@dimen/fifty"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/twenty"
             android:background="@drawable/registerback"
             android:imeOptions="actionDone"
-            android:inputType="phone"
+            android:inputType="text"
             android:ems="10"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:paddingLeft="20dp"
             android:drawablePadding="20dp"
+            android:textColor="#000000"
+            android:textSize="@dimen/edittextsize"
+            android:paddingLeft="@dimen/twenty"
             android:hint="Contact No"
             android:textStyle="normal"
             android:elevation="5dp"/>
@@ -98,18 +98,18 @@
         <EditText
             android:id="@+id/emailAddress"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="@dimen/fifty"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/twenty"
             android:background="@drawable/registerback"
             android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:textColor="#000000"
+            android:inputType="text"
             android:ems="10"
-            android:textSize="18dp"
-            android:paddingLeft="20dp"
             android:drawablePadding="20dp"
+            android:textColor="#000000"
+            android:textSize="@dimen/edittextsize"
+            android:paddingLeft="@dimen/twenty"
             android:hint="Email Address"
             android:textStyle="normal"
             android:elevation="5dp"
@@ -119,15 +119,15 @@
 
     <Button
         android:id="@+id/update"
-        android:layout_width="@dimen/detailsPayment_button_width"
-        android:layout_height="@dimen/detailsPayment_button_height"
+        android:layout_width="@dimen/three_hundred"
+        android:layout_height="@dimen/forty_five"
         android:background="@drawable/button_update"
         android:text="update"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="@dimen/thirty"
         android:layout_alignParentBottom="true"
         android:textStyle="bold"></Button>
 

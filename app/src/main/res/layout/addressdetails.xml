@@ -7,32 +7,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/homecard_back"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/fifteen"
+        android:layout_marginRight="@dimen/fifteen"
+        android:layout_marginTop="@dimen/fifteen"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/addressdetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginLeft="@dimen/twenty"
             android:textColor="@color/black"
-            android:textSize="20dp"></TextView>
+            android:textSize="@dimen/edittextsize"></TextView>
 
         <Button
             android:id="@+id/btn_Delete"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/hundred"
+            android:layout_height="@dimen/forty"
             android:background="#E32113"
             android:text="Delete"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:layout_below="@id/addressdetails"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"></Button>
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginBottom="@dimen/twenty"></Button>
 
     </RelativeLayout>
 

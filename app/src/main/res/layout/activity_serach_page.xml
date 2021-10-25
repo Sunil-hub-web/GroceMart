@@ -9,10 +9,10 @@
     <EditText
         android:id="@+id/serach"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/forty_five"
         android:background="@drawable/serach_back"
         android:padding="9dp"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/fifteen"
         android:layout_centerHorizontal="true"
         android:hint="Serach For restaurants and food"></EditText>
 
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/serach"
-        android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="@dimen/ten"></androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

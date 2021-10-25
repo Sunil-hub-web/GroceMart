@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty"
             android:text="@string/dashbord"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -32,11 +32,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="@dimen/twenty">
                         <ImageView
                             android:id="@+id/order"
-                            android:layout_width="@dimen/deshboard_image_width"
-                            android:layout_height="@dimen/deshboard_image_height"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
                             android:src="@drawable/shopping_bag"></ImageView>
 
                         <TextView
@@ -45,10 +45,10 @@
                             android:layout_height="wrap_content"
                             android:text="@string/MYORDER"
                             android:textColor="#5F5E5E"
-                            android:textSize="@dimen/textSize"
+                            android:textSize="@dimen/textsize"
                             android:textStyle="bold"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:layout_marginLeft="@dimen/fifteen"
                             android:layout_toRightOf="@id/order"
                             android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
                 </RelativeLayout>
@@ -56,11 +56,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="@dimen/twenty">
                         <ImageView
                             android:id="@+id/profile"
-                            android:layout_width="@dimen/deshboard_image_width"
-                            android:layout_height="@dimen/deshboard_image_height"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
                             android:src="@drawable/user_1"></ImageView>
 
                         <TextView
@@ -69,10 +69,10 @@
                             android:layout_height="wrap_content"
                             android:text="@string/PROFILE"
                             android:textColor="#5F5E5E"
-                            android:textSize="@dimen/textSize"
                             android:textStyle="bold"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textSize="@dimen/textsize"
+                            android:layout_marginLeft="@dimen/fifteen"
                             android:layout_toRightOf="@id/profile"
                             android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
                 </RelativeLayout>
@@ -80,11 +80,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="@dimen/twenty">
                         <ImageView
                             android:id="@+id/address"
-                            android:layout_width="@dimen/deshboard_image_width"
-                            android:layout_height="@dimen/deshboard_image_height"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
                             android:src="@drawable/address"></ImageView>
 
                         <TextView
@@ -93,9 +93,9 @@
                             android:layout_height="wrap_content"
                             android:text="@string/ADDRESS"
                             android:textColor="#5F5E5E"
-                            android:textSize="@dimen/textSize"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textSize="@dimen/textsize"
+                            android:layout_marginLeft="@dimen/fifteen"
                             android:textStyle="bold"
                             android:layout_toRightOf="@id/address"
                             android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
@@ -104,11 +104,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="@dimen/twenty">
                         <ImageView
                             android:id="@+id/changepassword"
-                            android:layout_width="@dimen/deshboard_image_width"
-                            android:layout_height="@dimen/deshboard_image_height"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
                             android:src="@drawable/padlock"></ImageView>
 
                         <TextView
@@ -117,9 +117,9 @@
                             android:layout_height="wrap_content"
                             android:text="@string/CHANGEPASSWORD"
                             android:textColor="#5F5E5E"
-                            android:textSize="@dimen/textSize"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textSize="@dimen/textsize"
+                            android:layout_marginLeft="@dimen/fifteen"
                             android:textStyle="bold"
                             android:layout_toRightOf="@id/changepassword"
                             android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
@@ -128,11 +128,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="@dimen/twenty">
                         <ImageView
                             android:id="@+id/wallet"
-                            android:layout_width="@dimen/deshboard_image_width"
-                            android:layout_height="@dimen/deshboard_image_height"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
                             android:src="@drawable/wallet"></ImageView>
 
                         <TextView
@@ -141,9 +141,9 @@
                             android:layout_height="wrap_content"
                             android:text="@string/WALLET"
                             android:textColor="#5F5E5E"
-                            android:textSize="@dimen/textSize"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textSize="@dimen/textsize"
+                            android:layout_marginLeft="@dimen/fifteen"
                             android:textStyle="bold"
                             android:layout_toRightOf="@id/wallet"
                             android:drawableRight="@drawable/keyboard_arrow_right"></TextView>
@@ -152,11 +152,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="@dimen/twenty">
                         <ImageView
                             android:id="@+id/logout"
-                            android:layout_width="@dimen/deshboard_image_width"
-                            android:layout_height="@dimen/deshboard_image_height"
+                            android:layout_width="@dimen/thirty"
+                            android:layout_height="@dimen/thirty"
                             android:src="@drawable/logout"></ImageView>
 
                         <TextView
@@ -165,9 +165,9 @@
                             android:layout_height="wrap_content"
                             android:text="@string/LOGOUT"
                             android:textColor="#5F5E5E"
-                            android:textSize="@dimen/textSize"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/deshboard_marginleft"
+                            android:textSize="@dimen/textsize"
+                            android:layout_marginLeft="@dimen/fifteen"
                             android:textStyle="bold"
                             android:layout_toRightOf="@id/logout"
                             android:drawableRight="@drawable/keyboard_arrow_right"></TextView>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/thirty"
         android:text="@string/SelectYourLocation"
         android:textStyle="bold"
         android:textColor="#000000"
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginLeft="@dimen/twenty"
+        android:layout_marginRight="@dimen/twenty">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Choose your City"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="@dimen/textsize"
                 android:gravity="center"
                 android:textStyle="bold"></TextView>
 
@@ -44,14 +44,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="11dp"
-                android:layout_marginTop="8dp"
+                android:layout_margin="@dimen/eleven"
+                android:layout_marginTop="@dimen/eight"
                 android:background="@drawable/registerback"
                 android:elevation="5dp">
                 <Spinner
                     android:id="@+id/spinner_city"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="@dimen/forty_five"
                     android:spinnerMode="dropdown"
                     android:backgroundTint="@color/black"
                     ></Spinner>
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="Choose your Pincode"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="@dimen/textsize"
                 android:gravity="center"
                 android:textStyle="bold"></TextView>
 
@@ -80,14 +80,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="11dp"
+                android:layout_margin="@dimen/eleven"
                 android:background="@drawable/registerback"
                 android:elevation="5dp">
 
                 <Spinner
                     android:id="@+id/spinner_pincode"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="@dimen/forty_five"
                     android:spinnerMode="dropdown"
                     android:backgroundTint="@color/black"></Spinner>
 
@@ -99,8 +99,8 @@
 
     <Button
         android:id="@+id/Next"
-        android:layout_width="@dimen/detailsPayment_button_width"
-        android:layout_height="@dimen/detailsPayment_button_height"
+        android:layout_width="@dimen/three_hundred"
+        android:layout_height="@dimen/forty_five"
         android:background="@drawable/button_back"
         android:text="Submit"
         android:textAllCaps="false"
@@ -108,7 +108,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="@dimen/twenty"
         android:textStyle="bold"></Button>
 
 </RelativeLayout>

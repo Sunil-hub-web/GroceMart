@@ -108,8 +108,8 @@
 
                 <ImageView
                     android:id="@+id/productImage1"
-                    android:layout_width="@dimen/myorder_image_width"
-                    android:layout_height="@dimen/myorder_image_height"
+                    android:layout_width="@dimen/ninety"
+                    android:layout_height="@dimen/eighty"
                     android:layout_marginLeft="@dimen/marginleft"
                     android:src="@drawable/biriyani"
                     android:layout_margin="10dp">

@@ -5,17 +5,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/hundred_ten"
+        android:layout_margin="@dimen/five"
         android:id="@+id/first"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:background="@drawable/homecard_back">
 
         <ImageView
             android:id="@+id/productImage"
-            android:layout_width="@dimen/cartimage_width"
-            android:layout_height="@dimen/cartimage_height"
+            android:layout_width="@dimen/eighty"
+            android:layout_height="@dimen/ninety"
             android:src="@drawable/royal"
             android:layout_margin="5dp"></ImageView>
 
@@ -23,23 +21,23 @@
             android:id="@+id/topProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginLeft="@dimen/twenty"
             android:layout_toRightOf="@id/productImage"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="@dimen/textSize"
             android:textStyle="bold"></TextView>
         <TextView
             android:id="@+id/shopName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/ten"
             android:text="@string/ShopNmae"
             android:layout_below="@id/topProduct"
             android:layout_toRightOf="@id/productImage"
             android:textColor="@color/black"
-            android:textSize="15dp"
-            android:layout_marginLeft="20dp"
+            android:textSize="@dimen/textSize"
+            android:layout_marginLeft="@dimen/twenty"
             android:textStyle="bold"></TextView>
 
         <TextView
@@ -48,9 +46,9 @@
             android:layout_height="wrap_content"
             android:text="1 kg"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginLeft="@dimen/twenty"
+            android:textSize="@dimen/textSize"
             android:layout_below="@id/shopName"
             android:layout_toRightOf="@id/productImage"
             android:textStyle="bold"></TextView>
@@ -61,9 +59,9 @@
             android:layout_height="wrap_content"
             android:text="₹ 145.00"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="15dp"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginLeft="@dimen/twenty"
+            android:textSize="@dimen/textSize"
             android:layout_below="@id/shopName"
             android:layout_toRightOf="@id/quantity"
             android:textStyle="bold"></TextView>

@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="@dimen/hundred_eighty"
         android:background="@drawable/homecard_back"
         android:id="@+id/shopaddress"
         android:layout_margin="5dp">
@@ -18,39 +18,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty"
             android:text="Narendra Shop"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textSize="@dimen/edittextsize"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/fifteen"
             android:id="@+id/shop">
             <Button
                 android:id="@+id/GROCERY"
-                android:layout_width="145dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/hundred_fifty"
+                android:layout_height="@dimen/forty_five"
                 android:layout_gravity="center_horizontal"
                 android:background="#7EE140"
                 android:text="GROCERY"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
-                android:layout_marginRight="15dp"></Button>
+                android:layout_marginRight="@dimen/fifteen"></Button>
 
             <Button
                 android:id="@+id/RESTAURANT"
-                android:layout_width="155dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/hundred_sixty"
+                android:layout_height="@dimen/forty_five"
                 android:layout_gravity="center_horizontal"
                 android:background="#7EE140"
                 android:text="RESTAURANT"
-                android:textSize="@dimen/textSize"
+                android:textSize="@dimen/textsize"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:layout_toRightOf="@id/GROCERY"></Button>
@@ -61,11 +61,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty"
             android:text="16, Saheed Nagar, Bhubaneswar, Odisha 751007, India"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="@dimen/textsize"
             android:layout_below="@id/shop"/>
 
 
@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/shopaddress"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="@dimen/twenty">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                     android:text="Fruits&amp;vegitables"
                     android:textStyle="bold"
                     android:textColor="#000000"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/edittextsize"/>
 
 
                 <TextView
@@ -105,8 +105,8 @@
                     android:text="Dairy&amp;Bakery"
                     android:textStyle="bold"
                     android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:layout_marginTop="300dp"
+                    android:textSize="@dimen/edittextsize"
+                    android:layout_marginTop="@dimen/three_hundred"
                     android:layout_below="@id/itemname"/>
 
 
@@ -123,47 +123,45 @@
                         android:text="Staples"
                         android:textStyle="bold"
                         android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:layout_marginTop="300dp"/>
+                        android:textSize="@dimen/edittextsize"
+                        android:layout_marginTop="@dimen/three_hundred"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"
-                        android:background="@drawable/registerback"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="40dp"
-                        android:id="@+id/first"
-                        android:layout_below="@id/itemname2">
+                        android:layout_height="@dimen/three_hundred"
+                        android:background="@drawable/homecard_back"
+                        android:layout_margin="@dimen/ten"
+                        android:id="@+id/first">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="95dp"
+                            android:layout_height="@dimen/hundred"
                             android:background="@drawable/back_loc"
-                            android:id="@+id/shopdetails">
+                            android:id="@+id/shopdetails"
+                            android:layout_margin="5dp">
 
                             <TextView
                                 android:id="@+id/shopname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Narendra Shop"
-                                android:textSize="18dp"
+                                android:textSize="@dimen/textSize"
                                 android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:layout_marginTop="@dimen/eight"
                                 android:textColor="@color/black"></TextView>
 
                             <Button
-                                android:id="@+id/addtocart5"
-                                android:layout_width="130dp"
-                                android:layout_height="35dp"
-                                android:layout_marginTop="10dp"
+                                android:id="@+id/gotoshop"
+                                android:layout_width="@dimen/hundred_twenty"
+                                android:layout_height="@dimen/forty"
+                                android:layout_marginTop="@dimen/ten"
                                 android:background="@drawable/button_back"
                                 android:text="Go To Shop"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/white"
-                                android:layout_marginRight="10dp"
-                                android:textSize="13dp"
+                                android:textColor="@color/btntextcolor"
+                                android:layout_marginRight="@dimen/ten"
+                                android:textSize="@dimen/textSize"
                                 ></Button>
 
                             <TextView
@@ -171,10 +169,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="16, Saheed Nagar, Bhubaneswar, Odisha 751007, India"
-                                android:textSize="15dp"
+                                android:textSize="@dimen/textSize"
                                 android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="18dp"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:layout_marginTop="@dimen/twenty_four"
                                 android:layout_below="@id/shopname"
                                 android:drawableLeft="@drawable/location_1"
                                 android:drawablePadding="10dp"
@@ -187,43 +185,43 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="BB Royal Organic-Toor Dal"
-                            android:textSize="18dp"
+                            android:textSize="@dimen/textSize"
                             android:textStyle="bold"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="@dimen/fifteen"
+                            android:layout_marginTop="@dimen/eight"
                             android:layout_below="@id/shopdetails"
                             android:textColor="@color/black"></TextView>
 
                         <LinearLayout
                             android:id="@+id/spiner"
-                            android:layout_width="200dp"
+                            android:layout_width="@dimen/two_hundred"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="@dimen/twenty"
+                            android:layout_marginTop="@dimen/twenty"
+                            android:layout_marginRight="@dimen/twenty"
                             android:background="@drawable/spiner_back"
                             android:layout_below="@id/productname">
                             <Spinner
                                 android:id="@+id/spinner_offer"
                                 android:layout_width="match_parent"
-                                android:layout_height="45dp"
+                                android:layout_height="@dimen/forty_five"
                                 android:spinnerMode="dropdown"
                                 android:backgroundTint="@color/black"></Spinner>
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/inc"
-                            android:layout_width="150dp"
-                            android:layout_height="35dp"
+                            android:layout_width="@dimen/hundred_fifty"
+                            android:layout_height="@dimen/forty"
                             android:orientation="horizontal"
                             android:weightSum="3"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="@dimen/thirty"
                             android:background="@drawable/serach_back"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="@dimen/ten"
                             android:layout_below="@+id/spiner"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginLeft="@dimen/twenty"
+                            android:layout_marginBottom="@dimen/ten">
 
                             <TextView
                                 android:id="@+id/t3"
@@ -262,28 +260,28 @@
                         </LinearLayout>
 
                         <Button
-                            android:id="@+id/gotoshop"
-                            android:layout_width="130dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="30dp"
+                            android:id="@+id/addtocart1"
+                            android:layout_width="@dimen/hundred_twenty"
+                            android:layout_height="@dimen/forty"
+                            android:layout_marginTop="@dimen/thirty"
                             android:background="@drawable/button_back"
                             android:text="Add To cart"
-                            android:textColor="@color/white"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="13dp"
+                            android:textColor="@color/btntextcolor"
+                            android:layout_marginLeft="@dimen/ten"
+                            android:textSize="@dimen/gotoshop_btn_textSize"
                             android:layout_below="@id/spiner"
                             android:layout_toRightOf="@id/inc"
-                            android:layout_marginBottom="10dp"></Button>
+                            android:layout_marginBottom="@dimen/ten"></Button>
 
                         <ImageView
-                            android:id="@+id/imagecart"
-                            android:layout_width="@dimen/cartimage_width"
-                            android:layout_height="@dimen/cartimage_height"
+                            android:id="@+id/productImage"
+                            android:layout_width="@dimen/eighty"
+                            android:layout_height="@dimen/ninety"
                             android:src="@drawable/royal"
                             android:layout_below="@id/shopdetails"
                             android:layout_alignParentRight="true"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginRight="10dp"></ImageView>
+                            android:layout_marginTop="@dimen/twenty"
+                            android:layout_marginRight="@dimen/ten"></ImageView>
 
                     </RelativeLayout>
 

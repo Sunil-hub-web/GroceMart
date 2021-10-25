@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenty"
         android:text="@string/cart"
         android:textStyle="bold"
         android:textColor="#000000"
@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/recycler"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="@dimen/fifteen">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -52,16 +52,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/rel1"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="@dimen/twenty">
         <TextView
             android:id="@+id/invoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Invoice "
             android:textColor="@color/black"
-            android:layout_marginTop="5dp"
-            android:layout_margin="15dp"
-            android:textSize="@dimen/textSize"
+            android:layout_marginTop="@dimen/five"
+            android:layout_margin="@dimen/fifteen"
+            android:textSize="15sp"
             android:textStyle="bold"></TextView>
 
         <View
@@ -69,10 +69,10 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/invoice"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/four"
+            android:layout_marginTop="@dimen/five"
+            android:layout_marginRight="@dimen/four"
+            android:layout_marginBottom="@dimen/ten"
             android:background="#000000" />
 
         <RelativeLayout
@@ -80,9 +80,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/view"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginRight="@dimen/fifteen"
+            android:layout_marginTop="@dimen/ten">
             <TextView
                 android:id="@+id/productName"
                 android:layout_width="wrap_content"
@@ -95,10 +95,10 @@
                 android:id="@+id/quantity1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/ten"
                 android:text="1x"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_toRightOf="@id/productName"></TextView>
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="₹ 145.00"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></TextView>
         </RelativeLayout>
@@ -117,9 +117,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/r5"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginRight="@dimen/fifteen"
+            android:layout_marginTop="@dimen/fifteen">
             <TextView
                 android:id="@+id/shipping"
                 android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:text="₹ 1.00"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></TextView>
         </RelativeLayout>
@@ -145,8 +145,8 @@
             android:layout_height="wrap_content"
             android:text="Enter Coupon Code"
             android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginLeft="@dimen/fifteen"
             android:textSize="@dimen/textSize"
             android:layout_below="@+id/r7"
             android:textStyle="bold"></TextView>
@@ -155,17 +155,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/apply"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginRight="@dimen/fifteen"
+            android:layout_marginTop="@dimen/fifteen">
             <EditText
                 android:id="@+id/coupanCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Type Coupan Code"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginLeft="5dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="@dimen/five"
                 android:textStyle="bold"></EditText>
 
             <Button
@@ -175,7 +175,7 @@
                 android:text="Apply"
                 android:textAllCaps="false"
                 android:textColor="#0A22A1"
-                android:textSize="15dp"
+                android:textSize="@dimen/textSize"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></Button>
         </RelativeLayout>
@@ -185,9 +185,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/r8"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginLeft="@dimen/four"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/four"
             android:background="#000000" />
 
     </RelativeLayout>
@@ -195,7 +195,7 @@
     <RelativeLayout
         android:id="@+id/rel1"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="@dimen/ninety"
         android:background="@drawable/registerback"
         android:layout_above="@id/bottomNavigation">
 
@@ -205,15 +205,15 @@
             android:orientation="vertical"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp">
+            android:layout_marginLeft="@dimen/thirty">
             <TextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginLeft="15dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="@dimen/fifteen"
                 android:textStyle="bold"></TextView>
             <TextView
                 android:id="@+id/money"
@@ -221,19 +221,19 @@
                 android:layout_height="wrap_content"
                 android:text="₹150.00"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginLeft="15dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="@dimen/fifteen"
                 android:textStyle="bold"
                 ></TextView>
         </LinearLayout>
 
         <Button
             android:id="@+id/checkOut"
-            android:layout_width="@dimen/cart_butt_width"
-            android:layout_height="@dimen/cart_butt_height"
+            android:layout_width="@dimen/hundred_eighty"
+            android:layout_height="@dimen/forty_five"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/fifteen"
             android:background="@drawable/button_back"
             android:text="Proceed to Checkout"
             android:textColor="@color/btntextcolor"
