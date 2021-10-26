@@ -3,12 +3,14 @@ package com.example.grocemart.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,11 +38,12 @@ public class SelectLocation extends AppCompatActivity {
 
     Spinner spiner_City, spiner_pincode;
     Button btn_submit;
-    String item, City_id,City_Name;
+    String item, City_id, City_Name, Pincode_id, Pincode;
     String cityid;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
     HashMap<String, ArrayList<PinCode_ModelClass>> hashmap_picode = new HashMap<String, ArrayList<PinCode_ModelClass>>();
+    private Boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,8 @@ public class SelectLocation extends AppCompatActivity {
 
                 Intent intent = new Intent(SelectLocation.this, MainActivity.class);
                 intent.putExtra("item", City_Name);
+                intent.putExtra("Pincode_id", Pincode_id);
+                intent.putExtra("City_id", City_id);
                 startActivity(intent);
 
             }
@@ -179,6 +184,7 @@ public class SelectLocation extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
+
                     } // to close the onItemSelected
 
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -260,6 +266,34 @@ public class SelectLocation extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                spiner_pincode.setSelection(-1, true);
+
+                spiner_pincode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                        try {
+
+                            PinCode_ModelClass mypincode = (PinCode_ModelClass) parent.getSelectedItem();
+
+                            Pincode_id = mypincode.getPin_id();
+                            Pincode = mypincode.getPincode();
+                            Log.d("R_Pincode", Pincode_id);
+
+                            //Log.d("Pinocde_array",janamam.toString());
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -272,5 +306,29 @@ public class SelectLocation extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(SelectLocation.this);
         requestQueue.add(stringRequest);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    Intent a = new Intent(Intent.ACTION_MAIN);
+                    a.addCategory(Intent.CATEGORY_HOME);
+                    a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(a);
+                }
+            }, 4 * 1000);
+        }
     }
 }

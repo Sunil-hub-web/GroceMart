@@ -127,17 +127,6 @@ public class UserDashboard extends AppCompatActivity {
 
     }
 
-     @Override
-    protected void onStart() {
-        super.onStart ( );
-        if (SharedPrefManager.getInstance (UserDashboard.this).isLoggedIn ()){ }
-
-        else{
-            Intent intent = new Intent ( UserDashboard.this, SigninPage.class );
-            startActivity (intent);
-        }
-    }
-
     public void logout_Condition() {
         //Show Your Another AlertDialog
         final Dialog dialog = new Dialog(UserDashboard.this);

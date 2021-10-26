@@ -15,21 +15,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.grocemart.activity.MainActivity;
 import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.R;
+import com.example.grocemart.modelclass.Grocery_ModelClass;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewModel> {
 
     Context context;
-    int[] imageArray;
-    String[] name;
+    ArrayList<Grocery_ModelClass> grocery;
 
-    public GroceryAdapter(MainActivity mainActivity, int[] images, String[] name) {
+    public GroceryAdapter(MainActivity mainActivity, ArrayList<Grocery_ModelClass> home_grocery) {
 
-        this.context = mainActivity;
-        this.imageArray = images;
-        this.name = name;
+        context = mainActivity;
+        grocery = home_grocery;
     }
+
 
     @NonNull
     @NotNull
@@ -43,15 +46,19 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
     @Override
     public void onBindViewHolder(@NonNull @NotNull GroceryAdapter.ViewModel holder, int position) {
 
-        holder.imageView.setImageResource(imageArray[position]);
-        holder.textView.setText(name[position]);
+        Grocery_ModelClass groceryProduct = grocery.get(position);
+
+        holder.txt_GproductName.setText(groceryProduct.getProductName());
+        holder.txt_GproductDesc.setText(groceryProduct.getProductDesc());
+        String image = "https://"+groceryProduct.getProductImage();
+        Picasso.with(context).load(image).into(holder.gproduct_Image);
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, ProductShopDetails.class);
-                intent.putExtra("message",holder.textView.getText().toString().trim());
+                intent.putExtra("message",holder.txt_GproductName.getText().toString().trim());
                 context.startActivity(intent);
             }
         });
@@ -60,20 +67,21 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
 
     @Override
     public int getItemCount() {
-        return imageArray.length;
+        return grocery.size();
     }
 
     public class ViewModel extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView textView;
+        ImageView gproduct_Image;
+        TextView txt_GproductName,txt_GproductDesc;
         Button button;
 
         public ViewModel(@NonNull @NotNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.product_image);
-            textView = itemView.findViewById(R.id.topProduct);
+            gproduct_Image = itemView.findViewById(R.id.gproduct_Image);
+            txt_GproductName = itemView.findViewById(R.id.txt_GproductName);
+            txt_GproductDesc = itemView.findViewById(R.id.txt_GproductDesc);
             button = itemView.findViewById(R.id.GoToShop);
 
         }
