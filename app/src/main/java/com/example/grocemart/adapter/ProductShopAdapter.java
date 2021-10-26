@@ -122,7 +122,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             }else {
                 y--;
                 if(y <= 0){
-                    t2.setText("0");
+                    t2.setText("1");
                 }else {
                     t2.setText(String.valueOf(y));
                 }

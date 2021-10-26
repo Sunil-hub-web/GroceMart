@@ -151,7 +151,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }else {
                 y--;
                 if(y <= 0){
-                    t2.setText("0");
+                    t2.setText("1");
                 }else {
                     t2.setText(String.valueOf(y));
                     Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
