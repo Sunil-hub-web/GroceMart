@@ -34,9 +34,7 @@
             android:id="@+id/profile_image"
             android:layout_width="@dimen/hundred_fifty"
             android:layout_height="@dimen/hundred_fifty"
-            android:src="@drawable/profileimage"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            android:src="@drawable/profileimage"/>
 
         <ImageView
             android:id="@+id/imageview"
@@ -45,7 +43,7 @@
             android:layout_marginRight="@dimen/thirty"
             android:layout_width="@dimen/forty"
             android:layout_height="@dimen/forty"
-            android:src="@drawable/add_a_photo"
+            android:src="@drawable/camera"
             android:layout_marginTop="-50dp"/>
 
     </RelativeLayout>

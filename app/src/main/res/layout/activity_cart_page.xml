@@ -206,6 +206,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/thirty">
+
             <TextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"

@@ -29,6 +29,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     String[] reason = { "Rs 180 1 kG (10%OFF)",};
     Context context;
     ArrayList<ProductShop_ModelClass> product;
+    String t;
 
     public ProductShopAdapter(ProductShopDetails productShopDetails, ArrayList<ProductShop_ModelClass> productShop) {
 
@@ -61,6 +62,9 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
                 Intent intent = new Intent(context, CartPage.class);
                 context.startActivity(intent);
+
+
+
             }
         });
 
@@ -69,6 +73,9 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             @Override
             public void onClick(View view) {
                 holder.linearLayout(false);
+
+                 t = holder.t2.getText().toString().trim();
+
             }
         });
 
@@ -76,6 +83,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             @Override
             public void onClick(View view) {
                 holder.linearLayout(true);
+
+                t = holder.t2.getText().toString().trim();
             }
         });
     }

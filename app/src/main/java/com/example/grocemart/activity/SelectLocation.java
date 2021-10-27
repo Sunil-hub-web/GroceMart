@@ -1,13 +1,17 @@
 package com.example.grocemart.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,13 +41,16 @@ import java.util.HashMap;
 public class SelectLocation extends AppCompatActivity {
 
     Spinner spiner_City, spiner_pincode;
-    Button btn_submit;
+    Button btn_submit,btn_restartapp;
     String item, City_id, City_Name, Pincode_id, Pincode;
     String cityid;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
     HashMap<String, ArrayList<PinCode_ModelClass>> hashmap_picode = new HashMap<String, ArrayList<PinCode_ModelClass>>();
     private Boolean exit = false;
+    RelativeLayout networkConnection,showDetails;
+    ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +60,26 @@ public class SelectLocation extends AppCompatActivity {
         spiner_City = findViewById(R.id.spinner_city);
         spiner_pincode = findViewById(R.id.spinner_pincode);
         btn_submit = findViewById(R.id.Next);
+        networkConnection = findViewById(R.id.networkConnection);
+        showDetails = findViewById(R.id.showDetails);
+        btn_restartapp = findViewById(R.id.restartapp);
 
-        getCity();
+        connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if(networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable()){
+
+            networkConnection.setVisibility(View.VISIBLE);
+            showDetails.setVisibility(View.GONE);
+
+        }else{
+
+            Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
+            networkConnection.setVisibility(View.GONE);
+            showDetails.setVisibility(View.VISIBLE);
+            getCity();
+        }
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +91,29 @@ public class SelectLocation extends AppCompatActivity {
                 intent.putExtra("City_id", City_id);
                 startActivity(intent);
 
+            }
+        });
+
+        btn_restartapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+                networkInfo = connectivityManager.getActiveNetworkInfo();
+
+                if(networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable()){
+
+                    networkConnection.setVisibility(View.VISIBLE);
+                    showDetails.setVisibility(View.GONE);
+
+                }else{
+
+                    Toast.makeText(SelectLocation.this, "Connected", Toast.LENGTH_SHORT).show();
+                    networkConnection.setVisibility(View.GONE);
+                    showDetails.setVisibility(View.VISIBLE);
+                    getCity();
+                }
             }
         });
 

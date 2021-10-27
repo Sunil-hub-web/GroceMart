@@ -77,8 +77,6 @@ public class CartPage extends AppCompatActivity {
         recyclerView.setHasFixedSize (true);
         recyclerView.setAdapter (productAdapter);
 
-
-
         btn_CheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
