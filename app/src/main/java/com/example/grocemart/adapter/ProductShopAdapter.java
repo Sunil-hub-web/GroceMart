@@ -20,6 +20,7 @@ import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.activity.UserProfile;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.R;
+import com.example.grocemart.modelclass.Variation_ModelClass;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 
 public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.ViewHolder>  {
 
-    String[] reason = { "Rs 180 1 kG (10%OFF)",};
+    ArrayList<String> reason = new ArrayList<>();
     Context context;
     ArrayList<ProductShop_ModelClass> product;
     String t;
@@ -53,6 +54,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     public void onBindViewHolder(@NonNull @NotNull ProductShopAdapter.ViewHolder holder, int position) {
 
         ProductShop_ModelClass productShop = product.get(position);
+        Variation_ModelClass variation = productShop.getVariation().get(position);
 
         String url = "https://"+productShop.getProductImage();
 
@@ -65,9 +67,6 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
         holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(context, CartPage.class);
-                context.startActivity(intent);
 
 
 

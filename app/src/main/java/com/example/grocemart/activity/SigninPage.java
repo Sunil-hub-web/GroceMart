@@ -124,7 +124,7 @@ public class SigninPage extends AppCompatActivity {
                         Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword);
                         SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
 
-                        Intent intent = new Intent ( SigninPage.this, MainActivity.class );
+                        Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
                         startActivity (intent);
                     }
                 } catch (JSONException e) {

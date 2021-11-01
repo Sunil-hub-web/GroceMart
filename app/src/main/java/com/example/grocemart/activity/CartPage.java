@@ -85,9 +85,9 @@ public class CartPage extends AppCompatActivity {
                 Toast.makeText(CartPage.this, ""+value, Toast.LENGTH_SHORT).show();
                 text_price1.setText(String.valueOf("₹ "+value));
 
-               /* Intent intent = new Intent(CartPage.this,CheckoutPage.class);
+                Intent intent = new Intent(CartPage.this,CheckoutPage.class);
                 intent.putExtra("totalPrice",value);
-                startActivity(intent);*/
+                startActivity(intent);
 
             }
         });

@@ -14,5 +14,6 @@ public class APPURLS {
    public static final String deleteAddress = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=delAddress";
    public static final String getHomeDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getHome";
    public static final String getProductDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=productpage";
+   public static final String getShopDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=categorypage";
 
 }

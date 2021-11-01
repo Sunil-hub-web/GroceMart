@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cardback">
+
+        <ImageView
+            android:id="@+id/img_ShopeImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/img_ShopeLogo"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_below="@+id/img_ShopeImage">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/text_ShopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_ShopeLogo"
+            android:layout_below="@id/img_ShopeImage">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/text_ShopAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_ShopeLogo"
+            android:layout_below="@id/text_ShopName">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/text_ShopAddress1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_ShopeLogo"
+            android:layout_below="@id/text_ShopAddress">
+
+        </TextView>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

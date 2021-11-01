@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/ten">
+
+    <TextView
+        android:id="@+id/text_Subcategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homecard_back"
+        android:textSize="@dimen/edittextsize"
+        android:textColor="@color/black"
+        android:padding="7dp">
+
+    </TextView>
+
+</RelativeLayout>

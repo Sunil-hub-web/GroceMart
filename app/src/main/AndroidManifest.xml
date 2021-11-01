@@ -23,7 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceMart"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".activity.DifferentShopName"
+            android:theme="@style/Theme.GroceMart.NoActionBar">
+        </activity>
         <activity
             android:name=".activity.ForgotPasswordPage"
             android:theme="@style/Theme.GroceMart.NoActionBar" />
@@ -71,7 +74,7 @@
             android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.SelectLocation"
-            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.ShowLocation"
             android:label="@string/title_activity_show_location"
@@ -83,8 +86,7 @@
 
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/Theme.GroceMart.NoActionBar"></activity>
-
+            android:theme="@style/Theme.GroceMart.NoActionBar" />
         <activity
             android:name=".activity.SplashScreen"
             android:theme="@style/Theme.GroceMart.NoActionBar">

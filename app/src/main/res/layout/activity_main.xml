@@ -30,18 +30,6 @@
             android:textSize="20sp"
             android:textStyle="bold"></TextView>
 
-        <!--<TextView
-            android:id="@+id/addressdetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/locimage"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:textStyle="bold"></TextView>-->
-
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -52,11 +40,30 @@
 
     </RelativeLayout>
 
+
+    <LinearLayout
+        android:id="@+id/catogery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serachLocation"
+        android:layout_margin="@dimen/five"
+        android:elevation="5dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryListRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/bottomNavigation"
-        android:layout_below="@id/serachLocation">
+        android:layout_below="@id/catogery">
 
         <ScrollView
             android:layout_width="match_parent"

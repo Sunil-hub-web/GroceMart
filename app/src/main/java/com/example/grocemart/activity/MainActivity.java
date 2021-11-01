@@ -44,11 +44,13 @@ import com.example.grocemart.adapter.CategoryAdapter;
 import com.example.grocemart.adapter.GroceryAdapter;
 import com.example.grocemart.adapter.MeatsAdapter;
 import com.example.grocemart.adapter.RestaurantAdapter;
+import com.example.grocemart.adapter.SubCategoryAdapter;
 import com.example.grocemart.modelclass.Banner_ModelClass;
 import com.example.grocemart.modelclass.Category_Modelcalss;
 import com.example.grocemart.modelclass.Grocery_ModelClass;
 import com.example.grocemart.modelclass.Meats_ModelClass;
 import com.example.grocemart.modelclass.Restaurant_ModelClass;
+import com.example.grocemart.modelclass.SubCategory_ModelClass;
 import com.example.grocemart.url.APPURLS;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -85,17 +87,19 @@ public class MainActivity extends AppCompatActivity {
     RestaurantAdapter restaurantAdapter;
     MeatsAdapter meatsAdapter;
     CategoryAdapter categoryAdapter;
+    SubCategoryAdapter subCategoryAdapter;
 
     RecyclerView grocery_RecyclerView, restaurant_RecyclerView,
-            banner_RecyclerView, meats_RecyclerView,category_RecyclerView;
+            banner_RecyclerView, meats_RecyclerView,category_RecyclerView,categoryListRecycler;
     LinearLayoutManager grocery_LinearLayoutManager, restaurant_LinearLayoutManager,
-            banner_LinearLayoutManager, meats_LinearLayoutManager, category_LinearLayoutManager;
+            banner_LinearLayoutManager, meats_LinearLayoutManager, category_LinearLayoutManager,subcategory_LinearLayoutManager;
 
     ArrayList<Banner_ModelClass> home_Banner = new ArrayList<>();
     ArrayList<Grocery_ModelClass> home_Grocery = new ArrayList<>();
     ArrayList<Restaurant_ModelClass> home_Restaurant = new ArrayList<>();
     ArrayList<Meats_ModelClass> home_Meats = new ArrayList<>();
     ArrayList<Category_Modelcalss> home_Category = new ArrayList<>();
+    ArrayList<SubCategory_ModelClass> sub_Category = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         restaurant_RecyclerView = findViewById(R.id.restaurantRecycler);
         meats_RecyclerView = findViewById(R.id.meatsRecycler);
         category_RecyclerView = findViewById(R.id.categoryRecycler);
+        categoryListRecycler = findViewById(R.id.categoryListRecycler);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -475,6 +480,7 @@ public class MainActivity extends AppCompatActivity {
 
                             JSONObject jsonObject_Category = jsonArray_category.getJSONObject(h);
 
+
                             Category_Modelcalss category_modelcalss = new Category_Modelcalss(
 
                                     jsonObject_Category.getString("category_id"),
@@ -482,9 +488,33 @@ public class MainActivity extends AppCompatActivity {
                                     jsonObject_Category.getString("img")
                             );
 
-                            home_Category.add(category_modelcalss);
+                            String sub_category = jsonObject_Category.getString("sub_category");
 
+                            JSONArray jsonArray_SubCategory = new JSONArray(sub_category);
+
+                            for(int i=0;i<jsonArray_SubCategory.length();i++){
+
+                                JSONObject jsonObject_SubCategory = jsonArray_SubCategory.getJSONObject(i);
+
+                                String subcategoryId = jsonObject_SubCategory.getString("subcate_id");
+                                String subcategoryName = jsonObject_SubCategory.getString("subcate_name");
+
+                                SubCategory_ModelClass subCategory_modelClass = new SubCategory_ModelClass(subcategoryId,subcategoryName);
+
+                                sub_Category.add(subCategory_modelClass);
+
+                                Log.d("sub",sub_Category.toString());
+
+                            }
+
+                            home_Category.add(category_modelcalss);
                         }
+
+                        subcategory_LinearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                        subCategoryAdapter = new SubCategoryAdapter(MainActivity.this, sub_Category,cityId);
+                        categoryListRecycler.setLayoutManager(subcategory_LinearLayoutManager);
+                        categoryListRecycler.setHasFixedSize(true);
+                        categoryListRecycler.setAdapter(subCategoryAdapter);
 
                         Log.d("array",home_Category.toString());
 
