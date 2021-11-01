@@ -232,6 +232,7 @@ public class AddressDetails extends AppCompatActivity {
 
        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
        RequestQueue requestQueue = Volley.newRequestQueue(AddressDetails.this);
+       requestQueue.getCache().clear();
        requestQueue.add(stringRequest);
 
    }
@@ -318,6 +319,7 @@ public class AddressDetails extends AppCompatActivity {
 
        stringRequest.setRetryPolicy(new DefaultRetryPolicy( 50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
        RequestQueue requestQueue = Volley.newRequestQueue(AddressDetails.this);
+       requestQueue.getCache().clear();
        requestQueue.add(stringRequest);
 
    }
@@ -462,6 +464,7 @@ public class AddressDetails extends AppCompatActivity {
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(AddressDetails.this);
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
     }
 
@@ -560,8 +563,8 @@ public class AddressDetails extends AppCompatActivity {
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(AddressDetails.this);
+        requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
-
     }
 
 }
