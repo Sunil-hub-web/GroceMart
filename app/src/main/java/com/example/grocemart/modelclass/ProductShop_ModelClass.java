@@ -1,23 +1,40 @@
 package com.example.grocemart.modelclass;
 
+import java.sql.Array;
+import java.util.ArrayList;
+
 public class ProductShop_ModelClass {
 
-    int image;
-    String productName,shopName,address;
+    String productId,productName,productDesc,productImage,shopId,shopName,shopAddress,
+            variationId,mrpPrice,salesPrice,discount;
+    ArrayList<Variation_ModelClass> variation;
 
-    public ProductShop_ModelClass(int image, String productName, String shopName, String address) {
-        this.image = image;
+    public ProductShop_ModelClass(String productId, String productName, String productDesc,
+                                  String productImage, String shopId, String shopName,
+                                  String shopAddress, String variationId, String mrpPrice,
+                                  String salesPrice, String discount,
+                                  ArrayList<Variation_ModelClass> variation) {
+
+        this.productId = productId;
         this.productName = productName;
+        this.productDesc = productDesc;
+        this.productImage = productImage;
+        this.shopId = shopId;
         this.shopName = shopName;
-        this.address = address;
+        this.shopAddress = shopAddress;
+        this.variationId = variationId;
+        this.mrpPrice = mrpPrice;
+        this.salesPrice = salesPrice;
+        this.discount = discount;
+        this.variation = variation;
     }
 
-    public int getImage() {
-        return image;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -28,6 +45,30 @@ public class ProductShop_ModelClass {
         this.productName = productName;
     }
 
+    public String getProductDesc() {
+        return productDesc;
+    }
+
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public String getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
+    }
+
     public String getShopName() {
         return shopName;
     }
@@ -36,11 +77,51 @@ public class ProductShop_ModelClass {
         this.shopName = shopName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getShopAddress() {
+        return shopAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
+    }
+
+    public ArrayList<Variation_ModelClass> getVariation() {
+        return variation;
+    }
+
+    public void setVariation(ArrayList<Variation_ModelClass> variation) {
+        this.variation = variation;
+    }
+
+    public String getVariationId() {
+        return variationId;
+    }
+
+    public void setVariationId(String variationId) {
+        this.variationId = variationId;
+    }
+
+    public String getMrpPrice() {
+        return mrpPrice;
+    }
+
+    public void setMrpPrice(String mrpPrice) {
+        this.mrpPrice = mrpPrice;
+    }
+
+    public String getSalesPrice() {
+        return salesPrice;
+    }
+
+    public void setSalesPrice(String salesPrice) {
+        this.salesPrice = salesPrice;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
     }
 }

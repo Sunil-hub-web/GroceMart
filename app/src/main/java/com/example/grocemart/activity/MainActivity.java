@@ -413,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         grocery_LinearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        groceryAdapter = new GroceryAdapter(MainActivity.this, home_Grocery);
+                        groceryAdapter = new GroceryAdapter(MainActivity.this, home_Grocery,cityId);
                         grocery_RecyclerView.setLayoutManager(grocery_LinearLayoutManager);
                         grocery_RecyclerView.setHasFixedSize(true);
                         grocery_RecyclerView.setAdapter(groceryAdapter);
@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         restaurant_LinearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        restaurantAdapter = new RestaurantAdapter(MainActivity.this, home_Restaurant);
+                        restaurantAdapter = new RestaurantAdapter(MainActivity.this, home_Restaurant,cityId);
                         restaurant_RecyclerView.setLayoutManager(restaurant_LinearLayoutManager);
                         restaurant_RecyclerView.setHasFixedSize(true);
                         restaurant_RecyclerView.setAdapter(restaurantAdapter);
@@ -461,7 +461,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         meats_LinearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-                        meatsAdapter = new MeatsAdapter(MainActivity.this, home_Meats);
+                        meatsAdapter = new MeatsAdapter(MainActivity.this, home_Meats,cityId);
                         meats_RecyclerView.setLayoutManager(meats_LinearLayoutManager);
                         meats_RecyclerView.setHasFixedSize(true);
                         meats_RecyclerView.setAdapter(meatsAdapter);

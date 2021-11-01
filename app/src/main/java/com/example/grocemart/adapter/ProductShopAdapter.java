@@ -17,8 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grocemart.activity.CartPage;
 import com.example.grocemart.activity.ProductShopDetails;
+import com.example.grocemart.activity.UserProfile;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.R;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,11 +33,12 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     ArrayList<ProductShop_ModelClass> product;
     String t;
 
-    public ProductShopAdapter(ProductShopDetails productShopDetails, ArrayList<ProductShop_ModelClass> productShop) {
+    public ProductShopAdapter(ProductShopDetails productShopDetails, ArrayList<ProductShop_ModelClass> itemArraylist) {
 
         this.context = productShopDetails;
-        this.product = productShop;
+        this.product = itemArraylist;
     }
+
 
     @NonNull
     @NotNull
@@ -49,12 +52,15 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     @Override
     public void onBindViewHolder(@NonNull @NotNull ProductShopAdapter.ViewHolder holder, int position) {
 
-        ProductShop_ModelClass productmodel = product.get(position);
+        ProductShop_ModelClass productShop = product.get(position);
 
-        holder.image_ProductImage.setImageResource(productmodel.getImage());
-        holder.text_ProductNmae.setText(productmodel.getProductName());
-        holder.text_address.setText(productmodel.getAddress());
-        holder.text_ShopName.setText(productmodel.getShopName());
+        String url = "https://"+productShop.getProductImage();
+
+        Picasso.with(context).load(url).into(holder.image_ProductImage);
+
+        holder.text_ProductNmae.setText(productShop.getProductName());
+        holder.text_ShopName.setText(productShop.getShopName());
+        holder.text_address.setText(productShop.getShopAddress());
 
         holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +101,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView text_ProductNmae,t1, t2, t3,text_ShopName,text_address;
         LinearLayout linearLayout;
         Button btn_AddToCart,btn_GoToShop;

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.grocemart.R;
 import com.example.grocemart.activity.MainActivity;
 import com.example.grocemart.activity.ProductShopDetails;
+import com.example.grocemart.modelclass.Grocery_ModelClass;
 import com.example.grocemart.modelclass.Meats_ModelClass;
 import com.squareup.picasso.Picasso;
 
@@ -26,11 +27,13 @@ public class MeatsAdapter extends RecyclerView.Adapter<MeatsAdapter.ViewHolder> 
 
     Context context;
     ArrayList<Meats_ModelClass> meats;
+    String cityId;
 
-    public MeatsAdapter(MainActivity mainActivity, ArrayList<Meats_ModelClass> home_meats) {
+    public MeatsAdapter(MainActivity mainActivity, ArrayList<Meats_ModelClass> home_meats, String cityId) {
 
         this.context = mainActivity;
         this.meats = home_meats;
+        this.cityId = cityId;
     }
 
     @NonNull
@@ -40,6 +43,7 @@ public class MeatsAdapter extends RecyclerView.Adapter<MeatsAdapter.ViewHolder> 
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_meats,parent,false);
         return new ViewHolder(view);
+
     }
 
     @Override
@@ -52,13 +56,13 @@ public class MeatsAdapter extends RecyclerView.Adapter<MeatsAdapter.ViewHolder> 
         String image = "https://"+meatsProduct.getProductImage();
         Picasso.with(context).load(image).into(holder.mproduct_Image);
 
-
         holder.btn_mgotoShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, ProductShopDetails.class);
-                intent.putExtra("message",holder.text_MProductname.getText().toString().trim());
+                intent.putExtra("productId",meatsProduct.getProductId());
+                intent.putExtra("cityId",cityId);
                 context.startActivity(intent);
             }
         });

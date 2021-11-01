@@ -26,11 +26,13 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
 
     Context context;
     ArrayList<Grocery_ModelClass> grocery;
+    String cityId;
 
-    public GroceryAdapter(MainActivity mainActivity, ArrayList<Grocery_ModelClass> home_grocery) {
+    public GroceryAdapter(MainActivity mainActivity, ArrayList<Grocery_ModelClass> home_grocery, String cityId) {
 
         context = mainActivity;
         grocery = home_grocery;
+        this.cityId = cityId;
     }
 
 
@@ -58,7 +60,8 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, ProductShopDetails.class);
-                intent.putExtra("message",holder.txt_GproductName.getText().toString().trim());
+                intent.putExtra("productId",groceryProduct.getProductId());
+                intent.putExtra("cityId",cityId);
                 context.startActivity(intent);
             }
         });
