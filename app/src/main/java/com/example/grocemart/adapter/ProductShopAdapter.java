@@ -1,10 +1,14 @@
 package com.example.grocemart.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,10 +17,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.grocemart.RecyclerTouchListener;
 import com.example.grocemart.activity.CartPage;
 import com.example.grocemart.activity.ProductShopDetails;
+import com.example.grocemart.activity.ShopDetailsPage;
 import com.example.grocemart.activity.UserProfile;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.R;
@@ -29,10 +36,11 @@ import java.util.ArrayList;
 
 public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.ViewHolder>  {
 
-    ArrayList<String> reason = new ArrayList<>();
     Context context;
     ArrayList<ProductShop_ModelClass> product;
     String t;
+    Dialog dialogMenu;
+    ArrayList<Variation_ModelClass> variations;
 
     public ProductShopAdapter(ProductShopDetails productShopDetails, ArrayList<ProductShop_ModelClass> itemArraylist) {
 
@@ -73,8 +81,17 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             }
         });
 
+        holder.btn_Gotoshop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        holder.t1.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(context, ShopDetailsPage.class);
+                intent.putExtra("message",productShop.getShopName());
+                context.startActivity(intent);
+            }
+        });
+
+        holder.t3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.linearLayout(false);
@@ -84,7 +101,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             }
         });
 
-        holder.t3.setOnClickListener(new View.OnClickListener() {
+        holder.t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.linearLayout(true);
@@ -92,6 +109,71 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                 t = holder.t2.getText().toString().trim();
             }
         });
+
+        holder.text_Spinertext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                variations = new ArrayList<Variation_ModelClass>();
+                variations = product.get(position).getVariation();
+
+                dialogMenu = new Dialog(context, android.R.style.Theme_Light_NoTitleBar);
+                dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogMenu.setContentView(R.layout.variationrecycler_layout);
+                dialogMenu.setCancelable(true);
+                dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialogMenu.setCanceledOnTouchOutside(true);
+
+                RecyclerView rv_vars = dialogMenu.findViewById(R.id.rv_vars);
+
+                rv_vars.setLayoutManager(new LinearLayoutManager(context));
+                rv_vars.setNestedScrollingEnabled(false);
+                VariationAdapterforProductlist varad = new VariationAdapterforProductlist(variations, context);
+                rv_vars.setAdapter(varad);
+
+                rv_vars.addOnItemTouchListener(new RecyclerTouchListener(context, rv_vars, new RecyclerTouchListener.ClickListener() {
+
+                    @Override
+                    public void onClick(View view, int post) {
+
+                        Log.d("gbrdsfbfbvdz", "clicked");
+
+                        Variation_ModelClass parenting = variations.get(post);
+
+                        product.get(position).setVariationId(parenting.getVariationId());
+                        product.get(position).setSalesPrice(parenting.getSalesPrice());
+                        product.get(position).setUnit(parenting.getUnit());
+
+                        String restt_price = parenting.getUnit();
+
+//                            programViewHolder.discount.setText(parenting.getWeighname());
+                        holder.text_Spinertext.setText("RS " +parenting.getSalesPrice()+" "+" "+restt_price+" ("+parenting.getDiscount()+"%OFF"+")");
+
+                        dialogMenu.dismiss();
+                    }
+
+                    @Override
+                    public void onLongClick(View view, int position) {
+
+                    }
+
+                }));
+
+                dialogMenu.show();
+
+            }
+        });
+
+        if(productShop.getVariation().size()==0){
+            holder.text_Spinertext.setText("RS " +variation.getSalesPrice()+" "+" "+variation.getUnit()+" ("+variation.getDiscount()+"%OFF"+")");
+        }else{
+
+            holder.text_Spinertext.setText("RS " +variation.getMrpPrice()+" "+variation.getUnit());
+
+            product.get(position).setVariationId(productShop.getVariation().get(0).getVariationId());
+            product.get(position).setUnit(productShop.getVariation().get(0).getUnit());
+            product.get(position).setSalesPrice(productShop.getVariation().get(0).getSalesPrice());
+        }
     }
 
     @Override
@@ -101,16 +183,15 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView text_ProductNmae,t1, t2, t3,text_ShopName,text_address;
+        TextView text_ProductNmae,t1, t2, t3,text_ShopName,text_address,text_Spinertext;
         LinearLayout linearLayout;
-        Button btn_AddToCart,btn_GoToShop;
+        Button btn_AddToCart,btn_Gotoshop;
         ImageView image_ProductImage;
-        Spinner spiner_OFFERS;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
             btn_AddToCart = itemView.findViewById(R.id.addtocart);
-            btn_GoToShop = itemView.findViewById(R.id.gotoshop);
+            btn_Gotoshop = itemView.findViewById(R.id.btn_Gotoshop);
             linearLayout = itemView.findViewById(R.id.inc);
             t1 = itemView.findViewById(R.id.t1);
             t2 = itemView.findViewById(R.id.t2);
@@ -119,13 +200,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             text_ProductNmae = itemView.findViewById(R.id.productname);
             text_ShopName = itemView.findViewById(R.id.shopname);
             text_address = itemView.findViewById(R.id.address);
-            spiner_OFFERS = itemView.findViewById(R.id.spinner_offer);
-
-            ArrayAdapter reson_for_city = new ArrayAdapter(context,android.R.layout.simple_spinner_item,reason);
-            // Drop down layout style - list view with radio button
-            reson_for_city.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spiner_OFFERS.setAdapter(reson_for_city);
-            spiner_OFFERS.setSelection(-1,true);
+            text_Spinertext = itemView.findViewById(R.id.text_Spinertext);
 
         }
 

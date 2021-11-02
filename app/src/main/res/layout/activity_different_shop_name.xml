@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DifferentShopName">
+    tools:context=".activity.DifferentShopName"
+    android:background="#EEEEEE">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerShopDetails"
@@ -12,5 +13,13 @@
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/img_NoProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/no_result"
+        android:layout_centerInParent="true"
+        android:visibility="gone"></ImageView>
 
 </RelativeLayout>

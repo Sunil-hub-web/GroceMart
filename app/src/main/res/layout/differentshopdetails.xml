@@ -6,50 +6,78 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/cardback">
+        android:background="@drawable/cardback"
+        android:layout_margin="@dimen/ten">
 
         <ImageView
             android:id="@+id/img_ShopeImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="400dp"
+            android:layout_height="@dimen/hundred_fifty"
+            android:src="@drawable/shopbanner"
+            android:layout_margin="@dimen/five"
+            android:scaleType="fitXY"></ImageView>
 
-        </ImageView>
-
-        <ImageView
-            android:id="@+id/img_ShopeLogo"
-            android:layout_width="@dimen/fifty"
-            android:layout_height="@dimen/fifty"
-            android:layout_below="@+id/img_ShopeImage">
-
-        </ImageView>
-
-        <TextView
-            android:id="@+id/text_ShopName"
+        <RelativeLayout
+            android:id="@+id/shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_ShopeLogo"
-            android:layout_below="@id/img_ShopeImage">
+            android:layout_below="@id/img_ShopeImage"
+            android:layout_marginTop="@dimen/ten">
 
-        </TextView>
+            <ImageView
+                android:id="@+id/img_ShopeLogo"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/eighty"
+                android:src="@drawable/logo"
+                android:scaleType="fitXY">
 
-        <TextView
-            android:id="@+id/text_ShopAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_ShopeLogo"
-            android:layout_below="@id/text_ShopName">
+            </ImageView>
 
-        </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_ShopeLogo"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/fifteen">
 
-        <TextView
-            android:id="@+id/text_ShopAddress1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_ShopeLogo"
-            android:layout_below="@id/text_ShopAddress">
+                <TextView
+                    android:id="@+id/text_ShopName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/edittextsize"></TextView>
 
-        </TextView>
+                <TextView
+                    android:id="@+id/text_ShopAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"></TextView>
 
+                <TextView
+                    android:id="@+id/text_ShopAddress1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize"></TextView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="@dimen/three_hundred"
+            android:layout_height="@dimen/forty_five"
+            android:background="@drawable/button_back"
+            android:layout_margin="@dimen/ten"
+            android:text="GO TO SHOP"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/edittextsize"
+            android:layout_below="@id/shop"></Button>
 
     </RelativeLayout>
 

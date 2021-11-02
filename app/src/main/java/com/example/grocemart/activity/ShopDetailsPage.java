@@ -34,7 +34,9 @@ public class ShopDetailsPage extends AppCompatActivity {
 
         String message = intent.getStringExtra("message");
 
-        if(message != null){
+        if(message.equals("Narendra Shop")){ }
+
+        else {
 
             btn_RESTAURANT.setVisibility(View.GONE);
             text_name.setText("Bharathi Super Store");
@@ -42,8 +44,6 @@ public class ShopDetailsPage extends AppCompatActivity {
             rel_Nonvag.setVisibility(View.GONE);
             rel_first.setVisibility(View.GONE);
             text_vag.setVisibility(View.GONE);
-
-
         }
     }
 }

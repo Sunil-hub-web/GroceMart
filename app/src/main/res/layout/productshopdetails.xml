@@ -30,7 +30,7 @@
                 android:textColor="@color/black"></TextView>
 
             <Button
-                android:id="@+id/gotoshop"
+                android:id="@+id/btn_Gotoshop"
                 android:layout_width="@dimen/hundred_twenty"
                 android:layout_height="@dimen/forty"
                 android:layout_marginTop="@dimen/ten"
@@ -70,23 +70,30 @@
             android:layout_below="@id/shopdetails"
             android:textColor="@color/black"></TextView>
 
-        <LinearLayout
-            android:id="@+id/spiner"
+        <RelativeLayout
+            android:id="@+id/varlayout"
             android:layout_width="@dimen/two_hundred"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/twenty"
-            android:layout_marginTop="@dimen/twenty"
-            android:layout_marginRight="@dimen/twenty"
-            android:background="@drawable/spiner_back"
-            android:layout_below="@id/productname">
-            <Spinner
-                android:id="@+id/spinner_offer"
+            android:layout_height="@dimen/forty"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginRight="@dimen/five"
+            android:layout_margin="@dimen/twenty"
+            android:layout_below="@+id/productname">
+
+            <TextView
+                android:id="@+id/text_Spinertext"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/forty_five"
-                android:spinnerMode="dropdown"
-                android:backgroundTint="@color/black"></Spinner>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/box"
+                android:text=""
+                android:gravity="center"
+                android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/inc"
@@ -94,10 +101,10 @@
             android:layout_height="@dimen/forty"
             android:orientation="horizontal"
             android:weightSum="3"
-            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginTop="@dimen/twenty_five"
             android:background="@drawable/serach_back"
             android:layout_marginRight="@dimen/ten"
-            android:layout_below="@+id/spiner"
+            android:layout_below="@+id/varlayout"
             android:layout_marginLeft="@dimen/twenty"
             android:layout_marginBottom="@dimen/ten">
 
@@ -107,7 +114,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="+"
+                android:text="-"
                 android:background="#0A2CE8"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -129,7 +136,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="-"
+                android:text="+"
                 android:background="#0A2CE8"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -141,19 +148,19 @@
             android:id="@+id/addtocart"
             android:layout_width="@dimen/hundred_twenty"
             android:layout_height="@dimen/forty"
-            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginTop="@dimen/twenty_five"
             android:background="@drawable/button_back"
             android:text="Add To cart"
             android:textColor="@color/btntextcolor"
             android:layout_marginLeft="@dimen/ten"
             android:textSize="@dimen/textsize"
-            android:layout_below="@id/spiner"
+            android:layout_below="@id/varlayout"
             android:layout_toRightOf="@id/inc"
             android:layout_marginBottom="@dimen/ten"></Button>
 
         <ImageView
             android:id="@+id/productImage"
-            android:layout_width="@dimen/eighty"
+            android:layout_width="@dimen/ninety"
             android:layout_height="@dimen/ninety"
             android:src="@drawable/royal"
             android:layout_below="@id/shopdetails"

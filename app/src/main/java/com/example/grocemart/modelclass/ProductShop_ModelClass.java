@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class ProductShop_ModelClass {
 
     String productId,productName,productDesc,productImage,shopId,shopName,shopAddress,
-            variationId,mrpPrice,salesPrice,discount;
+            variationId,unit,mrpPrice,salesPrice,discount;
     ArrayList<Variation_ModelClass> variation;
 
     public ProductShop_ModelClass(String productId, String productName, String productDesc,
                                   String productImage, String shopId, String shopName,
-                                  String shopAddress, String variationId, String mrpPrice,
+                                  String shopAddress, String variationId, String unit, String mrpPrice,
                                   String salesPrice, String discount,
                                   ArrayList<Variation_ModelClass> variation) {
 
@@ -23,6 +23,7 @@ public class ProductShop_ModelClass {
         this.shopName = shopName;
         this.shopAddress = shopAddress;
         this.variationId = variationId;
+        this.unit = unit;
         this.mrpPrice = mrpPrice;
         this.salesPrice = salesPrice;
         this.discount = discount;
@@ -123,5 +124,13 @@ public class ProductShop_ModelClass {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -34,6 +36,7 @@ public class DifferentShopName extends AppCompatActivity {
     RecyclerView recyclerShopDetails;
     GridLayoutManager shopdetails_layoutmanager;
     DifferentShopAadapter differentShopAadapter;
+    ImageView img_NoProduct;
 
     ArrayList<DifferentShopDetails_ModelClass> shopDetails = new ArrayList<>();
 
@@ -46,6 +49,7 @@ public class DifferentShopName extends AppCompatActivity {
         setContentView(R.layout.activity_different_shop_name);
 
         recyclerShopDetails = findViewById(R.id.recyclerShopDetails);
+        img_NoProduct = findViewById(R.id.img_NoProduct);
 
         Intent intent = getIntent();
 
@@ -94,12 +98,19 @@ public class DifferentShopName extends AppCompatActivity {
                             shopDetails.add(differentShopDetails_modelClass);
                         }
 
+                        if(shopDetails.size() == 0){
 
-                        shopdetails_layoutmanager = new GridLayoutManager(DifferentShopName.this,2,GridLayoutManager.VERTICAL,false);
-                        differentShopAadapter = new DifferentShopAadapter(DifferentShopName.this,shopDetails);
-                        recyclerShopDetails.setLayoutManager(shopdetails_layoutmanager);
-                        recyclerShopDetails.setHasFixedSize(true);
-                        recyclerShopDetails.setAdapter(differentShopAadapter);
+                            img_NoProduct.setVisibility(View.VISIBLE);
+
+                        }else{
+
+                            shopdetails_layoutmanager = new GridLayoutManager(DifferentShopName.this,1,GridLayoutManager.VERTICAL,false);
+                            differentShopAadapter = new DifferentShopAadapter(DifferentShopName.this,shopDetails);
+                            recyclerShopDetails.setLayoutManager(shopdetails_layoutmanager);
+                            recyclerShopDetails.setHasFixedSize(true);
+                            recyclerShopDetails.setAdapter(differentShopAadapter);
+
+                        }
 
                     }
                 } catch (JSONException e) {

@@ -52,9 +52,20 @@ public class DifferentShopAadapter extends RecyclerView.Adapter<DifferentShopAad
 
         Picasso.with(context).load(url1).into(holder.img_ShopeLogo);
 
-        holder.text_ShopAddress.setText(shop_Details.getShopAddress());
-        holder.text_ShopName.setText(shop_Details.getShopName());
-        holder.text_ShopAddress1.setText(shop_Details.getCity()+", "+shop_Details.getCountry()+", "+shop_Details.getState());
+        if(shop_Details.getShopAddress().equals("")){
+
+            holder.text_ShopAddress.setText(shop_Details.getShopAddress());
+            holder.text_ShopName.setText(shop_Details.getShopName());
+            holder.text_ShopAddress1.setText(shop_Details.getCity()+", "+shop_Details.getCountry()+", "+shop_Details.getState());
+            holder.text_ShopAddress.setVisibility(View.GONE);
+
+        }else{
+
+            holder.text_ShopAddress.setText(shop_Details.getShopAddress());
+            holder.text_ShopName.setText(shop_Details.getShopName());
+            holder.text_ShopAddress1.setText(shop_Details.getCity()+", "+shop_Details.getCountry()+", "+shop_Details.getState());
+
+        }
 
     }
 

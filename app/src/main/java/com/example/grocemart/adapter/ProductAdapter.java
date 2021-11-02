@@ -52,7 +52,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.price.setText(priceArray[position]);
 
 
-        holder.t1.setOnClickListener(new View.OnClickListener() {
+        holder.t3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -78,7 +78,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }
         });
 
-        holder.t3.setOnClickListener(new View.OnClickListener() {
+        holder.t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

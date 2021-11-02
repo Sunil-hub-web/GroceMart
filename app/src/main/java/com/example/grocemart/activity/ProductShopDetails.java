@@ -68,7 +68,7 @@ public class ProductShopDetails extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
         TextView textView = progressDialog.findViewById(R.id.text);
-        textView.setText("Register Please wait...");
+        textView.setText("Please wait...");
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCancelable(false);
 
@@ -114,13 +114,12 @@ public class ProductShopDetails extends AppCompatActivity {
 
                                     String variationId = jsonObject_variation.getString("variation_id");
                                     String unit = jsonObject_variation.getString("unit");
-                                    String unitName = jsonObject_variation.getString("unit_name");
                                     String mrpPrice = jsonObject_variation.getString("mrp_price");
                                     String salesPrice = jsonObject_variation.getString("sale_price");
                                     String discount = jsonObject_variation.getString("discount");
 
                                     Variation_ModelClass variation_modelClass = new Variation_ModelClass(
-                                            variationId, unit, unitName, mrpPrice, salesPrice, discount
+                                            variationId, unit, mrpPrice, salesPrice, discount
                                     );
 
                                     variations.add(variation_modelClass);
@@ -132,7 +131,7 @@ public class ProductShopDetails extends AppCompatActivity {
 
                                 ProductShop_ModelClass productShop_modelClass = new ProductShop_ModelClass(
                                         productId, productname, productdesc, productimage,
-                                        shopId, shopName, shopAddress, "", "", "", "", variations
+                                        shopId, shopName, shopAddress, "", "", "", "","" ,variations
                                 );
 
                                 itemArraylist.add(productShop_modelClass);

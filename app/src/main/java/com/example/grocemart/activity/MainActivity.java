@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     BottomNavigationView bottomNavigationView;
     Button btn_GoToShop2;
+    EditText edit_Serach;
 
     BannerAdapter bannerAdapter;
     GroceryAdapter groceryAdapter;
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         meats_RecyclerView = findViewById(R.id.meatsRecycler);
         category_RecyclerView = findViewById(R.id.categoryRecycler);
         categoryListRecycler = findViewById(R.id.categoryListRecycler);
+        edit_Serach = findViewById(R.id.edit_Serach);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -190,6 +193,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, SelectLocation.class);
                 startActivity(intent);
+            }
+        });
+
+        edit_Serach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent1 = new Intent(MainActivity.this,SerachPage.class);
+                startActivity(intent1);
             }
         });
     }

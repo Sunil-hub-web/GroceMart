@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    android:background="#EEEEEE">
 
     <RelativeLayout
         android:id="@+id/serachLocation"
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/serach"
+                    android:id="@+id/edit_Serach"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
                     android:background="@drawable/serach_back"
@@ -88,7 +89,7 @@
                     android:id="@+id/catego"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/serach"
+                    android:layout_below="@id/edit_Serach"
                     android:layout_margin="@dimen/five"
                     android:elevation="5dp">
 

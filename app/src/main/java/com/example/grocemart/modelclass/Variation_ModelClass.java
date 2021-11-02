@@ -2,14 +2,12 @@ package com.example.grocemart.modelclass;
 
 public class Variation_ModelClass {
 
-    String variationId,unit,unitName,mrpPrice,salesPrice,discount;
+    String variationId,unit,mrpPrice,salesPrice,discount;
 
-    public Variation_ModelClass(String variationId, String unit,
-                                String unitName, String mrpPrice,
+    public Variation_ModelClass(String variationId, String unit,String mrpPrice,
                                 String salesPrice, String discount) {
         this.variationId = variationId;
         this.unit = unit;
-        this.unitName = unitName;
         this.mrpPrice = mrpPrice;
         this.salesPrice = salesPrice;
         this.discount = discount;
@@ -29,14 +27,6 @@ public class Variation_ModelClass {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public String getUnitName() {
-        return unitName;
-    }
-
-    public void setUnitName(String unitName) {
-        this.unitName = unitName;
     }
 
     public String getMrpPrice() {

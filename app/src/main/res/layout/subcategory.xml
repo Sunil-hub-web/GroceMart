@@ -8,10 +8,10 @@
         android:id="@+id/text_Subcategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/homecard_back"
+        android:background="@drawable/serach_back"
         android:textSize="@dimen/edittextsize"
         android:textColor="@color/black"
-        android:padding="7dp">
+        android:padding="@dimen/seven">
 
     </TextView>
 

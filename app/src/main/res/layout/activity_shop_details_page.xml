@@ -131,7 +131,8 @@
                         android:layout_height="@dimen/three_hundred"
                         android:background="@drawable/homecard_back"
                         android:layout_margin="@dimen/ten"
-                        android:id="@+id/first">
+                        android:id="@+id/first"
+                        android:layout_below="@+id/itemname2">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -427,6 +428,7 @@
                             android:layout_marginRight="10dp"></ImageView>
 
                     </RelativeLayout>
+
 
                 </RelativeLayout>
 
