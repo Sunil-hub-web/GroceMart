@@ -6,15 +6,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -26,7 +25,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
 import com.example.grocemart.SharedPrefManager;
-import com.example.grocemart.SharedPreference;
 import com.example.grocemart.adapter.ProductAdapter;
 import com.example.grocemart.modelclass.CartItem;
 import com.example.grocemart.url.APPURLS;
@@ -56,6 +54,8 @@ public class CartPage extends AppCompatActivity {
 
     double totalprice,sales_Price,quanTity,totalAmount = 0;
 
+    RelativeLayout rel_MoneyTotal,rel_Total;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +68,8 @@ public class CartPage extends AppCompatActivity {
         btn_CheckOut = findViewById(R.id.checkOut);
         subTotalPrice = findViewById(R.id.subTotalPrice);
         image_NoResult = findViewById(R.id.image_NoResult);
+        rel_MoneyTotal = findViewById(R.id.rel_MoneyTotal);
+        rel_Total = findViewById(R.id.rel_Total);
 
         bottomNavigationView.setSelectedItemId(R.id.cart);
 
@@ -148,19 +150,22 @@ public class CartPage extends AppCompatActivity {
                             quantity = jsonObject_allCart.getString("quantity");
 
                             CartItem cartItem = new CartItem(
-                                    productId,variationId,shopId,productImage,productName,shopName,unit,salePrice,discount,quantity
+                                    productId,variationId,shopId,productImage,productName,shopName,
+                                    unit,salePrice,discount,quantity,salePrice
                             );
 
-                            allCartItem.add(cartItem);
+                            sales_Price = Double.valueOf(salePrice);
 
-                            sales_Price = Double.parseDouble(cartItem.getSalePrice());
-
-                            quanTity = Double.parseDouble(cartItem.getQuantity());
+                            quanTity = Double.valueOf(quantity);
 
                             totalprice = sales_Price * quanTity;
 
 
                             totalAmount = totalAmount + totalAmount;
+
+                            allCartItem.add(cartItem);
+
+
 
                         }
 
@@ -168,12 +173,25 @@ public class CartPage extends AppCompatActivity {
 
                         subTotalPrice.setText(total_price);
 
-                        linearLayoutManager = new LinearLayoutManager(CartPage.this, LinearLayoutManager.VERTICAL, false);
-                        productAdapter = new ProductAdapter(CartPage.this, allCartItem);
-                        recyclerView.setLayoutManager(linearLayoutManager);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setAdapter(productAdapter);
+                        if(allCartItem.size() == 0){
+
+                            rel_MoneyTotal.setVisibility(View.GONE);
+                            rel_Total.setVisibility(View.GONE);
+                            image_NoResult.setVisibility(View.VISIBLE);
+
+                        }else{
+
+                            rel_MoneyTotal.setVisibility(View.VISIBLE);
+                            rel_Total.setVisibility(View.VISIBLE);
+                            image_NoResult.setVisibility(View.GONE);
+
+                            linearLayoutManager = new LinearLayoutManager(CartPage.this, LinearLayoutManager.VERTICAL, false);
+                            productAdapter = new ProductAdapter(CartPage.this, allCartItem);
+                            recyclerView.setLayoutManager(linearLayoutManager);
+                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setAdapter(productAdapter);
+                        }
 
                     }
 
@@ -208,4 +226,10 @@ public class CartPage extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(CartPage.this,MainActivity.class);
+        startActivity(intent);
+    }
 }

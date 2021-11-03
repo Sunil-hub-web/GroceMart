@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -140,10 +141,16 @@ public class MainActivity extends AppCompatActivity {
 
         userId = SharedPrefManager.getInstance(MainActivity.this).getUser().getId();
 
-        Intent intent = getIntent();
+      /*  Intent intent = getIntent();
         cityName = intent.getStringExtra("item");
         cityId = intent.getStringExtra("City_id");
-        pincodeId = intent.getStringExtra("Pincode_id");
+        pincodeId = intent.getStringExtra("Pincode_id");*/
+
+
+        SharedPreferences sp = getSharedPreferences("details",MODE_PRIVATE);
+        cityName = sp.getString("City_Name",null);
+        pincodeId = sp.getString("Pincode_id",null);
+        cityId = sp.getString("City_id",null);
 
         if (cityName != null) {
 

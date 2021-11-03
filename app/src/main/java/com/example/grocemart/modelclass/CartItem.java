@@ -3,11 +3,11 @@ package com.example.grocemart.modelclass;
 public class CartItem {
 
     public String productId,variationId,shopId,productImage, productName,shopName,unit,
-            salePrice,discount,quantity;
+            salePrice,discount,quantity,itemtotal;
 
     public CartItem(String productId, String variationId, String shopId, String productImage,
                     String productName, String shopName, String unit, String salePrice,
-                    String discount, String quantity) {
+                    String discount, String quantity,String itemtotal) {
 
         this.productId = productId;
         this.variationId = variationId;
@@ -19,7 +19,10 @@ public class CartItem {
         this.salePrice = salePrice;
         this.discount = discount;
         this.quantity = quantity;
+        this.itemtotal = itemtotal;
     }
+
+    public CartItem(){ }
 
     public String getProductId() {
         return productId;
@@ -99,6 +102,14 @@ public class CartItem {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public String getItemtotal() {
+        return itemtotal;
+    }
+
+    public void setItemtotal(String itemtotal) {
+        this.itemtotal = itemtotal;
     }
 
     @Override

@@ -159,4 +159,11 @@ public class UserDashboard extends AppCompatActivity {
         window.setBackgroundDrawableResource(R.drawable.homecard_back);
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(UserDashboard.this,MainActivity.class);
+        startActivity(intent);
+    }
 }

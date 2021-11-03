@@ -50,7 +50,7 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 android:layout_marginLeft="@dimen/ten"
-                android:layout_marginTop="@dimen/twenty_four"
+                android:layout_marginTop="@dimen/twenty_five"
                 android:layout_below="@id/shopname"
                 android:drawableLeft="@drawable/location_1"
                 android:drawablePadding="10dp"

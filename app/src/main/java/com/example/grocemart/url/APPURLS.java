@@ -18,6 +18,7 @@ public class APPURLS {
    public static final String addItemToCart = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=addtoCart";
    public static final String getCartItem = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getCartItem";
    public static final String deleteCartItem = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=removeFromCart";
+   public static final String updateCartItem = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=updateCart";
 
 
 }

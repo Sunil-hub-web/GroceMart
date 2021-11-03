@@ -20,7 +20,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/moneytotal"
+        android:layout_above="@id/rel_MoneyTotal"
         android:layout_below="@id/text">
 
         <ScrollView
@@ -48,10 +48,10 @@
 
 
     <RelativeLayout
-        android:id="@+id/moneytotal"
+        android:id="@+id/rel_MoneyTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rel1"
+        android:layout_above="@+id/rel_Total"
         android:layout_marginBottom="@dimen/twenty">
         <TextView
             android:id="@+id/invoice"
@@ -186,7 +186,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rel1"
+        android:id="@+id/rel_Total"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ninety"
         android:background="@drawable/registerback"

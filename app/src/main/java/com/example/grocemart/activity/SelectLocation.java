@@ -3,6 +3,7 @@ package com.example.grocemart.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -86,10 +87,18 @@ public class SelectLocation extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(SelectLocation.this, MainActivity.class);
-                intent.putExtra("item", City_Name);
+               /* intent.putExtra("item", City_Name);
                 intent.putExtra("Pincode_id", Pincode_id);
-                intent.putExtra("City_id", City_id);
+                intent.putExtra("City_id", City_id);*/
                 startActivity(intent);
+
+
+                SharedPreferences sp = getSharedPreferences("details",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("City_Name",City_Name);
+                editor.putString("Pincode_id",Pincode_id);
+                editor.putString("City_id",City_id);
+                editor.commit();
 
             }
         });
@@ -358,13 +367,12 @@ public class SelectLocation extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
 
         if (exit) {
             finish(); // finish activity
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Press Back again to Exit.",Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {
 
@@ -376,7 +384,7 @@ public class SelectLocation extends AppCompatActivity {
                     a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(a);
                 }
-            }, 4 * 1000);
+            }, 3 * 1000);
         }
     }
 }

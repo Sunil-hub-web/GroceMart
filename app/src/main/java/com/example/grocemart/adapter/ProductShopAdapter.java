@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,15 +28,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.grocemart.Constants;
 import com.example.grocemart.RecyclerTouchListener;
 import com.example.grocemart.SharedPrefManager;
-import com.example.grocemart.SharedPreference;
-import com.example.grocemart.activity.CartPage;
 import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.activity.ShopDetailsPage;
-import com.example.grocemart.activity.UserProfile;
-import com.example.grocemart.modelclass.CartItem;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.R;
 import com.example.grocemart.modelclass.Variation_ModelClass;
@@ -51,7 +44,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.ViewHolder> {
@@ -91,13 +83,20 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         String url = "https://" + productShop.getProductImage();
 
+        userId = SharedPrefManager.getInstance(context).getUser().getId();
+
         Picasso.with(context).load(url).into(holder.image_ProductImage);
+
+       /* productId = productShop.getProductId();
+        shopId = productShop.getShopId();*/
 
         holder.text_ProductNmae.setText(productShop.getProductName());
         holder.text_ShopName.setText(productShop.getShopName());
         holder.text_address.setText(productShop.getShopAddress());
 
         holder.text_Spinertext.setText("Select quantity");
+
+
 
         holder.btn_Gotoshop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,16 +187,13 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             }
         });
 
-        userId = SharedPrefManager.getInstance(context).getUser().getId();
-        productId = productShop.getProductId();
-        shopId = productShop.getShopId();
-
         holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                productId = productShop.getProductId();
+                shopId = productShop.getShopId();
                 count_value = Integer.valueOf(holder.t2.getText().toString());
-
                 countvalue = String.valueOf(count_value);
 
                 if(holder.text_Spinertext.getText().toString().trim().equals("Select Quantity")){

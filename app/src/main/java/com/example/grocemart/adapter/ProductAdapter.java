@@ -1,7 +1,6 @@
 package com.example.grocemart.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.SharedPrefManager;
-import com.example.grocemart.SharedPreference;
 import com.example.grocemart.activity.CartPage;
 import com.example.grocemart.R;
-import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.modelclass.CartItem;
 import com.example.grocemart.url.APPURLS;
 import com.squareup.picasso.Picasso;
@@ -45,6 +42,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private Context context;
     private ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
 
+    String userid,productId,variationId;
+
     public ProductAdapter(CartPage cartPage, ArrayList<CartItem> allCartItem) {
 
         this.context = cartPage;
@@ -63,6 +62,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull @NotNull ProductAdapter.ViewHolder holder, int position) {
 
         CartItem items = allCartItem.get(position);
+
+        userid = SharedPrefManager.getInstance(context).getUser().getId();
 
         String price1 = items.getSalePrice();
         String quantity1 = items.getQuantity();
@@ -91,6 +92,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 holder.linearLayout(false);
 
                 String t = holder.t2.getText().toString().trim();
+                productId = items.getProductId();
+                variationId = items.getVariationId();
 
                 String p = items.getSalePrice();
 
@@ -103,6 +106,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
                 String m1 = String.valueOf(m);
                 holder.product_Price.setText("₹ "+m1);
+
+                updateCart(userid,productId,t,variationId);
+
 
                 totPrice = holder.product_Price.getText().toString().trim();
 
@@ -116,6 +122,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 holder.linearLayout(true);
                 String t = holder.t2.getText().toString().trim();
 
+                productId = items.getProductId();
+                variationId = items.getVariationId();
+
                 String p = items.getSalePrice();
 
                 int t1 = Integer.parseInt(t);
@@ -126,6 +135,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 Toast.makeText(context, ""+m, Toast.LENGTH_SHORT).show();
                 String m1 = String.valueOf(m);
                 holder.product_Price.setText("₹ "+m1);
+
+                updateCart(userid,productId,t,variationId);
 
                 totPrice = holder.product_Price.getText().toString().trim();
 
@@ -257,5 +268,53 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
 
+    public void updateCart(String user_id,String product_id,String quantity,String variation_id){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.updateCartItem, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String message = jsonObject.getString("success");
+                    if(message.equals("true")){
+
+                        String msg = jsonObject.getString("msg");
+                        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("user_id",user_id);
+                params.put("product_id",product_id);
+                params.put("quantity",quantity);
+                params.put("variation_id",variation_id);
+
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+
+
+    }
 
 }
