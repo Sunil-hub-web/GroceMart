@@ -91,7 +91,7 @@ public class SharedPreference {
 
         ArrayList<CartItem> favorites =loadFavorites(context);
 
-        if(favorites!=null){
+    /*    if(favorites!=null){
 
             String ranjeet= favorites.get(beanSampllist).getItemtotal();
             Log.d("RanjeetShared",ranjeet);
@@ -102,7 +102,7 @@ public class SharedPreference {
 
             favorites.get(beanSampllist).setQuantity(quanity);
             storeFavorites(context, favorites);
-        }
+        }*/
 
     }
 
@@ -133,7 +133,8 @@ public class SharedPreference {
 
             CartItem cartIt = itms.get(j);
 
-            sum = sum + (Double.parseDouble(cartIt.getSales_price())* Double.parseDouble(cartIt.getQuantity()));
+            //sum = sum + (Double.parseDouble(cartIt.getSales_price())* Double.parseDouble(cartIt.getQuantity()));
+
 //            itemtotal.setText("₹"+sum);
 //                shippingsum = shippingsum + Double.parseDouble(cartIt.getShipingcost());
         }

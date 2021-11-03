@@ -44,6 +44,7 @@ public class ProductShopDetails extends AppCompatActivity {
     ArrayList<Variation_ModelClass> variations = new ArrayList<Variation_ModelClass>();
 
     String productId, cityId;
+    public static TextView itemcounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +178,7 @@ public class ProductShopDetails extends AppCompatActivity {
                 return params;
             }
         };
+
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(ProductShopDetails.this);
         requestQueue.getCache().clear();

@@ -33,8 +33,8 @@ public class SharedPrefManager {
     //this method will store the user data in shared preferences
     public void userLogin(Login_ModelClass login_modelClass) {
 
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences sharedPrefManager = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPrefManager.edit();
 
 
         editor.putString(KEY_id,                login_modelClass.getId ());
@@ -48,21 +48,21 @@ public class SharedPrefManager {
 
     //this method will checker whether user is already logged in or not
     public boolean isLoggedIn() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(KEY_id, null) != null;
+        SharedPreferences sharedPrefManager = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPrefManager.getString(KEY_id, null) != null;
     }
 
     //this method will give the logged in user
     public Login_ModelClass getUser() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sharedPrefManager = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new Login_ModelClass(
 
 
-                sharedPreferences.getString(KEY_id, null),
-                sharedPreferences.getString(KEY_name, null),
-                sharedPreferences.getString(KEY_email, null),
-                sharedPreferences.getString(KEY_mobile_number, null),
-                sharedPreferences.getString(KEY_password, null)
+                sharedPrefManager.getString(KEY_id, null),
+                sharedPrefManager.getString(KEY_name, null),
+                sharedPrefManager.getString(KEY_email, null),
+                sharedPrefManager.getString(KEY_mobile_number, null),
+                sharedPrefManager.getString(KEY_password, null)
 
         );
 
@@ -70,14 +70,11 @@ public class SharedPrefManager {
 
     //this method will logout the user
     public void logout() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences sharedPrefManager = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPrefManager.edit();
         editor.clear();
         editor.apply();
         mCtx.startActivity(new Intent (mCtx, MainActivity.class));
     }
-
-
-
 
 }

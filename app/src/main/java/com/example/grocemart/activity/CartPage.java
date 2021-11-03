@@ -2,20 +2,43 @@ package com.example.grocemart.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
+import com.example.grocemart.SharedPrefManager;
+import com.example.grocemart.SharedPreference;
 import com.example.grocemart.adapter.ProductAdapter;
+import com.example.grocemart.modelclass.CartItem;
+import com.example.grocemart.url.APPURLS;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartPage extends AppCompatActivity {
 
@@ -23,23 +46,28 @@ public class CartPage extends AppCompatActivity {
     ProductAdapter productAdapter;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    int Images[]={R.drawable.royal,R.drawable.biriyani,R.drawable.meat,R.drawable.biriyani};
-    String [] name ={"BB Royal Organic-Toor Dal","Aachi Biriyani Masala","Aachi Biriyani Masala","Aachi Biriyani Masala"};
-    String [] price = {"150","588","588","500"};
     Button btn_CheckOut;
-    TextView text_price1;
+    TextView subTotalPrice;
     int value;
+    ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
+    ImageView image_NoResult;
+    public String productId,variationId,shopId,productImage, productName,shopName,unit,
+            salePrice,discount,quantity,userId;
+
+    double totalprice,sales_Price,quanTity,totalAmount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_page);
 
+        userId = SharedPrefManager.getInstance(CartPage.this).getUser().getId();
+
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         recyclerView = findViewById(R.id.recycler);
         btn_CheckOut = findViewById(R.id.checkOut);
-        text_price1 = findViewById(R.id.price1);
-        linearLayoutManager = new LinearLayoutManager(CartPage.this,LinearLayoutManager.VERTICAL,false);
+        subTotalPrice = findViewById(R.id.subTotalPrice);
+        image_NoResult = findViewById(R.id.image_NoResult);
 
         bottomNavigationView.setSelectedItemId(R.id.cart);
 
@@ -47,24 +75,24 @@ public class CartPage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
 
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
 
-                    case R.id.dashboard :
-                        startActivity(new Intent(getApplicationContext(),UserDashboard.class));
-                        overridePendingTransition(0,0);
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
-                    case R.id.home :
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.cart:
                         return true;
 
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),SerachPage.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), SerachPage.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }
@@ -72,26 +100,112 @@ public class CartPage extends AppCompatActivity {
             }
         });
 
-        productAdapter = new ProductAdapter (CartPage.this,Images,name,price);
-        recyclerView.setLayoutManager (linearLayoutManager);
-        recyclerView.setHasFixedSize (true);
-        recyclerView.setAdapter (productAdapter);
+            btn_CheckOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        btn_CheckOut.setOnClickListener(new View.OnClickListener() {
+                    Intent intent = new Intent(CartPage.this, CheckoutPage.class);
+                    startActivity(intent);
+
+                }
+            });
+
+            getCartItem(userId);
+
+        }
+
+        public void getCartItem(String userId){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getCartItem, new Response.Listener<String>() {
             @Override
-            public void onClick(View v) {
+            public void onResponse(String response) {
 
-                value = productAdapter.getvalue();
-                Toast.makeText(CartPage.this, ""+value, Toast.LENGTH_SHORT).show();
-                text_price1.setText(String.valueOf("₹ "+value));
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
 
-                Intent intent = new Intent(CartPage.this,CheckoutPage.class);
-                intent.putExtra("totalPrice",value);
-                startActivity(intent);
+                    String message = jsonObject.getString("success");
+
+                    if(message.equals("true")){
+
+                        String allcart = jsonObject.getString("All_Cart");
+
+                        JSONArray jsonArray_AllCart = new JSONArray(allcart);
+
+                        for(int i=0;i<jsonArray_AllCart.length();i++){
+
+
+                            JSONObject jsonObject_allCart = jsonArray_AllCart.getJSONObject(i);
+
+                            productId = jsonObject_allCart.getString("product_id");
+                            variationId = jsonObject_allCart.getString("variation_id");
+                            shopId = jsonObject_allCart.getString("shop_id");
+                            productImage = jsonObject_allCart.getString("product_img");
+                            productName = jsonObject_allCart.getString("product_name");
+                            shopName = jsonObject_allCart.getString("shop_name");
+                            unit = jsonObject_allCart.getString("unit");
+                            salePrice = jsonObject_allCart.getString("sale_price");
+                            discount = jsonObject_allCart.getString("discount");
+                            quantity = jsonObject_allCart.getString("quantity");
+
+                            CartItem cartItem = new CartItem(
+                                    productId,variationId,shopId,productImage,productName,shopName,unit,salePrice,discount,quantity
+                            );
+
+                            allCartItem.add(cartItem);
+
+                            sales_Price = Double.parseDouble(cartItem.getSalePrice());
+
+                            quanTity = Double.parseDouble(cartItem.getQuantity());
+
+                            totalprice = sales_Price * quanTity;
+
+
+                            totalAmount = totalAmount + totalAmount;
+
+                        }
+
+                        String total_price = String.valueOf(totalAmount);
+
+                        subTotalPrice.setText(total_price);
+
+                        linearLayoutManager = new LinearLayoutManager(CartPage.this, LinearLayoutManager.VERTICAL, false);
+                        productAdapter = new ProductAdapter(CartPage.this, allCartItem);
+                        recyclerView.setLayoutManager(linearLayoutManager);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setAdapter(productAdapter);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
-        });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
+                error.printStackTrace ();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("user_id",userId);
+
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
     }
 
 }

@@ -2,54 +2,71 @@ package com.example.grocemart.modelclass;
 
 public class CartItem {
 
-    public String product_id, product_name, productimage, varient_id, unit,unit_name,mrp_Price, sales_price, quantity, itemtotal;
+    public String productId,variationId,shopId,productImage, productName,shopName,unit,
+            salePrice,discount,quantity;
 
-    public CartItem(String product_id, String product_name, String productimage, String varient_id,
-                    String unit, String unit_name, String mrp_Price, String sales_price,
-                    String quantity, String itemtotal) {
+    public CartItem(String productId, String variationId, String shopId, String productImage,
+                    String productName, String shopName, String unit, String salePrice,
+                    String discount, String quantity) {
 
-        this.product_id = product_id;
-        this.product_name = product_name;
-        this.productimage = productimage;
-        this.varient_id = varient_id;
+        this.productId = productId;
+        this.variationId = variationId;
+        this.shopId = shopId;
+        this.productImage = productImage;
+        this.productName = productName;
+        this.shopName = shopName;
         this.unit = unit;
-        this.unit_name = unit_name;
-        this.mrp_Price = mrp_Price;
-        this.sales_price = sales_price;
+        this.salePrice = salePrice;
+        this.discount = discount;
         this.quantity = quantity;
-        this.itemtotal = itemtotal;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getVariationId() {
+        return variationId;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setVariationId(String variationId) {
+        this.variationId = variationId;
     }
 
-    public String getProductimage() {
-        return productimage;
+    public String getShopId() {
+        return shopId;
     }
 
-    public void setProductimage(String productimage) {
-        this.productimage = productimage;
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
     }
 
-    public String getVarient_id() {
-        return varient_id;
+    public String getProductImage() {
+        return productImage;
     }
 
-    public void setVarient_id(String varient_id) {
-        this.varient_id = varient_id;
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     public String getUnit() {
@@ -60,28 +77,20 @@ public class CartItem {
         this.unit = unit;
     }
 
-    public String getUnit_name() {
-        return unit_name;
+    public String getSalePrice() {
+        return salePrice;
     }
 
-    public void setUnit_name(String unit_name) {
-        this.unit_name = unit_name;
+    public void setSalePrice(String salePrice) {
+        this.salePrice = salePrice;
     }
 
-    public String getMrp_Price() {
-        return mrp_Price;
+    public String getDiscount() {
+        return discount;
     }
 
-    public void setMrp_Price(String mrp_Price) {
-        this.mrp_Price = mrp_Price;
-    }
-
-    public String getSales_price() {
-        return sales_price;
-    }
-
-    public void setSales_price(String sales_price) {
-        this.sales_price = sales_price;
+    public void setDiscount(String discount) {
+        this.discount = discount;
     }
 
     public String getQuantity() {
@@ -92,11 +101,19 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public String getItemtotal() {
-        return itemtotal;
-    }
-
-    public void setItemtotal(String itemtotal) {
-        this.itemtotal = itemtotal;
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "productId='" + productId + '\'' +
+                ", variationId='" + variationId + '\'' +
+                ", shopId='" + shopId + '\'' +
+                ", productImage='" + productImage + '\'' +
+                ", productName='" + productName + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", unit='" + unit + '\'' +
+                ", salePrice='" + salePrice + '\'' +
+                ", discount='" + discount + '\'' +
+                ", quantity='" + quantity + '\'' +
+                '}';
     }
 }

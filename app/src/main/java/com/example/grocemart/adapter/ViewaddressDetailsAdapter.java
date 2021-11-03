@@ -2,14 +2,18 @@ package com.example.grocemart.adapter;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Build;
+import android.support.v4.os.IResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -22,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
 import com.example.grocemart.activity.AddressDetails;
+import com.example.grocemart.activity.CheckoutPage;
 import com.example.grocemart.modelclass.ViewAddressDetails_ModelClass;
 import com.example.grocemart.url.APPURLS;
 
@@ -39,8 +44,17 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
     ArrayList<ViewAddressDetails_ModelClass> address_Details;
     private OnItemClickListener mListener;
     String addressId;
+    int index;
 
     public ViewaddressDetailsAdapter(AddressDetails addressDetails,
+                                     ArrayList<ViewAddressDetails_ModelClass> addressDetails1) {
+
+        this.context = addressDetails;
+        this.address_Details = addressDetails1;
+
+    }
+
+    public ViewaddressDetailsAdapter(CheckoutPage addressDetails,
                                      ArrayList<ViewAddressDetails_ModelClass> addressDetails1) {
 
         this.context = addressDetails;
@@ -67,6 +81,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
         return new ViewHolder(view, mListener);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewaddressDetailsAdapter.ViewHolder holder, int position) {
 
@@ -142,6 +157,29 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
             }
         });
 
+        holder.rel_Click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                index = position;
+                notifyDataSetChanged();
+                String all_values = holder.text_Address.getText().toString().trim();
+                Toast.makeText(context, all_values, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        if(index==position){
+
+            holder.rel_Click.setBackgroundResource(R.drawable.selectaddressback);
+            holder.rel_Click.setElevation(15);
+        }
+        else
+        {
+            holder.rel_Click.setBackgroundResource(R.drawable.homecard_back);
+            holder.rel_Click.setElevation(5);
+        }
+
     }
 
     @Override
@@ -152,12 +190,14 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView text_Address;
         Button btn_Delete;
+        RelativeLayout rel_Click;
 
         public ViewHolder(@NonNull  View itemView,final OnItemClickListener listener) {
             super(itemView);
 
             text_Address = itemView.findViewById(R.id.addressdetails);
             btn_Delete = itemView.findViewById(R.id.btn_Delete);
+            rel_Click = itemView.findViewById(R.id.rel_Click);
 
             btn_Delete.setOnClickListener(new View.OnClickListener() {
                 @Override
