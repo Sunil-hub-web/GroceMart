@@ -49,11 +49,12 @@ import java.util.Map;
 public class CheckoutPage extends AppCompatActivity {
 
     Button btn_Address;
-    TextView text_price;
+    TextView subTotalPrice,shippingCharges,totalPrice;
     Dialog dialog;
     String str_Name,str_Email,str_MobileNo,str_City,str_Area,str_Address,
             str_PinCode,userId,cityid,City_id,city_Name,pincode_Name,
-            Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id;
+            Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id,str_SubTotalPrice,
+            str_ShippingCharges,str_TotalAmount;
     Button btn_SaveAddress;
     Spinner spiner_City,spiner_Pincode;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
@@ -71,13 +72,23 @@ public class CheckoutPage extends AppCompatActivity {
         userId = SharedPrefManager.getInstance(CheckoutPage.this).getUser().getId();
 
         btn_Address = findViewById(R.id.addaddress);
-        text_price = findViewById(R.id.price1);
         AddressRecycler = findViewById(R.id.addressRecycler);
+        subTotalPrice = findViewById(R.id.subTotalPrice);
+        shippingCharges = findViewById(R.id.shippingCharges);
+        subTotalPrice = findViewById(R.id.subTotalPrice);
+        totalPrice = findViewById(R.id.totalPrice);
+
         linearLayoutManager =  new LinearLayoutManager(CheckoutPage.this,LinearLayoutManager.VERTICAL,false);
 
         Intent intent = getIntent();
-        String value = intent.getStringExtra("totalPrice");
-        text_price.setText(value);
+
+        str_SubTotalPrice = intent.getStringExtra("subTotalPrice");
+        str_ShippingCharges = intent.getStringExtra("shippingCharges");
+        str_TotalAmount = intent.getStringExtra("totalAmount");
+
+        totalPrice.setText(str_TotalAmount);
+        subTotalPrice.setText(str_SubTotalPrice);
+        shippingCharges.setText(str_ShippingCharges);
 
         getaddressDetails(userId);
 

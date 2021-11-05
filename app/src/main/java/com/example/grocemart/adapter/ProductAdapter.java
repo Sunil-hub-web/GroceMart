@@ -37,12 +37,13 @@ import java.util.Map;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    int totalPrice = 0;
     String totPrice;
     private Context context;
     private ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
-
+    int Total,price,quantity;
+    String price_total,sum,str_SumTotal,str_Shpping,str_TotalPrice,str_DeletePrice;
     String userid,productId,variationId;
+    Double sumTotal,d_totPrice,d_Sum,d_sumTotal,d_ShppingCharges,d_TotlAmount,d_deletePrice;
 
     public ProductAdapter(CartPage cartPage, ArrayList<CartItem> allCartItem) {
 
@@ -68,19 +69,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         String price1 = items.getSalePrice();
         String quantity1 = items.getQuantity();
 
-        int price = Integer.parseInt(price1);
-        int quantity = Integer.parseInt(quantity1);
+        price = Integer.parseInt(price1);
+        quantity = Integer.parseInt(quantity1);
 
-        int Total = price * quantity;
+        Total = price * quantity;
 
-        String price_total = String.valueOf(Total);
+        price_total = String.valueOf(Total);
 
         String url = "https://" + items.getProductImage();
 
         Picasso.with(context).load(url).into(holder.imageCart);
 
         holder.product_Name.setText(items.getProductName());
-        holder.product_Price.setText("₹ "+price_total);
+        holder.product_Price.setText(price_total);
         holder.shop_Name.setText(items.getShopName());
         holder.quantity.setText(items.getUnit());
         holder.t2.setText(items.getQuantity());
@@ -105,12 +106,36 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 Toast.makeText(context, ""+m, Toast.LENGTH_SHORT).show();
 
                 String m1 = String.valueOf(m);
-                holder.product_Price.setText("₹ "+m1);
+                holder.product_Price.setText(m1);
+
+                totPrice = holder.product_Price.getText().toString().trim();
+
+                price = Integer.parseInt(price1);
+
+                sum = CartPage.subTotalPrice.getText().toString().trim();
+
+                d_totPrice = Double.valueOf(price);
+                d_Sum = Double.valueOf(sum);
+
+                sumTotal = d_Sum - d_totPrice;
+                str_SumTotal = String.valueOf(sumTotal);
+
+                CartPage.subTotalPrice.setText(str_SumTotal);
+
+                str_Shpping = CartPage.shippingCharges.getText().toString().trim();
+
+                d_ShppingCharges = Double.valueOf(str_Shpping);
+
+                d_TotlAmount  = sumTotal + d_ShppingCharges;
+
+                str_TotalPrice = String.valueOf(d_TotlAmount);
+
+                CartPage.text_totalAmount.setText(str_TotalPrice);
+
 
                 updateCart(userid,productId,t,variationId);
 
 
-                totPrice = holder.product_Price.getText().toString().trim();
 
             }
         });
@@ -134,11 +159,33 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
                 Toast.makeText(context, ""+m, Toast.LENGTH_SHORT).show();
                 String m1 = String.valueOf(m);
-                holder.product_Price.setText("₹ "+m1);
-
-                updateCart(userid,productId,t,variationId);
+                holder.product_Price.setText(m1);
 
                 totPrice = holder.product_Price.getText().toString().trim();
+
+                price = Integer.parseInt(price1);
+
+                sum = CartPage.subTotalPrice.getText().toString().trim();
+
+                d_totPrice = Double.valueOf(price);
+                d_Sum = Double.valueOf(sum);
+
+                sumTotal = d_totPrice + d_Sum;
+                str_SumTotal = String.valueOf(sumTotal);
+
+                CartPage.subTotalPrice.setText(str_SumTotal);
+
+                str_Shpping = CartPage.shippingCharges.getText().toString().trim();
+
+                d_ShppingCharges = Double.valueOf(str_Shpping);
+
+                d_TotlAmount  = sumTotal + d_ShppingCharges;
+
+                str_TotalPrice = String.valueOf(d_TotlAmount);
+
+                CartPage.text_totalAmount.setText(str_TotalPrice);
+
+                updateCart(userid,productId,t,variationId);
 
             }
         });
@@ -155,25 +202,35 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 allCartItem.remove(position);
                 notifyDataSetChanged();
 
+                sum = CartPage.subTotalPrice.getText().toString().trim();
+
+                totPrice = holder.product_Price.getText().toString().trim();
+
+                d_sumTotal = Double.valueOf(totPrice);
+                d_Sum = Double.valueOf(sum);
+
+                d_deletePrice = d_Sum - d_sumTotal;
+
+                str_DeletePrice = String.valueOf(d_deletePrice);
+
+                CartPage.subTotalPrice.setText(str_DeletePrice);
+
+                str_Shpping = CartPage.shippingCharges.getText().toString().trim();
+
+                d_ShppingCharges = Double.valueOf(str_Shpping);
+
+                d_TotlAmount  = d_deletePrice + d_ShppingCharges;
+
+                str_TotalPrice = String.valueOf(d_TotlAmount);
+
+                CartPage.text_totalAmount.setText(str_TotalPrice);
+
+                CartPage.text_totalAmount.setText(str_TotalPrice);
+
             }
         });
 
-       /* totPrice = holder.price.getText().toString().trim();
-        int price1 = Integer.parseInt(totPrice);
-        int count = getItemCount();
-        for (int i = 0; i<count; i++)
-        {
-            totalPrice = totalPrice + price1;
-            Log.d("totalpay",String.valueOf(totalPrice));
-            return;
-        }*/
-
     }
-
-    /*public int getvalue(){
-
-        return totalPrice;
-    }*/
 
     @Override
     public int getItemCount() {

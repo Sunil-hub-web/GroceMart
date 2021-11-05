@@ -61,12 +61,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:layout_marginLeft="@dimen/thirty"
             android:layout_marginTop="@dimen/ten"
-            android:layout_marginLeft="@dimen/twenty"
             android:textSize="@dimen/textsize"
+            android:text="500"
             android:layout_below="@id/shop_Name"
             android:layout_toRightOf="@id/quantity"
             android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/priceSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/eight"
+            android:layout_below="@id/shop_Name"
+            android:layout_toRightOf="@id/quantity"
+            android:layout_marginLeft="@dimen/fifteen"
+            ></TextView>
 
         <LinearLayout
             android:layout_width="wrap_content"

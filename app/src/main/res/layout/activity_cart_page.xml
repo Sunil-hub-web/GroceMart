@@ -94,14 +94,25 @@
                 android:textStyle="bold"></TextView>
 
             <TextView
+                android:id="@+id/priceSymbol1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/subTotalPrice"
+                android:layout_marginRight="@dimen/ten"></TextView>
+
+            <TextView
                 android:id="@+id/subTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₹ 145.00"
+                android:text="145.00"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_alignParentRight="true"></TextView>
+                android:layout_alignParentRight="true" ></TextView>
 
         </RelativeLayout>
 
@@ -123,12 +134,23 @@
                 android:textStyle="bold"></TextView>
 
             <TextView
-                android:id="@+id/price3"
+                android:id="@+id/priceSymbol2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₹ 1.00"
+                android:text="₹"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/shippingCharges"
+                android:layout_marginRight="@dimen/ten"></TextView>
+
+            <TextView
+                android:id="@+id/shippingCharges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:text="5.0"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"></TextView>
         </RelativeLayout>
@@ -192,13 +214,11 @@
         android:background="@drawable/registerback"
         android:layout_above="@id/bottomNavigation">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/thirty">
+            android:layout_marginLeft="@dimen/five">
 
             <TextView
                 android:id="@+id/total"
@@ -209,17 +229,31 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="@dimen/fifteen"
                 android:textStyle="bold"></TextView>
+
             <TextView
-                android:id="@+id/money"
+                android:id="@+id/priceSymbol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₹150.00"
+                android:text="₹"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold"
+                android:layout_below="@id/total"
+                android:layout_marginLeft="@dimen/ten"></TextView>
+
+
+            <TextView
+                android:id="@+id/totalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150.00"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginLeft="@dimen/fifteen"
                 android:textStyle="bold"
-                ></TextView>
-        </LinearLayout>
+                android:layout_marginLeft="@dimen/five"
+                android:layout_below="@id/total"
+                android:layout_toRightOf="@id/priceSymbol"></TextView>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/checkOut"

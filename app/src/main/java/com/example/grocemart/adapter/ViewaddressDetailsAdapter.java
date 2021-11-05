@@ -43,7 +43,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
     Context context;
     ArrayList<ViewAddressDetails_ModelClass> address_Details;
     private OnItemClickListener mListener;
-    String addressId;
+    public static String addressId;
     int index;
 
     public ViewaddressDetailsAdapter(AddressDetails addressDetails,

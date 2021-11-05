@@ -45,14 +45,15 @@ public class CartPage extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     Button btn_CheckOut;
-    TextView subTotalPrice;
+    public static TextView subTotalPrice,shippingCharges,coupanCode,text_totalAmount;
     int value;
     ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
     ImageView image_NoResult;
     public String productId,variationId,shopId,productImage, productName,shopName,unit,
-            salePrice,discount,quantity,userId;
+            salePrice,discount,quantity,userId,str_SubTotalPrice,str_ShippingCharges,str_TotalAmount;
 
-    double totalprice,sales_Price,quanTity,totalAmount = 0;
+    double totalprice,sales_Price,quanTity,totalAmount = 0,shipCharge = 5.0;
+
 
     RelativeLayout rel_MoneyTotal,rel_Total;
 
@@ -70,6 +71,9 @@ public class CartPage extends AppCompatActivity {
         image_NoResult = findViewById(R.id.image_NoResult);
         rel_MoneyTotal = findViewById(R.id.rel_MoneyTotal);
         rel_Total = findViewById(R.id.rel_Total);
+        shippingCharges = findViewById(R.id.shippingCharges);
+        coupanCode = findViewById(R.id.coupanCode);
+        text_totalAmount = findViewById(R.id.totalAmount);
 
         bottomNavigationView.setSelectedItemId(R.id.cart);
 
@@ -106,7 +110,14 @@ public class CartPage extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    str_SubTotalPrice = subTotalPrice.getText().toString().trim();
+                    str_ShippingCharges = shippingCharges.getText().toString().trim();
+                    str_TotalAmount = text_totalAmount.getText().toString().trim();
+
                     Intent intent = new Intent(CartPage.this, CheckoutPage.class);
+                    intent.putExtra("subTotalPrice",subTotalPrice.getText().toString().trim());
+                    intent.putExtra("shippingCharges",shippingCharges.getText().toString().trim());
+                    intent.putExtra("totalAmount",text_totalAmount.getText().toString().trim());
                     startActivity(intent);
 
                 }
@@ -160,18 +171,24 @@ public class CartPage extends AppCompatActivity {
 
                             totalprice = sales_Price * quanTity;
 
-
-                            totalAmount = totalAmount + totalAmount;
+                            totalAmount = totalAmount + totalprice;
 
                             allCartItem.add(cartItem);
-
-
 
                         }
 
                         String total_price = String.valueOf(totalAmount);
 
                         subTotalPrice.setText(total_price);
+
+                        String shipcharge = String.valueOf(shipCharge);
+                        shippingCharges.setText(shipcharge);
+
+                        Double AmountTotal = totalAmount + shipCharge;
+
+                        String tot_Amount = String.valueOf(AmountTotal);
+
+                        text_totalAmount.setText(tot_Amount);
 
                         if(allCartItem.size() == 0){
 

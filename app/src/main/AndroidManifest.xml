@@ -42,11 +42,7 @@
         <activity
             android:name=".activity.CheckoutPage"
             android:theme="@style/Theme.GroceMart.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.SerachPage"
@@ -81,7 +77,11 @@
         <activity
             android:name=".activity.SelectLocation"
             android:theme="@style/Theme.GroceMart.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.ShowLocation"

@@ -1,5 +1,6 @@
 package com.example.grocemart.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import com.example.grocemart.adapter.ProductShopAdapter;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.modelclass.Variation_ModelClass;
 import com.example.grocemart.url.APPURLS;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +49,8 @@ public class ProductShopDetails extends AppCompatActivity {
     String productId, cityId;
     public static TextView itemcounter;
 
+    BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +63,38 @@ public class ProductShopDetails extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.shopDetailsRecycler);
         image_Product = findViewById(R.id.image_Product);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
 
         getProductDetails(productId, cityId);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.home:
+                        return true;
+
+                    case R.id.cart:
+                        startActivity(new Intent(getApplicationContext(), CartPage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(), SerachPage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
 
     }
 

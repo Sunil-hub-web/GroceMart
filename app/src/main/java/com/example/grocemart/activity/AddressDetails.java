@@ -182,6 +182,7 @@ public class AddressDetails extends AppCompatActivity {
            public void onResponse(String response) {
 
                progressDialog.dismiss();
+               dialog.dismiss();
 
                try {
                    JSONObject jsonObject = new JSONObject(response);
@@ -191,7 +192,7 @@ public class AddressDetails extends AppCompatActivity {
                    if (message.equals("true")){
 
                        Toast.makeText(AddressDetails.this, "Address Insterted Success Fully..", Toast.LENGTH_SHORT).show();
-                       dialog.dismiss();
+
                        getaddressDetails(userId);
 
                    }
