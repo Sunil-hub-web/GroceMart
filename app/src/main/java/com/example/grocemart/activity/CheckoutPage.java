@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class CheckoutPage extends AppCompatActivity {
 
-    Button btn_Address;
+    Button btn_Address,btn_ContinueShoping;
     TextView subTotalPrice,shippingCharges,totalPrice;
     Dialog dialog;
     String str_Name,str_Email,str_MobileNo,str_City,str_Area,str_Address,
@@ -77,6 +77,7 @@ public class CheckoutPage extends AppCompatActivity {
         shippingCharges = findViewById(R.id.shippingCharges);
         subTotalPrice = findViewById(R.id.subTotalPrice);
         totalPrice = findViewById(R.id.totalPrice);
+        btn_ContinueShoping = findViewById(R.id.btn_ContinueShoping);
 
         linearLayoutManager =  new LinearLayoutManager(CheckoutPage.this,LinearLayoutManager.VERTICAL,false);
 
@@ -98,6 +99,15 @@ public class CheckoutPage extends AppCompatActivity {
 
                 add_Address();
 
+            }
+        });
+
+        btn_ContinueShoping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent1 = new Intent(CheckoutPage.this,MainActivity.class);
+                startActivity(intent1);
             }
         });
     }

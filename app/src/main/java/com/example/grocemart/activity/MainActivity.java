@@ -313,16 +313,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (SharedPrefManager.getInstance(MainActivity.this).isLoggedIn()) {
-        } else {
-            Intent intent = new Intent(MainActivity.this, SigninPage.class);
-            startActivity(intent);
-        }
-    }
-
     public void homePageBanner(String cityId, String pincodeId, String userId) {
 
         ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);

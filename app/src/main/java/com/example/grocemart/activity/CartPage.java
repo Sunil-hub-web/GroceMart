@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -129,9 +130,19 @@ public class CartPage extends AppCompatActivity {
 
         public void getCartItem(String userId){
 
+            ProgressDialog progressDialog = new ProgressDialog(CartPage.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            TextView textView = progressDialog.findViewById(R.id.text);
+            textView.setText("Please wait...");
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            progressDialog.setCancelable(false);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getCartItem, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                progressDialog.dismiss();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -222,6 +233,7 @@ public class CartPage extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                progressDialog.dismiss();
                 error.printStackTrace ();
             }
         }){

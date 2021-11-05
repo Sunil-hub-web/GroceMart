@@ -88,7 +88,7 @@
                 android:text=""
                 android:gravity="center"
                 android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
-                android:textSize="@dimen/edittextsize"
+                android:textSize="@dimen/textsize"
                 android:textStyle="bold">
 
             </TextView>

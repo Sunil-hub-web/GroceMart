@@ -79,6 +79,8 @@ public class ProductShopDetails extends AppCompatActivity {
                         return true;
 
                     case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.cart:

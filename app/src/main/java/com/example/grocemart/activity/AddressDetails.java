@@ -284,10 +284,10 @@ public class AddressDetails extends AppCompatActivity {
                                    addressId,city_id,Name,City,Area,PinCode,MobileNo,Address,Email
                            );
 
-                           if(addressDetails.size()>0){
+                          /* if(addressDetails.size()>0){
 
                                addressDetails.clear();
-                           }
+                           }*/
 
                            addressDetails.add(viewAddressDetails_modelClass);
                        }

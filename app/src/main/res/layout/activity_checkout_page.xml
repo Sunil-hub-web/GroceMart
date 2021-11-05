@@ -249,39 +249,42 @@
     </LinearLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/twenty">
+        android:weightSum="2"
+        android:layout_marginBottom="@dimen/ten">
 
         <Button
-            android:id="@+id/shoping"
-            android:layout_width="@dimen/hundred_sixty"
+            android:id="@+id/btn_ContinueShoping"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="@dimen/forty_five"
-            android:layout_marginLeft="@dimen/twenty"
             android:background="@drawable/button_back"
             android:text="Continue Shoping"
             android:textAllCaps="false"
             android:textColor="@color/btntextcolor"
             android:textSize="@dimen/textsize"
-            android:textStyle="bold"></Button>
+            android:textStyle="bold"
+            android:layout_margin="@dimen/ten"></Button>
 
         <Button
             android:id="@+id/procedtocheckout"
-            android:layout_width="@dimen/hundred_ninety"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="@dimen/forty_five"
-            android:layout_marginLeft="@dimen/twenty"
-            android:layout_toRightOf="@id/shoping"
+            android:layout_toRightOf="@id/btn_ContinueShoping"
             android:background="@drawable/shopingback"
             android:text="Proceed To Checkout"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize"
-            android:textStyle="bold"></Button>
-    </RelativeLayout>
+            android:textStyle="bold"
+            android:layout_margin="@dimen/ten"></Button>
+    </LinearLayout>
 
 
 </RelativeLayout>

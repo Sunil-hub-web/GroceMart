@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Selection;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
+import com.example.grocemart.SharedPrefManager;
 import com.example.grocemart.adapter.CitySpinerAdapter;
 import com.example.grocemart.adapter.PincodeSpinerAdapter;
 import com.example.grocemart.modelclass.City_ModelClass;
@@ -385,6 +387,16 @@ public class SelectLocation extends AppCompatActivity {
                     startActivity(a);
                 }
             }, 3 * 1000);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (SharedPrefManager.getInstance(SelectLocation.this).isLoggedIn()) {
+        } else {
+            Intent intent = new Intent(SelectLocation.this, SigninPage.class);
+            startActivity(intent);
         }
     }
 }

@@ -7,161 +7,174 @@
     android:background="@drawable/back"
     tools:context=".activity.SigninPage">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/Login"
-        android:textColor="#58E8B6"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imagelogin"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/text"
-        android:src="@drawable/login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"></ImageView>
-
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/imagelogin"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:elevation="5dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/log"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/edit_fullname"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/fifty"
-                android:layout_below="@id/edit_fullname"
-                android:layout_marginLeft="@dimen/twenty"
-                android:layout_marginRight="@dimen/twenty"
-                android:layout_marginBottom="@dimen/ten"
-                android:background="@drawable/registerback"
-                android:drawablePadding="@dimen/twenty"
-                android:elevation="5dp"
-                android:ems="10"
-                android:hint="UserName or Mobile No"
-                android:drawableLeft="@drawable/baseline_person"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:paddingLeft="20dp"
-                android:textColor="#000000"
-                android:textSize="@dimen/edittextsize"
-                android:textStyle="normal" />
-
-            <EditText
-                android:id="@+id/edit_password"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/fifty"
-                android:layout_below="@id/edit_fullname"
-                android:layout_marginLeft="@dimen/twenty"
-                android:layout_marginTop="@dimen/twenty"
-                android:layout_marginRight="@dimen/twenty"
-                android:layout_marginBottom="@dimen/ten"
-                android:background="@drawable/registerback"
-                android:drawablePadding="@dimen/twenty"
-                android:elevation="5dp"
-                android:ems="10"
-                android:hint="Password"
-                android:drawableLeft="@drawable/baseline_lock"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:paddingLeft="20dp"
-                android:textColor="#000000"
-                android:textSize="@dimen/edittextsize"
-                android:textStyle="normal" />
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="* Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/forgtPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edit_password"
-                android:layout_marginTop="@dimen/twenty"
-                android:layout_marginRight="@dimen/twenty"
-                android:text="@string/ForgotPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@string/Login"
                 android:textColor="#58E8B6"
-                android:textSize="@dimen/textsize"
-                android:textStyle="bold"
-                android:layout_gravity="right"/>
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imagelogin"
+                android:layout_width="@dimen/hundred"
+                android:layout_height="@dimen/hundred"
+                android:layout_below="@+id/text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/login"></ImageView>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/sixty"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/fifteen">
+                android:layout_below="@+id/imagelogin"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/forty"
+                android:layout_marginRight="@dimen/ten"
+                android:elevation="5dp"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/signin"
-                    android:layout_width="@dimen/three_hundred"
-                    android:layout_height="@dimen/forty_five"
-                    android:layout_below="@id/log"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/button_back"
-                    android:text="Signin"
-                    android:textAllCaps="false"
-                    android:textColor="@color/btntextcolor"
-                    android:textStyle="bold"></Button>
-
-                <RelativeLayout
-                    android:id="@+id/r"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/log"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/submit"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center">
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/edit_fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:layout_below="@id/edit_fullname"
+                        android:layout_marginLeft="@dimen/twenty"
+                        android:layout_marginRight="@dimen/twenty"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:background="@drawable/registerback"
+                        android:drawableLeft="@drawable/baseline_person"
+                        android:drawablePadding="@dimen/twenty"
+                        android:elevation="5dp"
+                        android:ems="10"
+                        android:hint="UserName or Mobile No"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/edittextsize"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/edit_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:layout_below="@id/edit_fullname"
+                        android:layout_marginLeft="@dimen/twenty"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:layout_marginRight="@dimen/twenty"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:background="@drawable/registerback"
+                        android:drawableLeft="@drawable/baseline_lock"
+                        android:drawablePadding="@dimen/twenty"
+                        android:elevation="5dp"
+                        android:ems="10"
+                        android:hint="Password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/edittextsize"
+                        android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/login1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Notregistered"
-                        android:textColor="#050505"
-                        android:textSize="@dimen/textsize"/>
+                        android:layout_margin="20dp"
+                        android:text="* Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp" />
 
                     <TextView
-                        android:id="@+id/createaccount"
+                        android:id="@+id/forgtPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/login1"
-                        android:text="@string/Createanaccount"
+                        android:layout_below="@id/edit_password"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:layout_marginRight="@dimen/twenty"
+                        android:text="@string/ForgotPassword"
                         android:textColor="#58E8B6"
                         android:textSize="@dimen/textsize"
                         android:textStyle="bold" />
 
-                </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/sixty"
+                        android:layout_marginBottom="@dimen/fifteen"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <Button
+                            android:id="@+id/signin"
+                            android:layout_width="@dimen/three_hundred"
+                            android:layout_height="@dimen/forty_five"
+                            android:layout_below="@id/log"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/button_back"
+                            android:text="Signin"
+                            android:textAllCaps="false"
+                            android:textColor="@color/btntextcolor"
+                            android:textStyle="bold"></Button>
 
-        </LinearLayout>
+                        <RelativeLayout
+                            android:id="@+id/r"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/submit"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center">
 
-    </RelativeLayout>
+                            <TextView
+                                android:id="@+id/login1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/Notregistered"
+                                android:textColor="#050505"
+                                android:textSize="@dimen/textsize" />
+
+                            <TextView
+                                android:id="@+id/createaccount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/login1"
+                                android:text="@string/Createanaccount"
+                                android:textColor="#58E8B6"
+                                android:textSize="@dimen/textsize"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
 
 </RelativeLayout>

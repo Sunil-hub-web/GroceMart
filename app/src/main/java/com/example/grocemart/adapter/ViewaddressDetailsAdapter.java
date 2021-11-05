@@ -54,10 +54,10 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
 
     }
 
-    public ViewaddressDetailsAdapter(CheckoutPage addressDetails,
+    public ViewaddressDetailsAdapter(CheckoutPage checkoutPage,
                                      ArrayList<ViewAddressDetails_ModelClass> addressDetails1) {
 
-        this.context = addressDetails;
+        this.context = checkoutPage;
         this.address_Details = addressDetails1;
 
     }
