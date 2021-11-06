@@ -20,6 +20,16 @@
             android:textColor="@color/black"
             android:textSize="@dimen/edittextsize"></TextView>
 
+        <TextView
+            android:id="@+id/addressId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_margin="@dimen/twenty"
+            android:textColor="@color/black"
+            android:layout_below="@id/addressdetails"
+            android:textSize="@dimen/edittextsize"></TextView>
+
         <Button
             android:id="@+id/btn_Delete"
             android:layout_width="@dimen/hundred"

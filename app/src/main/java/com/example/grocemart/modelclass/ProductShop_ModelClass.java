@@ -133,4 +133,23 @@ public class ProductShop_ModelClass {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
+    @Override
+    public String toString() {
+        return "ProductShop_ModelClass{" +
+                "productId='" + productId + '\'' +
+                ", productName='" + productName + '\'' +
+                ", productDesc='" + productDesc + '\'' +
+                ", productImage='" + productImage + '\'' +
+                ", shopId='" + shopId + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", shopAddress='" + shopAddress + '\'' +
+                ", variationId='" + variationId + '\'' +
+                ", unit='" + unit + '\'' +
+                ", mrpPrice='" + mrpPrice + '\'' +
+                ", salesPrice='" + salesPrice + '\'' +
+                ", discount='" + discount + '\'' +
+                ", variation=" + variation +
+                '}';
+    }
 }

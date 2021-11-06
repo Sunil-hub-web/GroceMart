@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rel_Click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homecard_back"
+        android:layout_margin="@dimen/fifteen"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/ten">
+
+            <TextView
+                android:id="@+id/orderId"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/black"
+                android:text="OrderId"
+                android:textSize="@dimen/textsize"></TextView>
+
+            <TextView
+                android:id="@+id/payment"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/black"
+                android:text="Payment"
+                android:textSize="@dimen/textsize"></TextView>
+
+            <TextView
+                android:id="@+id/statues"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/black"
+                android:text="Statues"
+                android:textSize="@dimen/textsize"></TextView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/textvalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/ten">
+
+            <TextView
+                android:id="@+id/text_orderId"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/black"
+                android:text="OrderId"
+                android:textSize="@dimen/textsize"></TextView>
+
+            <TextView
+                android:id="@+id/text_payment"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/black"
+                android:text="Payment"
+                android:textSize="@dimen/textsize"></TextView>
+
+            <TextView
+                android:id="@+id/text_statues"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:textColor="@color/black"
+                android:text="Statues"
+                android:textSize="@dimen/textsize"></TextView>
+
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btn_ViewOrderDetails"
+            android:layout_width="@dimen/hundred_fifty"
+            android:layout_height="@dimen/forty"
+            android:background="#E32113"
+            android:text="View Order Details"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_below="@id/textvalue"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginBottom="@dimen/twenty"></Button>
+
+    </RelativeLayout>
+
+</RelativeLayout>

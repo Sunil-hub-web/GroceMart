@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -138,9 +139,9 @@ public class ProductShopDetails extends AppCompatActivity {
                             String shopId = (jsonObject_Shop.getString("shop_id"));
                             String shopName = (jsonObject_Shop.getString("shop_name"));
                             String shopAddress = (jsonObject_Shop.getString("shop_address"));
-                            String allVariation = (jsonObject_Shop.getString("All_variation"));
 
-                            JSONArray jsonArray_variation = new JSONArray(allVariation);
+                            JSONArray jsonArray_variation = jsonObject_Shop.getJSONArray("All_variation");
+
 
                             if (jsonArray_variation.length() == 0) {
 
@@ -157,14 +158,18 @@ public class ProductShopDetails extends AppCompatActivity {
                                     String discount = jsonObject_variation.getString("discount");
 
                                     Variation_ModelClass variation_modelClass = new Variation_ModelClass(
-                                            variationId, unit, mrpPrice, salesPrice, discount
-                                    );
+                                            variationId, unit, mrpPrice, salesPrice, discount);
 
                                     variations.add(variation_modelClass);
 
-                                }
+                                    Log.d("variations",variations.toString());
 
+
+                                }
                             }
+
+                            Log.d("variationsize", String.valueOf(variations.size()));
+
                             if (!productid.equalsIgnoreCase("null")) {
 
                                 ProductShop_ModelClass productShop_modelClass = new ProductShop_ModelClass(
@@ -173,6 +178,10 @@ public class ProductShopDetails extends AppCompatActivity {
                                 );
 
                                 itemArraylist.add(productShop_modelClass);
+
+                              Log.d("itemArraylist",itemArraylist.toString());
+                              Log.d("itemArraylistsize","" + itemArraylist.size());
+
                             }
                         }
 

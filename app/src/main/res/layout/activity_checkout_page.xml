@@ -44,8 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/view"
             android:layout_marginLeft="@dimen/fifteen"
-            android:layout_marginRight="@dimen/fifteen"
-            android:layout_marginTop="@dimen/ten">
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/fifteen">
 
             <TextView
                 android:id="@+id/subTotal"
@@ -60,22 +60,22 @@
                 android:id="@+id/priceSymbol1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toLeftOf="@+id/subTotalPrice"
                 android:text="₹"
                 android:textColor="@color/black"
                 android:textSize="@dimen/edittextsize"
-                android:textStyle="bold"
-                android:layout_toLeftOf="@+id/subTotalPrice"
-                android:layout_marginRight="@dimen/ten"></TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:id="@+id/subTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:text="145.00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize"
-                android:textStyle="bold"
-                android:layout_alignParentRight="true" ></TextView>
+                android:textStyle="bold"></TextView>
 
         </RelativeLayout>
 
@@ -85,10 +85,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/r5"
             android:layout_marginLeft="@dimen/fifteen"
-            android:layout_marginRight="@dimen/fifteen"
-            android:layout_marginTop="@dimen/fifteen">
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_marginRight="@dimen/fifteen">
+
             <TextView
-                android:id="@+id/shipping"
+                android:id="@+id/shipping_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shipping"
@@ -100,22 +101,22 @@
                 android:id="@+id/priceSymbol2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toLeftOf="@+id/shippingCharges"
                 android:text="₹"
                 android:textColor="@color/black"
                 android:textSize="@dimen/edittextsize"
-                android:textStyle="bold"
-                android:layout_toLeftOf="@+id/shippingCharges"
-                android:layout_marginRight="@dimen/ten"></TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:id="@+id/shippingCharges"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="5.0"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize"
-                android:text="5.0"
-                android:textStyle="bold"
-                android:layout_alignParentRight="true"></TextView>
+                android:textStyle="bold"></TextView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -140,12 +141,12 @@
                 android:id="@+id/priceSymbol3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toLeftOf="@+id/totalPrice"
                 android:text="₹"
                 android:textColor="@color/black"
                 android:textSize="@dimen/edittextsize"
-                android:textStyle="bold"
-                android:layout_toLeftOf="@+id/totalPrice"
-                android:layout_marginRight="@dimen/ten"></TextView>
+                android:textStyle="bold"></TextView>
 
 
             <TextView
@@ -157,6 +158,50 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/edittextsize"
                 android:textStyle="bold"></TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/wallet_Amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/fifteen">
+
+            <RadioButton
+                android:id="@+id/radio_wallet_Amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/twenty"
+                android:button="@xml/custom_check_box"
+                android:checked="false"
+                android:paddingLeft="10dp"
+                android:text="wallet Amount"
+                android:textSize="@dimen/textsize"></RadioButton>
+
+
+            <TextView
+                android:id="@+id/priceSymbol4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toLeftOf="@+id/wallet_Amountprice"
+                android:text="₹"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/wallet_Amountprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="145.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold"></TextView>
+
         </RelativeLayout>
 
         <View
@@ -190,8 +235,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/rel"
-        android:orientation="vertical"
-        android:layout_marginBottom="@dimen/fifty">
+        android:layout_marginBottom="@dimen/fifty"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/addaddress"
@@ -217,7 +262,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/ch1"
+                    android:id="@+id/radio_CashOnDelivery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/thirty"
@@ -229,12 +274,12 @@
                     android:textSize="@dimen/textsize"></RadioButton>
 
                 <RadioButton
-                    android:id="@+id/ch2"
+                    android:id="@+id/radio_PayOnline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/five"
                     android:layout_marginRight="@dimen/twenty"
-                    android:layout_toRightOf="@id/ch1"
+                    android:layout_toRightOf="@id/radio_CashOnDelivery"
                     android:button="@xml/custom_check_box"
                     android:checked="false"
                     android:paddingLeft="10dp"
@@ -243,11 +288,9 @@
 
             </RadioGroup>
 
-
         </RelativeLayout>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/rel"
@@ -255,35 +298,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:weightSum="2"
-        android:layout_marginBottom="@dimen/ten">
+        android:layout_marginBottom="@dimen/ten"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/btn_ContinueShoping"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="@dimen/forty_five"
+            android:layout_margin="@dimen/ten"
+            android:layout_weight="1"
             android:background="@drawable/button_back"
             android:text="Continue Shoping"
             android:textAllCaps="false"
             android:textColor="@color/btntextcolor"
             android:textSize="@dimen/textsize"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/ten"></Button>
+            android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/procedtocheckout"
+            android:id="@+id/btn_procedToCheckout"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="@dimen/forty_five"
+            android:layout_margin="@dimen/ten"
             android:layout_toRightOf="@id/btn_ContinueShoping"
+            android:layout_weight="1"
             android:background="@drawable/shopingback"
             android:text="Proceed To Checkout"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/ten"></Button>
+            android:textStyle="bold"></Button>
     </LinearLayout>
 
 

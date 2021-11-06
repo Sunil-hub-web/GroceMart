@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,13 +49,14 @@ import java.util.Map;
 
 public class CheckoutPage extends AppCompatActivity {
 
-    Button btn_Address,btn_ContinueShoping;
-    TextView subTotalPrice,shippingCharges,totalPrice;
+    Button btn_Address,btn_ContinueShoping,btn_procedToCheckout;
+    RadioButton radio_CashOnDelivery,radio_PayOnline,radio_wallet_Amount;
+    TextView subTotalPrice,shippingCharges,totalPrice,wallet_Amountprice,shipping_Name;
     Dialog dialog;
     String str_Name,str_Email,str_MobileNo,str_City,str_Area,str_Address,
             str_PinCode,userId,cityid,City_id,city_Name,pincode_Name,
             Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id,str_SubTotalPrice,
-            str_ShippingCharges,str_TotalAmount;
+            str_ShippingCharges,str_TotalAmount,str_radioData,str_AddressId,orderId,str_wallet_Amountprice,ShappingName;
     Button btn_SaveAddress;
     Spinner spiner_City,spiner_Pincode;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
@@ -70,6 +72,7 @@ public class CheckoutPage extends AppCompatActivity {
         setContentView(R.layout.activity_checkout_page);
 
         userId = SharedPrefManager.getInstance(CheckoutPage.this).getUser().getId();
+        str_wallet_Amountprice = SharedPrefManager.getInstance(CheckoutPage.this).getUser().getWallet_Amount();
 
         btn_Address = findViewById(R.id.addaddress);
         AddressRecycler = findViewById(R.id.addressRecycler);
@@ -78,6 +81,11 @@ public class CheckoutPage extends AppCompatActivity {
         subTotalPrice = findViewById(R.id.subTotalPrice);
         totalPrice = findViewById(R.id.totalPrice);
         btn_ContinueShoping = findViewById(R.id.btn_ContinueShoping);
+        btn_procedToCheckout = findViewById(R.id.btn_procedToCheckout);
+        radio_CashOnDelivery = findViewById(R.id.radio_CashOnDelivery);
+        radio_PayOnline = findViewById(R.id.radio_PayOnline);
+        shipping_Name = findViewById(R.id.shipping_Name);
+        wallet_Amountprice = findViewById(R.id.wallet_Amountprice);
 
         linearLayoutManager =  new LinearLayoutManager(CheckoutPage.this,LinearLayoutManager.VERTICAL,false);
 
@@ -86,10 +94,14 @@ public class CheckoutPage extends AppCompatActivity {
         str_SubTotalPrice = intent.getStringExtra("subTotalPrice");
         str_ShippingCharges = intent.getStringExtra("shippingCharges");
         str_TotalAmount = intent.getStringExtra("totalAmount");
+        ShappingName = intent.getStringExtra("ShappingName");
 
         totalPrice.setText(str_TotalAmount);
         subTotalPrice.setText(str_SubTotalPrice);
         shippingCharges.setText(str_ShippingCharges);
+        shipping_Name.setText(ShappingName);
+
+        wallet_Amountprice.setText(str_wallet_Amountprice);
 
         getaddressDetails(userId);
 
@@ -110,6 +122,28 @@ public class CheckoutPage extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
+        btn_procedToCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                str_AddressId = viewaddressDetailsAdapter.addressId();
+
+                if(radio_CashOnDelivery.isChecked()){
+
+                    str_radioData = radio_CashOnDelivery.getText().toString().trim();
+
+                    placeOrder(userId,addressId,str_ShippingCharges,ShappingName,"","0","0",str_radioData);
+
+                }else{
+
+                    Toast.makeText(CheckoutPage.this, "Select Your payment Method", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
     }
 
     public void add_Address(){
@@ -523,5 +557,78 @@ public class CheckoutPage extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(CheckoutPage.this);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
+    }
+
+
+    public void placeOrder(String userId,String addressId,String shippingAmount, String shappingType,
+                           String couponeCode,String couponeAmount,String walletamtdeduce,String paymentType){
+
+        ProgressDialog progressDialog = new ProgressDialog(CheckoutPage.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Register Please wait...");
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.setCancelable(false);
+
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.placeOrder, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String message = jsonObject.getString("success");
+                    String msg = jsonObject.getString("msg");
+
+                    if(message.equals("true")){
+
+                        orderId = jsonObject.getString("order_id");
+
+                        Toast.makeText(CheckoutPage.this, msg, Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                error.printStackTrace();
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("user_id",userId);
+                params.put("adresss_id",addressId);
+                params.put("shipChar",shippingAmount);
+                params.put("shiptype",shappingType);
+                params.put("coupon_code",couponeCode);
+                params.put("code_amnt",couponeAmount);
+                params.put("walletamtdeduce",walletamtdeduce);
+                params.put("payment_type",paymentType);
+
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(CheckoutPage.this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+
     }
 }

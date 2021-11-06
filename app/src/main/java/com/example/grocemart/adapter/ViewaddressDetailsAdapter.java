@@ -91,7 +91,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
                                     +", "+viewAddress.getEmail()+", "+viewAddress.getCityName()
                                     +", "+viewAddress.getArea()+", "+viewAddress.getAddress()+", "+viewAddress.getPincode());
 
-        addressId = viewAddress.getAddressId();
+        holder.addressId.setText(viewAddress.getAddressId());
 
         holder.btn_Delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,25 +161,36 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
             @Override
             public void onClick(View v) {
 
+                addressId = viewAddress.getAddressId();
+
                 index = position;
+
                 notifyDataSetChanged();
                 String all_values = holder.text_Address.getText().toString().trim();
-                Toast.makeText(context, all_values, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, addressId, Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        if(index==position){
+        if(index == position){
 
             holder.rel_Click.setBackgroundResource(R.drawable.selectaddressback);
             holder.rel_Click.setElevation(15);
+
+            addressId = holder.addressId.getText().toString().trim();
+            Toast.makeText(context, addressId, Toast.LENGTH_SHORT).show();
+
         }
-        else
-        {
+        else {
             holder.rel_Click.setBackgroundResource(R.drawable.homecard_back);
             holder.rel_Click.setElevation(5);
         }
 
+    }
+
+    public String addressId(){
+
+        return addressId;
     }
 
     @Override
@@ -188,7 +199,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView text_Address;
+        TextView text_Address,addressId;
         Button btn_Delete;
         RelativeLayout rel_Click;
 
@@ -198,6 +209,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
             text_Address = itemView.findViewById(R.id.addressdetails);
             btn_Delete = itemView.findViewById(R.id.btn_Delete);
             rel_Click = itemView.findViewById(R.id.rel_Click);
+            addressId = itemView.findViewById(R.id.addressId);
 
             btn_Delete.setOnClickListener(new View.OnClickListener() {
                 @Override

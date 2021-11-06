@@ -52,4 +52,15 @@ public class Variation_ModelClass {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
+
+    @Override
+    public String toString() {
+        return "Variation_ModelClass{" +
+                "variationId='" + variationId + '\'' +
+                ", unit='" + unit + '\'' +
+                ", mrpPrice='" + mrpPrice + '\'' +
+                ", salesPrice='" + salesPrice + '\'' +
+                ", discount='" + discount + '\'' +
+                '}';
+    }
 }

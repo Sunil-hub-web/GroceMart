@@ -141,8 +141,9 @@ public class UserDashboard extends AppCompatActivity {
             public void onClick(View v) {
 
                 SharedPrefManager.getInstance(UserDashboard.this).logout();
-                finish();
                 dialog.dismiss();
+                finish();
+                System.exit(1);
             }
         });
         btn_No.setOnClickListener(new View.OnClickListener() {

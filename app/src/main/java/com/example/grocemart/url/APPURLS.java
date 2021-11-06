@@ -36,5 +36,13 @@ public class APPURLS {
 
    public static final String updateCartItem = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=updateCart";
 
+   public static final String placeOrder = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=placeorder";
+
+   public static final String getShappingCharges = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getShipping";
+
+   public static final String getorderDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=GetOrders";
+
+
+
 
 }

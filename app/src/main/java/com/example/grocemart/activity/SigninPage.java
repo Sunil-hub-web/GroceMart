@@ -37,7 +37,7 @@ public class SigninPage extends AppCompatActivity {
     TextView text_CreateAccount, text_ForgotPassword;
     EditText edit_fullname, edit_password;
     Button signin;
-    String fullname, password, userId, userName, userMobileNo, userPassword, userEmailID;
+    String fullname, password, userId, userName, userMobileNo, userPassword, userEmailID,wallet_Amount;
 
 
     @Override
@@ -109,6 +109,7 @@ public class SigninPage extends AppCompatActivity {
                 progressDialog.dismiss();
 
                 try {
+
                     JSONObject jsonObject = new JSONObject(response);
                     String message = jsonObject.getString("success");
 
@@ -120,12 +121,28 @@ public class SigninPage extends AppCompatActivity {
                         userEmailID = jsonObject.getString("email");
                         userMobileNo = jsonObject.getString("contact_no");
                         userPassword = edit_password.getText().toString().trim();
+                        wallet_Amount = jsonObject.getString("wallet_amt");
 
-                        Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword);
-                        SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
+                        if(wallet_Amount.equals("null")){
 
-                        Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
-                        startActivity (intent);
+                            wallet_Amount = "0";
+
+                            Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword,wallet_Amount);
+                            SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
+
+                            Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
+                            startActivity (intent);
+
+                        }else{
+
+                            Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword,wallet_Amount);
+                            SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
+
+                            Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
+                            startActivity (intent);
+
+                        }
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -148,6 +165,7 @@ public class SigninPage extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("usr_name", userNmae);
                 params.put("password", password);
+
                 return params;
             }
         };

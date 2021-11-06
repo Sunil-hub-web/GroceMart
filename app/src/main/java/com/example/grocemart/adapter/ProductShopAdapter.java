@@ -52,7 +52,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     ArrayList<ProductShop_ModelClass> product;
     String t;
     Dialog dialogMenu;
-    ArrayList<Variation_ModelClass> variations;
+    ArrayList<Variation_ModelClass> model_variations;
 
     String userId,productId,varitionId,shopId,restt_price,varition_Id,countvalue;
     int count_value;
@@ -94,7 +94,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
         holder.text_ShopName.setText(productShop.getShopName());
         holder.text_address.setText(productShop.getShopAddress());
 
-        holder.text_Spinertext.setText("Select quantity");
+       // holder.text_Spinertext.setText();
 
 
 
@@ -136,8 +136,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             @Override
             public void onClick(View v) {
 
-                variations = new ArrayList<Variation_ModelClass>();
-                variations = product.get(position).getVariation();
+                model_variations = new ArrayList<Variation_ModelClass>();
+                model_variations = product.get(position).getVariation();
 
                 dialogMenu = new Dialog(context, android.R.style.Theme_Light_NoTitleBar);
                 dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -150,7 +150,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
                 rv_vars.setLayoutManager(new LinearLayoutManager(context));
                 rv_vars.setNestedScrollingEnabled(false);
-                VariationAdapterforProductlist varad = new VariationAdapterforProductlist(variations, context);
+                VariationAdapterforProductlist varad = new VariationAdapterforProductlist(model_variations, context);
                 rv_vars.setAdapter(varad);
 
                 rv_vars.addOnItemTouchListener(new RecyclerTouchListener(context, rv_vars, new RecyclerTouchListener.ClickListener() {
@@ -160,7 +160,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
                         Log.d("gbrdsfbfbvdz", "clicked");
 
-                        Variation_ModelClass parenting = variations.get(post);
+                        Variation_ModelClass parenting = model_variations.get(post);
 
                         product.get(position).setVariationId(parenting.getVariationId());
                         product.get(position).setSalesPrice(parenting.getSalesPrice());
@@ -186,7 +186,6 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
             }
         });
-
         holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,17 +207,16 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             }
         });
 
-        if (productShop.getVariation().size() == 0) {
+        if(productShop.getVariation().size()==0){
 
-            holder.text_Spinertext.setText("Select Quantity");
-            varitionId = variation.getVariationId();
+           // holder.text_Spinertext.setText("₹"+productShop.getSalesPrice());
+        }else{
 
-        } else {
+            //holder.text_Spinertext.setText("₹ " + productShop.getVariation().get(0).getSalesPrice());
+            holder.text_Spinertext.setText(productShop.getVariation().get(0).getVariationId());
 
-            holder.text_Spinertext.setText("Select Quantity");
-
-            product.get(position).setVariationId(productShop.getVariation().get(0).getVariationId());
-            product.get(position).setUnit(productShop.getVariation().get(0).getUnit());
+            product.get(position).setVariationId(variation.getVariationId());
+            product.get(position).setUnit(variation.getUnit());
             product.get(position).setSalesPrice(variation.getSalesPrice());
         }
     }

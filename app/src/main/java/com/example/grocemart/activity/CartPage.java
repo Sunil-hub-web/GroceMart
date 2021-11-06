@@ -6,15 +6,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -25,11 +30,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
+import com.example.grocemart.RecyclerTouchListener;
 import com.example.grocemart.SharedPrefManager;
 import com.example.grocemart.adapter.ProductAdapter;
+import com.example.grocemart.adapter.ShappingAdapter;
+import com.example.grocemart.adapter.VariationAdapterforProductlist;
 import com.example.grocemart.modelclass.CartItem;
+import com.example.grocemart.modelclass.ShappingCharges_ModelClass;
+import com.example.grocemart.modelclass.Variation_ModelClass;
 import com.example.grocemart.url.APPURLS;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,14 +57,20 @@ public class CartPage extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     Button btn_CheckOut;
-    public static TextView subTotalPrice,shippingCharges,coupanCode,text_totalAmount;
+    public static TextView subTotalPrice,shippingCharges,coupanCode,text_totalAmount,text_Shapping;
     int value;
     ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
+
+    ArrayList<ShappingCharges_ModelClass> ShippingCharges = new ArrayList<ShappingCharges_ModelClass>();
     ImageView image_NoResult;
     public String productId,variationId,shopId,productImage, productName,shopName,unit,
             salePrice,discount,quantity,userId,str_SubTotalPrice,str_ShippingCharges,str_TotalAmount;
 
-    double totalprice,sales_Price,quanTity,totalAmount = 0,shipCharge = 5.0;
+    double totalprice,sales_Price,quanTity,totalAmount = 0,shipCharge;
+
+    ShappingAdapter shappingAdapter;
+    Dialog dialogMenu;
+    RecyclerView rv_vars;
 
 
     RelativeLayout rel_MoneyTotal,rel_Total;
@@ -73,6 +90,7 @@ public class CartPage extends AppCompatActivity {
         rel_MoneyTotal = findViewById(R.id.rel_MoneyTotal);
         rel_Total = findViewById(R.id.rel_Total);
         shippingCharges = findViewById(R.id.shippingCharges);
+        text_Shapping = findViewById(R.id.text_Shapping);
         coupanCode = findViewById(R.id.coupanCode);
         text_totalAmount = findViewById(R.id.totalAmount);
 
@@ -111,20 +129,86 @@ public class CartPage extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    str_SubTotalPrice = subTotalPrice.getText().toString().trim();
-                    str_ShippingCharges = shippingCharges.getText().toString().trim();
-                    str_TotalAmount = text_totalAmount.getText().toString().trim();
+                    if(text_Shapping.getText().toString().trim().equals("Select")){
 
-                    Intent intent = new Intent(CartPage.this, CheckoutPage.class);
-                    intent.putExtra("subTotalPrice",subTotalPrice.getText().toString().trim());
-                    intent.putExtra("shippingCharges",shippingCharges.getText().toString().trim());
-                    intent.putExtra("totalAmount",text_totalAmount.getText().toString().trim());
-                    startActivity(intent);
+                        Toast.makeText(CartPage.this, "Select Charges", Toast.LENGTH_SHORT).show();
+
+                    }else{
+
+                        str_SubTotalPrice = subTotalPrice.getText().toString().trim();
+                        str_ShippingCharges = shippingCharges.getText().toString().trim();
+                        str_TotalAmount = text_totalAmount.getText().toString().trim();
+
+                        Intent intent = new Intent(CartPage.this, CheckoutPage.class);
+                        intent.putExtra("subTotalPrice",subTotalPrice.getText().toString().trim());
+                        intent.putExtra("shippingCharges",shippingCharges.getText().toString().trim());
+                        intent.putExtra("totalAmount",text_totalAmount.getText().toString().trim());
+                        intent.putExtra("ShappingName",text_Shapping.getText().toString().trim());
+                        startActivity(intent);
+                    }
 
                 }
             });
 
             getCartItem(userId);
+
+            getShapping();
+
+          text_Shapping.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+
+                  dialogMenu = new Dialog(CartPage.this, android.R.style.Theme_Light_NoTitleBar);
+                  dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                  dialogMenu.setContentView(R.layout.shapping_layout);
+                  dialogMenu.setCancelable(true);
+                  dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                  dialogMenu.setCanceledOnTouchOutside(true);
+
+                  rv_vars = dialogMenu.findViewById(R.id.rv_vars);
+
+                  rv_vars.setLayoutManager(new LinearLayoutManager(CartPage.this));
+                  rv_vars.setNestedScrollingEnabled(false);
+                  ShappingAdapter varad = new ShappingAdapter(ShippingCharges,CartPage.this);
+                  rv_vars.setAdapter(varad);
+
+                  rv_vars.addOnItemTouchListener(new RecyclerTouchListener(CartPage.this, rv_vars, new RecyclerTouchListener.ClickListener() {
+
+                      @Override
+                      public void onClick(View view, int post) {
+
+                          Log.d("gbrdsfbfbvdz", "clicked");
+
+                          ShappingCharges_ModelClass parenting = ShippingCharges.get(post);
+
+                           String shippingPrice = parenting.getPrice();
+                           String shippingName = parenting.getShappingName();
+
+                           text_Shapping.setText(shippingName);
+                           shippingCharges.setText(shippingPrice);
+
+                          shipCharge = Double.valueOf(shippingPrice) ;
+
+                          Double AmountTotal = totalAmount + shipCharge;
+
+                          String tot_Amount = String.valueOf(AmountTotal);
+
+                          text_totalAmount.setText(tot_Amount);
+
+                          dialogMenu.dismiss();
+                      }
+
+                      @Override
+                      public void onLongClick(View view, int position) {
+
+                      }
+
+                  }));
+
+                  dialogMenu.show();
+
+              }
+          });
 
         }
 
@@ -192,14 +276,8 @@ public class CartPage extends AppCompatActivity {
 
                         subTotalPrice.setText(total_price);
 
-                        String shipcharge = String.valueOf(shipCharge);
-                        shippingCharges.setText(shipcharge);
+                        text_totalAmount.setText(total_price);
 
-                        Double AmountTotal = totalAmount + shipCharge;
-
-                        String tot_Amount = String.valueOf(AmountTotal);
-
-                        text_totalAmount.setText(tot_Amount);
 
                         if(allCartItem.size() == 0){
 
@@ -254,6 +332,63 @@ public class CartPage extends AppCompatActivity {
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
     }
+
+        public void getShapping(){
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getShappingCharges, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        String message = jsonObject.getString("success");
+
+                        if(message.equals("true")){
+
+                            String All_shipping_chr = jsonObject.getString("All_shipping_chr");
+
+                            JSONArray jsonArray_Shipping = new JSONArray(All_shipping_chr);
+
+                            for(int i=0;i<jsonArray_Shipping.length();i++){
+
+                                JSONObject jsonObject_Shipping = jsonArray_Shipping.getJSONObject(i);
+
+                                String shipping_id = jsonObject_Shipping.getString("shipping_id");
+                                String price = jsonObject_Shipping.getString("price");
+                                String delivery_price = jsonObject_Shipping.getString("delivery_price");
+                                String name = jsonObject_Shipping.getString("name");
+
+                                ShappingCharges_ModelClass shappingCharges_modelClass = new ShappingCharges_ModelClass(shipping_id,
+                                        price,delivery_price,name
+                                );
+
+                                ShippingCharges.add(shappingCharges_modelClass);
+
+                            }
+
+                            Log.d("ShippingCharges",ShippingCharges.toString());
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    error.printStackTrace ();
+
+                }
+            });
+
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
+            requestQueue.getCache().clear();
+            requestQueue.add(stringRequest);
+        }
 
     @Override
     public void onBackPressed() {
