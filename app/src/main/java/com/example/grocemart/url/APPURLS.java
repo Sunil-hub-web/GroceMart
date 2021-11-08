@@ -42,6 +42,8 @@ public class APPURLS {
 
    public static final String getorderDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=GetOrders";
 
+   public static final String changePassword = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=changePassword";
+
 
 
 

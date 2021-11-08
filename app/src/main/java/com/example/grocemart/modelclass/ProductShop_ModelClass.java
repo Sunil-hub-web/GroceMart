@@ -2,18 +2,20 @@ package com.example.grocemart.modelclass;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductShop_ModelClass {
 
     String productId,productName,productDesc,productImage,shopId,shopName,shopAddress,
             variationId,unit,mrpPrice,salesPrice,discount;
-    ArrayList<Variation_ModelClass> variation;
+
+    private List<Variation_ModelClass> variation;
 
     public ProductShop_ModelClass(String productId, String productName, String productDesc,
                                   String productImage, String shopId, String shopName,
                                   String shopAddress, String variationId, String unit, String mrpPrice,
                                   String salesPrice, String discount,
-                                  ArrayList<Variation_ModelClass> variation) {
+                                  List<Variation_ModelClass> variation) {
 
         this.productId = productId;
         this.productName = productName;
@@ -86,7 +88,7 @@ public class ProductShop_ModelClass {
         this.shopAddress = shopAddress;
     }
 
-    public ArrayList<Variation_ModelClass> getVariation() {
+    public List<Variation_ModelClass> getVariation() {
         return variation;
     }
 

@@ -15,13 +15,14 @@ import com.example.grocemart.modelclass.Variation_ModelClass;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VariationAdapterforProductlist extends RecyclerView.Adapter<VariationAdapterforProductlist.ViewHolder> {
 
     Context context;
-    ArrayList<Variation_ModelClass> variation;
+    List<Variation_ModelClass> variation;
 
-    public VariationAdapterforProductlist(ArrayList<Variation_ModelClass> variations, Context context) {
+    public VariationAdapterforProductlist(List<Variation_ModelClass> variations, Context context) {
 
         this.variation = variations;
         this.context = context;

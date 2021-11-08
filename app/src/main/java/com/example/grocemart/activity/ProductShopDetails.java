@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProductShopDetails extends AppCompatActivity {
@@ -47,7 +48,8 @@ public class ProductShopDetails extends AppCompatActivity {
     ImageView image_Product;
     ArrayList<ProductShop_ModelClass> productShop = new ArrayList<>();
     ArrayList<ProductShop_ModelClass> itemArraylist = new ArrayList<ProductShop_ModelClass>();
-    ArrayList<Variation_ModelClass> variations = new ArrayList<Variation_ModelClass>();
+    List<Variation_ModelClass> variations = new ArrayList<Variation_ModelClass>();
+
 
     String productId, cityId;
     public static TextView itemcounter;
@@ -142,9 +144,9 @@ public class ProductShopDetails extends AppCompatActivity {
                             String shopId = jsonObject_Shop.getString("shop_id");
                             String shopName = jsonObject_Shop.getString("shop_name");
                             String shopAddress = jsonObject_Shop.getString("shop_address");
-                            String variation = jsonObject_Shop.getString("All_variation");
+//                            String variation = jsonObject_Shop.getString("All_variation");
 
-                            JSONArray jsonArray_variation = new JSONArray(variation);
+                            JSONArray jsonArray_variation = jsonObject_Shop.getJSONArray("All_variation");
 
 
                             if (jsonArray_variation.length() == 0) {
@@ -166,15 +168,20 @@ public class ProductShopDetails extends AppCompatActivity {
 
                                     variations.add(variation_modelClass);
 
-                                    Log.d("variations",variations.toString());
 
 
                                 }
+
+                                Log.d("variations",variations.size()+"");
+
+
+
                             }
 
-                            Log.d("variationsize", String.valueOf(variations.size()));
-
+//                            Log.d("variationsize", String.valueOf((variation.length())));
                             if (!productid.equalsIgnoreCase("null")) {
+
+                                   Log.d("Ranjeet",variations.get(0).getVariationId().toString());
 
                                 ProductShop_ModelClass productShop_modelClass = new ProductShop_ModelClass(
                                         productid, productname, productdesc, productimage, shopId, shopName,
@@ -183,11 +190,14 @@ public class ProductShopDetails extends AppCompatActivity {
 
                                 itemArraylist.add(productShop_modelClass);
 
-                              Log.d("itemArraylist",itemArraylist.toString());
-                              Log.d("itemArraylistsize","" + itemArraylist.size());
-
                             }
+
+                            Log.d("variationsChck",itemArraylist.size()+"");
+
+                            variations.clear();
                         }
+
+                        Log.d("itemArraylist",itemArraylist.toString());
 
 
                         if (itemArraylist.size() != 0) {

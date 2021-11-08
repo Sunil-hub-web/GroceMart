@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.example.grocemart.activity.MainActivity;
+import com.example.grocemart.activity.SigninPage;
+import com.example.grocemart.activity.SplashScreen;
 import com.example.grocemart.modelclass.Login_ModelClass;
 
 public class SharedPrefManager {
@@ -73,11 +75,12 @@ public class SharedPrefManager {
 
     //this method will logout the user
     public void logout() {
+
         SharedPreferences sharedPrefManager = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefManager.edit();
         editor.clear();
         editor.apply();
-        mCtx.startActivity(new Intent (mCtx, MainActivity.class));
+        mCtx.startActivity(new Intent (mCtx, SplashScreen.class));
     }
 
 }

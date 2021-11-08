@@ -146,7 +146,8 @@ public class UserDashboard extends AppCompatActivity {
                 dialog.dismiss();
 
                 finish();
-                System.exit(1);
+                //System.exit(1);
+
             }
         });
         btn_No.setOnClickListener(new View.OnClickListener() {
@@ -164,10 +165,11 @@ public class UserDashboard extends AppCompatActivity {
 
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
+        super.onBackPressed();
 
         Intent intent = new Intent(UserDashboard.this,MainActivity.class);
         startActivity(intent);
-    }
+    }*/
 }

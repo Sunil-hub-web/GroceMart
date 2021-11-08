@@ -44,6 +44,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.ViewHolder> {
@@ -52,7 +53,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     ArrayList<ProductShop_ModelClass> product;
     String t;
     Dialog dialogMenu;
-    ArrayList<Variation_ModelClass> model_variations;
+    List<Variation_ModelClass> model_variations;
+    List<ProductShop_ModelClass> itemlist ;
 
     String userId,productId,varitionId,shopId,restt_price,varition_Id,countvalue;
     int count_value;
@@ -62,6 +64,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         this.context = productShopDetails;
         this.product = itemArraylist;
+//        this.itemlist = itemArraylist;
     }
 
 
@@ -81,6 +84,10 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
         ProductShop_ModelClass productShop = product.get(position);
         Variation_ModelClass variation = productShop.getVariation().get(position);
 
+
+        Log.d("Ranjeetadapter",position +"");
+
+
         String url = "https://" + productShop.getProductImage();
 
         userId = SharedPrefManager.getInstance(context).getUser().getId();
@@ -93,6 +100,12 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
         holder.text_ProductNmae.setText(productShop.getProductName());
         holder.text_ShopName.setText(productShop.getShopName());
         holder.text_address.setText(productShop.getShopAddress());
+//        Variation_ModelClass vraitionclasValue = productShop.getVariation().get(position);
+
+
+                model_variations=productShop.getVariation();
+                Log.d("Ranjeet_adapter",model_variations.size()+"");
+
 
        // holder.text_Spinertext.setText();
 
@@ -136,8 +149,11 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             @Override
             public void onClick(View v) {
 
+//                Log.d("Ranjeet_poistion",itemlist.get(position).toString());
+
+
                 model_variations = new ArrayList<Variation_ModelClass>();
-                model_variations = productShop.getVariation();
+
 
                 dialogMenu = new Dialog(context, android.R.style.Theme_Light_NoTitleBar);
                 dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -161,7 +177,6 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                         Log.d("gbrdsfbfbvdz", "clicked");
 
                         Variation_ModelClass parenting = model_variations.get(post);
-
                         product.get(position).setVariationId(parenting.getVariationId());
                         product.get(position).setSalesPrice(parenting.getSalesPrice());
                         product.get(position).setUnit(parenting.getUnit());

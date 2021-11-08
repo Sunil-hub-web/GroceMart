@@ -30,7 +30,9 @@
         android:layout_gravity="end"
         android:layout_margin="@dimen/ten"
         android:layout_below="@+id/editText"
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
+        android:textStyle="bold"
         android:background="@drawable/button_update"/>
 
         <Button
@@ -42,6 +44,8 @@
             android:layout_gravity="end"
             android:layout_margin="@dimen/ten"
             android:layout_below="@+id/editText"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:background="@drawable/button_back"/>
 
     </RelativeLayout>
