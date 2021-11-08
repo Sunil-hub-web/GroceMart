@@ -41,7 +41,7 @@ public class MyOrderDetails extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     String order_id,order_status,shiping_type,shipping_charge,payment_mode,subtotal,
             total,delivery_date,timeSlot,userId,productId,productName,productQuantity,
-            productImage,productPrice;
+            productImage,productPrice,name,state,city,pincode,address,phoneNumber;
 
     OrderDetailsadapter orderDetailsadapter;
 
@@ -114,6 +114,16 @@ public class MyOrderDetails extends AppCompatActivity {
                             delivery_date = jsonObject_OrderDetails.getString("delivery_date");
                             timeSlot = jsonObject_OrderDetails.getString("timeSlot");
 
+                            JSONObject jsonobject_Address = jsonObject_OrderDetails.getJSONObject("Address");
+
+                            name = jsonobject_Address.getString("name");
+                            state = jsonobject_Address.getString("state");
+                            city = jsonobject_Address.getString("city");
+                            pincode = jsonobject_Address.getString("pincode");
+                            address = jsonobject_Address.getString("address");
+                            phoneNumber = jsonobject_Address.getString("phone");
+
+
                             String Order_details = jsonObject_OrderDetails.getString("Order_details");
 
                             JSONArray jsonArray_order = new JSONArray(Order_details);
@@ -138,7 +148,7 @@ public class MyOrderDetails extends AppCompatActivity {
 
                             OrderDetails_ModelClass orderDetails_modelClass = new OrderDetails_ModelClass(
                                     order_id,order_status,shiping_type,shipping_charge,payment_mode,
-                                    subtotal,total,delivery_date,timeSlot,product
+                                    subtotal,total,delivery_date,timeSlot,name,state,city,pincode,address,phoneNumber,product
                             );
 
 

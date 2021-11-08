@@ -133,7 +133,7 @@ public class CheckoutPage extends AppCompatActivity {
 
                     str_radioData = radio_CashOnDelivery.getText().toString().trim();
 
-                    placeOrder(userId,addressId,str_ShippingCharges,ShappingName,"","0","0",str_radioData);
+                    placeOrder(userId,str_AddressId,str_ShippingCharges,ShappingName,"","0","0",str_radioData);
 
                 }else{
 
@@ -567,7 +567,7 @@ public class CheckoutPage extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
         TextView textView = progressDialog.findViewById(R.id.text);
-        textView.setText("Register Please wait...");
+        textView.setText("Order Placed Please wait...");
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCancelable(false);
 

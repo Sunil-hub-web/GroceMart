@@ -205,12 +205,23 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/thirty"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/ten"
+            android:text="Address Details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/addressdetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_margin="@dimen/twenty"
-            android:layout_marginTop="@dimen/ten"
+            android:layout_below="@id/text"
+            android:layout_margin="@dimen/five"
             android:textColor="@color/black"
             android:textSize="@dimen/edittextsize"></TextView>
 

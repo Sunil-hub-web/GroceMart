@@ -137,7 +137,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             public void onClick(View v) {
 
                 model_variations = new ArrayList<Variation_ModelClass>();
-                model_variations = product.get(position).getVariation();
+                model_variations = productShop.getVariation();
 
                 dialogMenu = new Dialog(context, android.R.style.Theme_Light_NoTitleBar);
                 dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -215,9 +215,9 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             //holder.text_Spinertext.setText("₹ " + productShop.getVariation().get(0).getSalesPrice());
             holder.text_Spinertext.setText(productShop.getVariation().get(0).getVariationId());
 
-            product.get(position).setVariationId(variation.getVariationId());
-            product.get(position).setUnit(variation.getUnit());
-            product.get(position).setSalesPrice(variation.getSalesPrice());
+            product.get(position).setVariationId(productShop.getVariation().get(0).getVariationId());
+            product.get(position).setUnit(productShop.getVariation().get(0).getUnit());
+            product.get(position).setSalesPrice(productShop.getVariation().get(0).getSalesPrice());
         }
     }
 

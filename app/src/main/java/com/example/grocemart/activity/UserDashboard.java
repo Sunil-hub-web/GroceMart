@@ -128,6 +128,7 @@ public class UserDashboard extends AppCompatActivity {
     }
 
     public void logout_Condition() {
+        
         //Show Your Another AlertDialog
         final Dialog dialog = new Dialog(UserDashboard.this);
         dialog.setContentView(R.layout.condition_logout);
@@ -141,7 +142,9 @@ public class UserDashboard extends AppCompatActivity {
             public void onClick(View v) {
 
                 SharedPrefManager.getInstance(UserDashboard.this).logout();
+
                 dialog.dismiss();
+
                 finish();
                 System.exit(1);
             }

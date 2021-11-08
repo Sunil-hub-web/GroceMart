@@ -83,6 +83,8 @@ public class OrderDetailsadapter extends RecyclerView.Adapter<OrderDetailsadapte
 
         Userid = SharedPrefManager.getInstance(context).getUser().getId();
 
+
+
         holder.btn_ViewOrderDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +102,10 @@ public class OrderDetailsadapter extends RecyclerView.Adapter<OrderDetailsadapte
                 TextView subTotalPrice = dialogMenu.findViewById(R.id.subTotalPrice);
                 TextView shippingCharges = dialogMenu.findViewById(R.id.shippingCharges);
                 TextView totalPrice = dialogMenu.findViewById(R.id.totalPrice);
+                TextView addressdetails = dialogMenu.findViewById(R.id.addressdetails);
+
+                addressdetails.setText(orderDetails.getName()+", "+orderDetails.getCity()+", "+
+                        orderDetails.getAddress()+", "+orderDetails.getPhoneNumber());
 
                 Button btn_dismiss = dialogMenu.findViewById(R.id.btn_dismiss);
 
@@ -122,7 +128,6 @@ public class OrderDetailsadapter extends RecyclerView.Adapter<OrderDetailsadapte
 
                     }
                 });
-
 
                 dialogMenu.show();
 

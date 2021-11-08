@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -20,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
@@ -49,6 +51,7 @@ public class ProductShopDetails extends AppCompatActivity {
 
     String productId, cityId;
     public static TextView itemcounter;
+    private static final String TAG = "ProductShopDetails" ;
 
     BottomNavigationView bottomNavigationView;
 
@@ -132,15 +135,16 @@ public class ProductShopDetails extends AppCompatActivity {
 
                             JSONObject jsonObject_Shop = jsonArray_shop.getJSONObject(i);
 
-                            String productid = (jsonObject_Shop.getString("product_id"));
-                            String productname = (jsonObject_Shop.getString("product_name"));
-                            String productdesc = (jsonObject_Shop.getString("product_description"));
-                            String productimage = (jsonObject_Shop.getString("product_img"));
-                            String shopId = (jsonObject_Shop.getString("shop_id"));
-                            String shopName = (jsonObject_Shop.getString("shop_name"));
-                            String shopAddress = (jsonObject_Shop.getString("shop_address"));
+                            String productid = jsonObject_Shop.getString("product_id");
+                            String productname = jsonObject_Shop.getString("product_name");
+                            String productdesc = jsonObject_Shop.getString("product_description");
+                            String productimage = jsonObject_Shop.getString("product_img");
+                            String shopId = jsonObject_Shop.getString("shop_id");
+                            String shopName = jsonObject_Shop.getString("shop_name");
+                            String shopAddress = jsonObject_Shop.getString("shop_address");
+                            String variation = jsonObject_Shop.getString("All_variation");
 
-                            JSONArray jsonArray_variation = jsonObject_Shop.getJSONArray("All_variation");
+                            JSONArray jsonArray_variation = new JSONArray(variation);
 
 
                             if (jsonArray_variation.length() == 0) {
@@ -173,8 +177,8 @@ public class ProductShopDetails extends AppCompatActivity {
                             if (!productid.equalsIgnoreCase("null")) {
 
                                 ProductShop_ModelClass productShop_modelClass = new ProductShop_ModelClass(
-                                        productId, productname, productdesc, productimage,
-                                        shopId, shopName, shopAddress, "", "", "", "","" ,variations
+                                        productid, productname, productdesc, productimage, shopId, shopName,
+                                        shopAddress, "", "", "", "","" ,variations
                                 );
 
                                 itemArraylist.add(productShop_modelClass);
@@ -206,11 +210,15 @@ public class ProductShopDetails extends AppCompatActivity {
                 }
             }
         }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
+
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         }) {
