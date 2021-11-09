@@ -82,12 +82,52 @@ public class ShopDetailsPage extends AppCompatActivity {
 
                     if(message.equals("true")){
 
-                        String shop_Name = jsonObject.getString("shop_name");
-                        shopName.setText(shop_Name);
+                        allShop = new ArrayList<>();
+
+                        String shopId = jsonObject.getString("shop_id");
+                        String shop_name = jsonObject.getString("shop_name");
+                        String shop_img = jsonObject.getString("shop_img");
+                        String shop_address = jsonObject.getString("shop_address");
+                        String All_singleshop = jsonObject.getString("All_singleshop_product");
+
+                        shopName.setText(shop_name);
+                        ShopAddress.setText(shop_address);
+
+                        if(shop_address.equals("")){
+
+                            ShopAddress.setVisibility(View.GONE);
+                        }
+
+                        categoryName = new ArrayList<>();
+
+                        JSONArray jsonArray_AllShop = new JSONArray(All_singleshop);
+
+                        for(int i=0;i<jsonArray_AllShop.length();i++){
+
+                            JSONObject jsonObject_AllShop = jsonArray_AllShop.getJSONObject(i);
+
+                            String category_Name = jsonObject_AllShop.getString("Category_name");
+
+                            CategoryName_ModelClass categoryName_modelClass = new CategoryName_ModelClass(category_Name);
+
+                            categoryName.add(categoryName_modelClass);
+                        }
+
+                        AllShopDetails_ModelClass allShopDetails_modelClass = new AllShopDetails_ModelClass(
+                                shopId,shop_name,shop_img,shop_address,categoryName
+                        );
+
+                        allShop.add(allShopDetails_modelClass);
+
+                        gridLayoutManager = new GridLayoutManager(ShopDetailsPage.this,2,GridLayoutManager.VERTICAL,false);
+                        categoryNameAdapter = new CategoryNameAdapter(ShopDetailsPage.this,categoryName);
+                        recycler_CategoryName.setLayoutManager(gridLayoutManager);
+                        recycler_CategoryName.setHasFixedSize(true);
+                        recycler_CategoryName.setAdapter(categoryNameAdapter);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                Log.d("Ranjeet_error",e.toString());
                 }
 
             }
@@ -96,6 +136,10 @@ public class ShopDetailsPage extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 error.printStackTrace();
+
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
+
 
             }
         }){
