@@ -144,7 +144,6 @@ public class ProductShopDetails extends AppCompatActivity {
                             String shopId = jsonObject_Shop.getString("shop_id");
                             String shopName = jsonObject_Shop.getString("shop_name");
                             String shopAddress = jsonObject_Shop.getString("shop_address");
-//                            String variation = jsonObject_Shop.getString("All_variation");
 
                             JSONArray jsonArray_variation = jsonObject_Shop.getJSONArray("All_variation");
 
@@ -168,20 +167,13 @@ public class ProductShopDetails extends AppCompatActivity {
 
                                     variations.add(variation_modelClass);
 
-
-
                                 }
 
                                 Log.d("variations",variations.size()+"");
 
-
-
                             }
 
-//                            Log.d("variationsize", String.valueOf((variation.length())));
                             if (!productid.equalsIgnoreCase("null")) {
-
-                                   Log.d("Ranjeet",variations.get(0).getVariationId().toString());
 
                                 ProductShop_ModelClass productShop_modelClass = new ProductShop_ModelClass(
                                         productid, productname, productdesc, productimage, shopId, shopName,

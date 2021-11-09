@@ -2,65 +2,53 @@ package com.example.grocemart.modelclass;
 
 public class Variation_ModelClass {
 
-    String variationId,unit,mrpPrice,salesPrice,discount;
+    String variation_Id,variation_unit,variation_mrpPrice,variation_salesPrice,variation_discount;
 
-    public Variation_ModelClass(String variationId, String unit,String mrpPrice,
-                                String salesPrice, String discount) {
-        this.variationId = variationId;
-        this.unit = unit;
-        this.mrpPrice = mrpPrice;
-        this.salesPrice = salesPrice;
-        this.discount = discount;
+    public Variation_ModelClass(String variation_Id, String variation_unit, String variation_mrpPrice, String variation_salesPrice, String variation_discount) {
+        this.variation_Id = variation_Id;
+        this.variation_unit = variation_unit;
+        this.variation_mrpPrice = variation_mrpPrice;
+        this.variation_salesPrice = variation_salesPrice;
+        this.variation_discount = variation_discount;
     }
 
-    public String getVariationId() {
-        return variationId;
+    public String getVariation_Id() {
+        return variation_Id;
     }
 
-    public void setVariationId(String variationId) {
-        this.variationId = variationId;
+    public void setVariation_Id(String variation_Id) {
+        this.variation_Id = variation_Id;
     }
 
-    public String getUnit() {
-        return unit;
+    public String getVariation_unit() {
+        return variation_unit;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setVariation_unit(String variation_unit) {
+        this.variation_unit = variation_unit;
     }
 
-    public String getMrpPrice() {
-        return mrpPrice;
+    public String getVariation_mrpPrice() {
+        return variation_mrpPrice;
     }
 
-    public void setMrpPrice(String mrpPrice) {
-        this.mrpPrice = mrpPrice;
+    public void setVariation_mrpPrice(String variation_mrpPrice) {
+        this.variation_mrpPrice = variation_mrpPrice;
     }
 
-    public String getSalesPrice() {
-        return salesPrice;
+    public String getVariation_salesPrice() {
+        return variation_salesPrice;
     }
 
-    public void setSalesPrice(String salesPrice) {
-        this.salesPrice = salesPrice;
+    public void setVariation_salesPrice(String variation_salesPrice) {
+        this.variation_salesPrice = variation_salesPrice;
     }
 
-    public String getDiscount() {
-        return discount;
+    public String getVariation_discount() {
+        return variation_discount;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
-    }
-
-    @Override
-    public String toString() {
-        return "Variation_ModelClass{" +
-                "variationId='" + variationId + '\'' +
-                ", unit='" + unit + '\'' +
-                ", mrpPrice='" + mrpPrice + '\'' +
-                ", salesPrice='" + salesPrice + '\'' +
-                ", discount='" + discount + '\'' +
-                '}';
+    public void setVariation_discount(String variation_discount) {
+        this.variation_discount = variation_discount;
     }
 }

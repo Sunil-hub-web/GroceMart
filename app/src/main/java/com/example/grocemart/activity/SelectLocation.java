@@ -211,39 +211,13 @@ public class SelectLocation extends AppCompatActivity {
                             City_Name = mystate.getCity();
                             Log.d("R_Pincode", City_id);
 
-                          /*  PinCode_ModelClass cityidpinname= arrayListPincode.get(position);
-                            String pincode= cityidpinname.getPincode();
-                            ArrayList<PinCode_ModelClass> janamam = hashmap_picode.get(City_id);*/
-
-                           /* for (Map.Entry<String, ArrayList<PinCode_ModelClass>> ee : hashmap_picode.entrySet()) {
-                                String key = ee.getKey();
-                                ArrayList<PinCode_ModelClass> janamama = ee.getValue();
-                                // TODO: Do something.
-
-                                if(key.equalsIgnoreCase(City_id)) {
-                                    for (int k = 0; k < janamama.size(); k++) {
-
-                                        String pincodeDropDown = janamama.get(k).getPincode();
-                                        ArrayList<String> arraypincode = new ArrayList<>();
-                                        arraypincode.add(pincodeDropDown);
-                                        Log.d("Pinocde_array", pincodeDropDown);
-                                        Log.d("Pinocde_array", arraypincode.size() + "");
-                                    }
-                                }
-
-                            }*/
-
-
-                            //Log.d("Pinocde_array",janamam.toString());
-
                             GetPincode(City_id);
 
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-
+                        
                     } // to close the onItemSelected
 
                     public void onNothingSelected(AdapterView<?> parent) {

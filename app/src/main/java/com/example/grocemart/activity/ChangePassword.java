@@ -3,7 +3,9 @@ package com.example.grocemart.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
+import com.example.grocemart.SharedPrefManager;
 import com.example.grocemart.url.APPURLS;
 
 import org.json.JSONException;
@@ -29,6 +32,9 @@ import java.util.Map;
 public class ChangePassword extends AppCompatActivity {
 
     ImageView image_back;
+    TextView password,newPassword,conformPassword;
+    Button btn_Update;
+    String str_password,str_newPassword,str_conformPassword,str_pwd,str_userId;
 
 
     @Override
@@ -37,6 +43,15 @@ public class ChangePassword extends AppCompatActivity {
         setContentView(R.layout.changepassword);
 
         image_back = findViewById(R.id.back);
+        btn_Update = findViewById(R.id.btn_Update);
+        password = findViewById(R.id.password);
+        newPassword = findViewById(R.id.newPassword);
+        conformPassword = findViewById(R.id.conformPassword);
+
+        str_pwd = SharedPrefManager.getInstance (ChangePassword.this).getUser ().getPassword ();
+        str_userId = SharedPrefManager.getInstance (ChangePassword.this).getUser ().getId ();
+
+        password.setText (str_pwd);
 
         image_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +59,27 @@ public class ChangePassword extends AppCompatActivity {
 
                 Intent intent = new Intent(ChangePassword.this,UserDashboard.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_Update.setOnClickListener (new View.OnClickListener ( ) {
+            @Override
+            public void onClick(View v) {
+
+                str_password = password.getText ().toString ().trim ();
+                str_newPassword = newPassword.getText ().toString ().trim ();
+                str_conformPassword = conformPassword.getText ().toString ().trim ();
+
+                if(str_newPassword.equals (str_conformPassword)){
+
+                    changePassword (str_userId,str_password,str_newPassword,str_conformPassword);
+
+                }else{
+
+                    conformPassword.setError ("Password is not match");
+                    Toast.makeText (ChangePassword.this, "Password is not match", Toast.LENGTH_SHORT).show ( );
+
+                }
             }
         });
     }
@@ -58,7 +94,7 @@ public class ChangePassword extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
 
                     String message = jsonObject.getString("success");
-                    
+
                     if(message.equals("true")){
 
                         String msg = jsonObject.getString("success");

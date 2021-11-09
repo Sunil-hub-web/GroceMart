@@ -44,7 +44,7 @@ public class VariationAdapterforProductlist extends RecyclerView.Adapter<Variati
 
         Variation_ModelClass movie = variation.get(position);
 
-        holder.heading.setText(movie.getUnit());
+        holder.heading.setText(movie.getVariation_unit());
 
     }
 

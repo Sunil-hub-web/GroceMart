@@ -103,11 +103,11 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 //        Variation_ModelClass vraitionclasValue = productShop.getVariation().get(position);
 
 
-                model_variations=productShop.getVariation();
-                Log.d("Ranjeet_adapter",model_variations.size()+"");
+        model_variations=productShop.getVariation();
+        Log.d("Ranjeet_adapter",model_variations.size()+"");
 
 
-       // holder.text_Spinertext.setText();
+        // holder.text_Spinertext.setText();
 
 
 
@@ -177,15 +177,15 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                         Log.d("gbrdsfbfbvdz", "clicked");
 
                         Variation_ModelClass parenting = model_variations.get(post);
-                        product.get(position).setVariationId(parenting.getVariationId());
-                        product.get(position).setSalesPrice(parenting.getSalesPrice());
-                        product.get(position).setUnit(parenting.getUnit());
+                        product.get(position).setVariationId(parenting.getVariation_Id());
+                        product.get(position).setSalesPrice(parenting.getVariation_salesPrice());
+                        product.get(position).setUnit(parenting.getVariation_unit());
 
-                        restt_price = parenting.getUnit();
-                        varition_Id = parenting.getVariationId();
+                        restt_price = parenting.getVariation_unit();
+                        varition_Id = parenting.getVariation_Id();
 
 //                            programViewHolder.discount.setText(parenting.getWeighname());
-                        holder.text_Spinertext.setText("RS " + parenting.getSalesPrice() + " " + " " + restt_price + " (" + parenting.getDiscount() + "%OFF" + ")");
+                        holder.text_Spinertext.setText("RS " + parenting.getVariation_salesPrice() + " " + " " + restt_price + " (" + parenting.getVariation_discount() + "%OFF" + ")");
 
                         dialogMenu.dismiss();
                     }
@@ -224,15 +224,15 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         if(productShop.getVariation().size()==0){
 
-           // holder.text_Spinertext.setText("₹"+productShop.getSalesPrice());
+            // holder.text_Spinertext.setText("₹"+productShop.getSalesPrice());
         }else{
 
             //holder.text_Spinertext.setText("₹ " + productShop.getVariation().get(0).getSalesPrice());
-            holder.text_Spinertext.setText(productShop.getVariation().get(0).getVariationId());
+            holder.text_Spinertext.setText(productShop.getVariation().get(0).getVariation_Id());
 
-            product.get(position).setVariationId(productShop.getVariation().get(0).getVariationId());
-            product.get(position).setUnit(productShop.getVariation().get(0).getUnit());
-            product.get(position).setSalesPrice(productShop.getVariation().get(0).getSalesPrice());
+            product.get(position).setVariationId(productShop.getVariation().get(0).getVariation_Id());
+            product.get(position).setUnit(productShop.getVariation().get(0).getVariation_unit());
+            product.get(position).setSalesPrice(productShop.getVariation().get(0).getVariation_salesPrice());
         }
     }
 

@@ -154,4 +154,6 @@ public class ProductShop_ModelClass {
                 ", variation=" + variation +
                 '}';
     }
+
+
 }
