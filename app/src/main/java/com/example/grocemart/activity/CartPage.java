@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,24 +57,24 @@ public class CartPage extends AppCompatActivity {
     ProductAdapter productAdapter;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    Button btn_CheckOut;
-    public static TextView subTotalPrice,shippingCharges,coupanCode,text_totalAmount,text_Shapping;
+    Button btn_CheckOut,btn_ApplyCopun;
+    public static TextView subTotalPrice, shippingCharges, coupanCode, text_totalAmount, text_Shapping;
     int value;
     ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
 
     ArrayList<ShappingCharges_ModelClass> ShippingCharges = new ArrayList<ShappingCharges_ModelClass>();
     ImageView image_NoResult;
-    public String productId,variationId,shopId,productImage, productName,shopName,unit,
-            salePrice,discount,quantity,userId,str_SubTotalPrice,str_ShippingCharges,str_TotalAmount;
+    public String productId, variationId, shopId, productImage, productName, shopName, unit,
+            salePrice, discount, quantity, userId, str_SubTotalPrice, str_ShippingCharges, str_TotalAmount;
 
-    double totalprice,sales_Price,quanTity,totalAmount = 0,shipCharge;
+    double totalprice, sales_Price, quanTity, totalAmount = 0, shipCharge;
 
     ShappingAdapter shappingAdapter;
     Dialog dialogMenu;
     RecyclerView rv_vars;
+    EditText edit_coupanCode;
 
-
-    RelativeLayout rel_MoneyTotal,rel_Total;
+    RelativeLayout rel_MoneyTotal, rel_Total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,8 @@ public class CartPage extends AppCompatActivity {
         text_Shapping = findViewById(R.id.text_Shapping);
         coupanCode = findViewById(R.id.coupanCode);
         text_totalAmount = findViewById(R.id.totalAmount);
+        btn_ApplyCopun = findViewById(R.id.ApplyCopun);
+        edit_coupanCode = findViewById(R.id.coupanCode);
 
         bottomNavigationView.setSelectedItemId(R.id.cart);
 
@@ -125,102 +128,114 @@ public class CartPage extends AppCompatActivity {
             }
         });
 
-            btn_CheckOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btn_CheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    if(text_Shapping.getText().toString().trim().equals("Select")){
+                if (text_Shapping.getText().toString().trim().equals("Select")) {
 
-                        Toast.makeText(CartPage.this, "Select Charges", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CartPage.this, "Select Charges", Toast.LENGTH_SHORT).show();
 
-                    }else{
+                } else {
 
-                        str_SubTotalPrice = subTotalPrice.getText().toString().trim();
-                        str_ShippingCharges = shippingCharges.getText().toString().trim();
-                        str_TotalAmount = text_totalAmount.getText().toString().trim();
+                    str_SubTotalPrice = subTotalPrice.getText().toString().trim();
+                    str_ShippingCharges = shippingCharges.getText().toString().trim();
+                    str_TotalAmount = text_totalAmount.getText().toString().trim();
 
-                        Intent intent = new Intent(CartPage.this, CheckoutPage.class);
-                        intent.putExtra("subTotalPrice",subTotalPrice.getText().toString().trim());
-                        intent.putExtra("shippingCharges",shippingCharges.getText().toString().trim());
-                        intent.putExtra("totalAmount",text_totalAmount.getText().toString().trim());
-                        intent.putExtra("ShappingName",text_Shapping.getText().toString().trim());
-                        startActivity(intent);
+                    Intent intent = new Intent(CartPage.this, CheckoutPage.class);
+                    intent.putExtra("subTotalPrice", subTotalPrice.getText().toString().trim());
+                    intent.putExtra("shippingCharges", shippingCharges.getText().toString().trim());
+                    intent.putExtra("totalAmount", text_totalAmount.getText().toString().trim());
+                    intent.putExtra("ShappingName", text_Shapping.getText().toString().trim());
+                    startActivity(intent);
+                }
+
+            }
+        });
+
+        getCartItem(userId);
+
+        getShapping();
+
+        text_Shapping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialogMenu = new Dialog(CartPage.this, android.R.style.Theme_Light_NoTitleBar);
+                dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogMenu.setContentView(R.layout.shapping_layout);
+                dialogMenu.setCancelable(true);
+                dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialogMenu.setCanceledOnTouchOutside(true);
+
+                rv_vars = dialogMenu.findViewById(R.id.rv_vars);
+
+                rv_vars.setLayoutManager(new LinearLayoutManager(CartPage.this));
+                rv_vars.setNestedScrollingEnabled(false);
+                ShappingAdapter varad = new ShappingAdapter(ShippingCharges, CartPage.this);
+                rv_vars.setAdapter(varad);
+
+                rv_vars.addOnItemTouchListener(new RecyclerTouchListener(CartPage.this, rv_vars, new RecyclerTouchListener.ClickListener() {
+
+                    @Override
+                    public void onClick(View view, int post) {
+
+                        Log.d("gbrdsfbfbvdz", "clicked");
+
+                        ShappingCharges_ModelClass parenting = ShippingCharges.get(post);
+
+                        String shippingPrice = parenting.getPrice();
+                        String shippingName = parenting.getShappingName();
+
+                        text_Shapping.setText(shippingName);
+                        shippingCharges.setText(shippingPrice);
+
+                        shipCharge = Double.valueOf(shippingPrice);
+
+                        Double AmountTotal = totalAmount + shipCharge;
+
+                        String tot_Amount = String.valueOf(AmountTotal);
+
+                        text_totalAmount.setText(tot_Amount);
+
+                        dialogMenu.dismiss();
                     }
 
-                }
-            });
+                    @Override
+                    public void onLongClick(View view, int position) {
 
-            getCartItem(userId);
+                    }
 
-            getShapping();
+                }));
 
-          text_Shapping.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
+                dialogMenu.show();
 
-                  dialogMenu = new Dialog(CartPage.this, android.R.style.Theme_Light_NoTitleBar);
-                  dialogMenu.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                  dialogMenu.setContentView(R.layout.shapping_layout);
-                  dialogMenu.setCancelable(true);
-                  dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                  dialogMenu.setCanceledOnTouchOutside(true);
+            }
+        });
 
-                  rv_vars = dialogMenu.findViewById(R.id.rv_vars);
+        btn_ApplyCopun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                  rv_vars.setLayoutManager(new LinearLayoutManager(CartPage.this));
-                  rv_vars.setNestedScrollingEnabled(false);
-                  ShappingAdapter varad = new ShappingAdapter(ShippingCharges,CartPage.this);
-                  rv_vars.setAdapter(varad);
+                String code = edit_coupanCode.getText().toString().trim();
+                String totAmount = subTotalPrice.getText().toString().trim();
 
-                  rv_vars.addOnItemTouchListener(new RecyclerTouchListener(CartPage.this, rv_vars, new RecyclerTouchListener.ClickListener() {
+                applyCupon(code,totAmount);
 
-                      @Override
-                      public void onClick(View view, int post) {
+            }
+        });
 
-                          Log.d("gbrdsfbfbvdz", "clicked");
+    }
 
-                          ShappingCharges_ModelClass parenting = ShippingCharges.get(post);
+    public void getCartItem(String userId) {
 
-                           String shippingPrice = parenting.getPrice();
-                           String shippingName = parenting.getShappingName();
-
-                           text_Shapping.setText(shippingName);
-                           shippingCharges.setText(shippingPrice);
-
-                          shipCharge = Double.valueOf(shippingPrice) ;
-
-                          Double AmountTotal = totalAmount + shipCharge;
-
-                          String tot_Amount = String.valueOf(AmountTotal);
-
-                          text_totalAmount.setText(tot_Amount);
-
-                          dialogMenu.dismiss();
-                      }
-
-                      @Override
-                      public void onLongClick(View view, int position) {
-
-                      }
-
-                  }));
-
-                  dialogMenu.show();
-
-              }
-          });
-
-        }
-
-        public void getCartItem(String userId){
-
-            ProgressDialog progressDialog = new ProgressDialog(CartPage.this);
-            progressDialog.show();
-            progressDialog.setContentView(R.layout.progress_dialog);
-            TextView textView = progressDialog.findViewById(R.id.text);
-            textView.setText("Please wait...");
-            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-            progressDialog.setCancelable(false);
+        ProgressDialog progressDialog = new ProgressDialog(CartPage.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Please wait...");
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.setCancelable(false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getCartItem, new Response.Listener<String>() {
             @Override
@@ -233,13 +248,13 @@ public class CartPage extends AppCompatActivity {
 
                     String message = jsonObject.getString("success");
 
-                    if(message.equals("true")){
+                    if (message.equals("true")) {
 
                         String allcart = jsonObject.getString("All_Cart");
 
                         JSONArray jsonArray_AllCart = new JSONArray(allcart);
 
-                        for(int i=0;i<jsonArray_AllCart.length();i++){
+                        for (int i = 0; i < jsonArray_AllCart.length(); i++) {
 
 
                             JSONObject jsonObject_allCart = jsonArray_AllCart.getJSONObject(i);
@@ -256,8 +271,8 @@ public class CartPage extends AppCompatActivity {
                             quantity = jsonObject_allCart.getString("quantity");
 
                             CartItem cartItem = new CartItem(
-                                    productId,variationId,shopId,productImage,productName,shopName,
-                                    unit,salePrice,discount,quantity,salePrice
+                                    productId, variationId, shopId, productImage, productName, shopName,
+                                    unit, salePrice, discount, quantity, salePrice
                             );
 
                             sales_Price = Double.valueOf(salePrice);
@@ -279,13 +294,13 @@ public class CartPage extends AppCompatActivity {
                         text_totalAmount.setText(total_price);
 
 
-                        if(allCartItem.size() == 0){
+                        if (allCartItem.size() == 0) {
 
                             rel_MoneyTotal.setVisibility(View.GONE);
                             rel_Total.setVisibility(View.GONE);
                             image_NoResult.setVisibility(View.VISIBLE);
 
-                        }else{
+                        } else {
 
                             rel_MoneyTotal.setVisibility(View.VISIBLE);
                             rel_Total.setVisibility(View.VISIBLE);
@@ -312,16 +327,16 @@ public class CartPage extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 progressDialog.dismiss();
-                error.printStackTrace ();
+                error.printStackTrace();
             }
-        }){
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String,String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
 
-                params.put("user_id",userId);
+                params.put("user_id", userId);
 
                 return params;
             }
@@ -333,67 +348,117 @@ public class CartPage extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-        public void getShapping(){
+    public void getShapping() {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getShappingCharges, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getShappingCharges, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-                    try {
-                        JSONObject jsonObject = new JSONObject(response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
 
-                        String message = jsonObject.getString("success");
+                    String message = jsonObject.getString("success");
 
-                        if(message.equals("true")){
+                    if (message.equals("true")) {
 
-                            String All_shipping_chr = jsonObject.getString("All_shipping_chr");
+                        String All_shipping_chr = jsonObject.getString("All_shipping_chr");
 
-                            JSONArray jsonArray_Shipping = new JSONArray(All_shipping_chr);
+                        JSONArray jsonArray_Shipping = new JSONArray(All_shipping_chr);
 
-                            for(int i=0;i<jsonArray_Shipping.length();i++){
+                        for (int i = 0; i < jsonArray_Shipping.length(); i++) {
 
-                                JSONObject jsonObject_Shipping = jsonArray_Shipping.getJSONObject(i);
+                            JSONObject jsonObject_Shipping = jsonArray_Shipping.getJSONObject(i);
 
-                                String shipping_id = jsonObject_Shipping.getString("shipping_id");
-                                String price = jsonObject_Shipping.getString("price");
-                                String delivery_price = jsonObject_Shipping.getString("delivery_price");
-                                String name = jsonObject_Shipping.getString("name");
+                            String shipping_id = jsonObject_Shipping.getString("shipping_id");
+                            String price = jsonObject_Shipping.getString("price");
+                            String delivery_price = jsonObject_Shipping.getString("delivery_price");
+                            String name = jsonObject_Shipping.getString("name");
 
-                                ShappingCharges_ModelClass shappingCharges_modelClass = new ShappingCharges_ModelClass(shipping_id,
-                                        price,delivery_price,name
-                                );
+                            ShappingCharges_ModelClass shappingCharges_modelClass = new ShappingCharges_ModelClass(shipping_id,
+                                    price, delivery_price, name
+                            );
 
-                                ShippingCharges.add(shappingCharges_modelClass);
-
-                            }
-
-                            Log.d("ShippingCharges",ShippingCharges.toString());
+                            ShippingCharges.add(shappingCharges_modelClass);
 
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+
+                        Log.d("ShippingCharges", ShippingCharges.toString());
+
                     }
-
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
 
-                    error.printStackTrace ();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
+                error.printStackTrace();
+
+            }
+        });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+    }
+
+    public void applyCupon(String cuponCode, String subTotal) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.applyCupon, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String message = jsonObject.getString("success");
+
+                    if(message.equals("true")){
+
+                        String cupon_appaly = jsonObject.getString("cupon_appay");
+
+                        Toast.makeText(CartPage.this, cupon_appaly, Toast.LENGTH_SHORT).show();
+
+                        String cupon_discount_amount = jsonObject.getString("cupon_discount_amount");
+                        String grand_total = jsonObject.getString("grand_total");
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            });
 
-            stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
-            requestQueue.getCache().clear();
-            requestQueue.add(stringRequest);
-        }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("coupon_code",cuponCode);
+                params.put("sub_total",subTotal);
+                return super.getParams();
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+    }
 
     @Override
     public void onBackPressed() {
 
-        Intent intent = new Intent(CartPage.this,MainActivity.class);
+        Intent intent = new Intent(CartPage.this, MainActivity.class);
         startActivity(intent);
     }
 }

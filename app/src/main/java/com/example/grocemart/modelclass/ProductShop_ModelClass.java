@@ -7,7 +7,7 @@ import java.util.List;
 public class ProductShop_ModelClass {
 
     String productId,productName,productDesc,productImage,shopId,shopName,shopAddress,
-            variationId,unit,mrpPrice,salesPrice,discount;
+            variationId,unit,mrpPrice,salesPrice,discount,cityId;
 
     private List<Variation_ModelClass> variation;
 
@@ -15,7 +15,7 @@ public class ProductShop_ModelClass {
                                   String productImage, String shopId, String shopName,
                                   String shopAddress, String variationId, String unit, String mrpPrice,
                                   String salesPrice, String discount,
-                                  List<Variation_ModelClass> variation) {
+                                  List<Variation_ModelClass> variation,String cityId) {
 
         this.productId = productId;
         this.productName = productName;
@@ -30,6 +30,7 @@ public class ProductShop_ModelClass {
         this.salesPrice = salesPrice;
         this.discount = discount;
         this.variation = variation;
+        this.cityId = cityId;
     }
 
     public String getProductId() {
@@ -134,6 +135,18 @@ public class ProductShop_ModelClass {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public void setVariation(List<Variation_ModelClass> variation) {
+        this.variation = variation;
     }
 
     @Override

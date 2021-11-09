@@ -75,7 +75,7 @@ public class OrderDetailsadapter extends RecyclerView.Adapter<OrderDetailsadapte
 
         OrderDetails_ModelClass orderDetails = order.get(position);
 
-        ProductDetails_ModelClass product_det = orderDetails.getProductdetails().get(position);
+        //ProductDetails_ModelClass product_det = orderDetails.getProductdetails().get(position);
 
         holder.text_orderId.setText(orderDetails.getOrder_id());
         holder.text_payment.setText(orderDetails.getPayment_mode());

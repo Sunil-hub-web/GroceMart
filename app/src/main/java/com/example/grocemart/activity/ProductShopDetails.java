@@ -47,8 +47,8 @@ public class ProductShopDetails extends AppCompatActivity {
     ProductShopAdapter productShopAdapter;
     ImageView image_Product;
     ArrayList<ProductShop_ModelClass> productShop = new ArrayList<>();
-    ArrayList<ProductShop_ModelClass> itemArraylist = new ArrayList<ProductShop_ModelClass>();
-    List<Variation_ModelClass> variations = new ArrayList<Variation_ModelClass>();
+    ArrayList<ProductShop_ModelClass> itemArraylist;
+    List<Variation_ModelClass> variations;
 
 
     String productId, cityId;
@@ -129,6 +129,8 @@ public class ProductShopDetails extends AppCompatActivity {
 
                     if (message.equals("true")) {
 
+                        itemArraylist = new ArrayList<ProductShop_ModelClass>();
+
                         String allShop = jsonObject.getString("All_shop");
 
                         JSONArray jsonArray_shop = new JSONArray(allShop);
@@ -145,9 +147,9 @@ public class ProductShopDetails extends AppCompatActivity {
                             String shopName = jsonObject_Shop.getString("shop_name");
                             String shopAddress = jsonObject_Shop.getString("shop_address");
 
+                            variations = new ArrayList<Variation_ModelClass>();
+
                             JSONArray jsonArray_variation = jsonObject_Shop.getJSONArray("All_variation");
-
-
                             if (jsonArray_variation.length() == 0) {
 
                             } else {
@@ -177,16 +179,13 @@ public class ProductShopDetails extends AppCompatActivity {
 
                                 ProductShop_ModelClass productShop_modelClass = new ProductShop_ModelClass(
                                         productid, productname, productdesc, productimage, shopId, shopName,
-                                        shopAddress, "", "", "", "","" ,variations
+                                        shopAddress, "", "", "", "","" ,variations,cityId
                                 );
 
                                 itemArraylist.add(productShop_modelClass);
-
                             }
 
                             Log.d("variationsChck",itemArraylist.size()+"");
-
-                            variations.clear();
                         }
 
                         Log.d("itemArraylist",itemArraylist.toString());

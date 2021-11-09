@@ -44,6 +44,10 @@ public class APPURLS {
 
    public static final String changePassword = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=changePassword";
 
+   public static final String getSingleShopDetails = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=singleShopPage";
+
+   public static final String applyCupon = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=applyCupon";
+
 
 
 

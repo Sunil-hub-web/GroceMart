@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btn_CategoryName"
+        android:layout_width="@dimen/hundred_sixty"
+        android:layout_height="@dimen/forty_five"
+        android:background="#7EE140"
+        android:text="RESTAURANT"
+        android:textSize="@dimen/textsize"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/ten"></Button>
+
+</RelativeLayout>

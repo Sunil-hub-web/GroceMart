@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -16,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
@@ -45,8 +49,9 @@ public class MyOrderDetails extends AppCompatActivity {
 
     OrderDetailsadapter orderDetailsadapter;
 
-    ArrayList<OrderDetails_ModelClass> orderDetails = new ArrayList<>();
-    ArrayList<ProductDetails_ModelClass> product = new ArrayList<>();
+    ArrayList<OrderDetails_ModelClass> orderDetails;
+    ArrayList<ProductDetails_ModelClass> product;
+    private static final String TAG = "MyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +89,19 @@ public class MyOrderDetails extends AppCompatActivity {
 
     public void orderDetails(String UserId){
 
+        ProgressDialog progressDialog = new ProgressDialog(MyOrderDetails.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Show Order Details Please wait...");
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.setCancelable(false);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getorderDetails, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                progressDialog.dismiss();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -94,6 +109,8 @@ public class MyOrderDetails extends AppCompatActivity {
                     String message = jsonObject.getString("success");
 
                     if(message.equals("true")){
+
+                        orderDetails = new ArrayList<>();
 
                         String All_Orders = jsonObject.getString("All_Orders");
 
@@ -123,7 +140,7 @@ public class MyOrderDetails extends AppCompatActivity {
                             address = jsonobject_Address.getString("address");
                             phoneNumber = jsonobject_Address.getString("phone");
 
-
+                            product = new ArrayList<>();
                             String Order_details = jsonObject_OrderDetails.getString("Order_details");
 
                             JSONArray jsonArray_order = new JSONArray(Order_details);
@@ -171,6 +188,11 @@ public class MyOrderDetails extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                progressDialog.dismiss();
+                error.printStackTrace();
+
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }){
 

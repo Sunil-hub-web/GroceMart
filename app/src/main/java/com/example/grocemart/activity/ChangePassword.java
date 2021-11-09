@@ -1,5 +1,6 @@
 package com.example.grocemart.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
@@ -35,6 +37,7 @@ public class ChangePassword extends AppCompatActivity {
     TextView password,newPassword,conformPassword;
     Button btn_Update;
     String str_password,str_newPassword,str_conformPassword,str_pwd,str_userId;
+    private static final String TAG = "MyActivity";
 
 
     @Override
@@ -84,11 +87,21 @@ public class ChangePassword extends AppCompatActivity {
         });
     }
 
-    public void changePassword(String userid,String oldPassword,String newPassword,String confromPassword){
+    public void changePassword(String userid,String oldPassword,String new_Password,String conform_Password){
+
+        ProgressDialog progressDialog = new ProgressDialog(ChangePassword.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        TextView textView = progressDialog.findViewById(R.id.text);
+        textView.setText("Change Password Please wait...");
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.setCancelable(false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.changePassword, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                progressDialog.dismiss();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -97,9 +110,14 @@ public class ChangePassword extends AppCompatActivity {
 
                     if(message.equals("true")){
 
-                        String msg = jsonObject.getString("success");
+                        String msg = jsonObject.getString("msg");
 
                         Toast.makeText(ChangePassword.this, msg, Toast.LENGTH_SHORT).show();
+
+                        password.setText("");
+                        newPassword.setText("");
+                        conformPassword.setText("");
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -109,6 +127,12 @@ public class ChangePassword extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                error.printStackTrace();
+
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -120,8 +144,9 @@ public class ChangePassword extends AppCompatActivity {
 
                 params.put("user_id",userid);
                 params.put("old_password",oldPassword);
-                params.put("new_password",newPassword);
-                params.put("cnf_password",confromPassword);
+                params.put("new_password",new_Password);
+                params.put("cnf_password",conform_Password);
+
                 return params;
             }
         };

@@ -18,7 +18,7 @@
             android:layout_margin="5dp"></ImageView>
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imageCart"
             android:layout_centerInParent="true">
@@ -36,10 +36,22 @@
                 android:textStyle="bold"></TextView>
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/product_Name"
-                android:layout_marginTop="@dimen/ten">
+                android:layout_marginTop="@dimen/ten"
+                android:id="@+id/qprice"
+                android:layout_marginLeft="@dimen/twenty">
+
+                <TextView
+                    android:id="@+id/quantityValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QTY :"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/ten"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"></TextView>
 
                 <TextView
                     android:id="@+id/quantity"
@@ -48,7 +60,8 @@
                     android:text="1"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/ten"
-                    android:layout_marginLeft="@dimen/twenty"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_toRightOf="@+id/quantityValue"
                     android:textSize="@dimen/textsize"
                     android:textStyle="bold"></TextView>
 
@@ -79,6 +92,49 @@
             </RelativeLayout>
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/ten"
+                android:textSize="@dimen/textsize"
+                android:text="Total Price"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/totalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/ten"
+                android:textSize="@dimen/textsize"
+                android:text="500"
+                android:textStyle="bold"
+                android:layout_below="@+id/total"
+                android:layout_marginLeft="@dimen/twenty"></TextView>
+
+            <TextView
+                android:id="@+id/priceSymbol5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹"
+                android:textColor="@color/black"
+                android:textSize="@dimen/edittextsize"
+                android:textStyle="bold"
+                android:layout_below="@+id/total"
+                android:layout_marginTop="@dimen/eight"></TextView>
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 

@@ -22,6 +22,9 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
     Context context;
     ArrayList<ProductDetails_ModelClass> product;
 
+    String str_quantity,str_productPrice,str_TotalPrice;
+    Double d_quantity,d_productPrice,d_TotalPrice;
+
     public OrderDetAdapter(ArrayList<ProductDetails_ModelClass> product, Context context) {
 
         this.context = context;
@@ -45,6 +48,16 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
         holder.quantity.setText(productdet.getProductQuantity());
         holder.product_Price.setText(productdet.getProductPrice());
 
+        str_quantity = productdet.getProductQuantity();
+        str_productPrice = productdet.getProductPrice();
+
+        d_quantity = Double.valueOf(str_quantity);
+        d_productPrice = Double.valueOf(str_productPrice);
+
+        d_TotalPrice = d_quantity * d_productPrice;
+        str_TotalPrice = String.valueOf(d_TotalPrice);
+
+        holder.totalPrice.setText(str_TotalPrice);
 
     }
 
@@ -56,7 +69,7 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageCart;
-        TextView product_Name,quantity,product_Price;
+        TextView product_Name,quantity,product_Price,totalPrice;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
@@ -64,6 +77,7 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
             product_Name = itemView.findViewById(R.id.product_Name);
             quantity = itemView.findViewById(R.id.quantity);
             product_Price = itemView.findViewById(R.id.product_Price);
+            totalPrice = itemView.findViewById(R.id.totalPrice);
         }
     }
 }

@@ -56,7 +56,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     List<Variation_ModelClass> model_variations;
     List<ProductShop_ModelClass> itemlist ;
 
-    String userId,productId,varitionId,shopId,restt_price,varition_Id,countvalue;
+    String userId,productId,cityId,shopId,restt_price,varition_Id,countvalue;
     int count_value;
 
 
@@ -94,14 +94,12 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         Picasso.with(context).load(url).into(holder.image_ProductImage);
 
-       /* productId = productShop.getProductId();
-        shopId = productShop.getShopId();*/
+        productId = productShop.getProductId();
+        //shopId = productShop.getShopId();
 
         holder.text_ProductNmae.setText(productShop.getProductName());
         holder.text_ShopName.setText(productShop.getShopName());
         holder.text_address.setText(productShop.getShopAddress());
-//        Variation_ModelClass vraitionclasValue = productShop.getVariation().get(position);
-
 
         model_variations=productShop.getVariation();
         Log.d("Ranjeet_adapter",model_variations.size()+"");
@@ -116,7 +114,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, ShopDetailsPage.class);
-                intent.putExtra("message", productShop.getShopName());
+                intent.putExtra("shopId",productShop.getShopId());
+                intent.putExtra("cityId", productShop.getCityId());
                 context.startActivity(intent);
             }
         });
@@ -149,10 +148,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             @Override
             public void onClick(View v) {
 
-//                Log.d("Ranjeet_poistion",itemlist.get(position).toString());
-
-
                 model_variations = new ArrayList<Variation_ModelClass>();
+                model_variations = productShop.getVariation();
 
 
                 dialogMenu = new Dialog(context, android.R.style.Theme_Light_NoTitleBar);
@@ -184,7 +181,6 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                         restt_price = parenting.getVariation_unit();
                         varition_Id = parenting.getVariation_Id();
 
-//                            programViewHolder.discount.setText(parenting.getWeighname());
                         holder.text_Spinertext.setText("RS " + parenting.getVariation_salesPrice() + " " + " " + restt_price + " (" + parenting.getVariation_discount() + "%OFF" + ")");
 
                         dialogMenu.dismiss();
@@ -201,6 +197,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
             }
         });
+
         holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -224,11 +221,10 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         if(productShop.getVariation().size()==0){
 
-            // holder.text_Spinertext.setText("₹"+productShop.getSalesPrice());
+             holder.text_Spinertext.setText("Select Quantity");
         }else{
 
-            //holder.text_Spinertext.setText("₹ " + productShop.getVariation().get(0).getSalesPrice());
-            holder.text_Spinertext.setText(productShop.getVariation().get(0).getVariation_Id());
+            holder.text_Spinertext.setText("Select Quantity");
 
             product.get(position).setVariationId(productShop.getVariation().get(0).getVariation_Id());
             product.get(position).setUnit(productShop.getVariation().get(0).getVariation_unit());
