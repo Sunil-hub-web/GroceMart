@@ -27,14 +27,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/shopName"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/fifteen"
             android:id="@+id/shop">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recycler_CategoryName">
+                android:id="@+id/recycler_CategoryName"
+                android:layout_gravity="center_horizontal">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -56,6 +56,22 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/shopaddress"
+        android:layout_marginTop="@dimen/fifteen"
+        android:id="@+id/sub_category_name">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_SubCategoryName"
+            android:layout_gravity="center_horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

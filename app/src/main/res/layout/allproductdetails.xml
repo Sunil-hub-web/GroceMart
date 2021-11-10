@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/two_hundred_fifty"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/homecard_back">
+
+        <TextView
+            android:id="@+id/text_Productname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginTop="@dimen/eight"
+            android:text="Narendra Shop"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/text_Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_Productname"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxEms="20"
+            android:scrollHorizontally="true"
+            android:maxLines="2"
+            android:text="BB Royal Organic-Toor Dalbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"></TextView>
+
+        <RelativeLayout
+            android:id="@+id/varlayout"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="@dimen/forty"
+            android:layout_below="@+id/text_Description"
+            android:layout_margin="@dimen/twenty"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginRight="@dimen/five">
+
+            <TextView
+                android:id="@+id/text_Spinertext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/box"
+                android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                android:gravity="center"
+                android:text=""
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/inc"
+            android:layout_width="@dimen/hundred_fifty"
+            android:layout_height="@dimen/forty"
+            android:layout_below="@+id/varlayout"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="@dimen/ten"
+            android:background="@drawable/serach_back"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/t3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#0A2CE8"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/t2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/t1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#0A2CE8"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addtocart"
+            android:layout_width="@dimen/hundred_twenty"
+            android:layout_height="@dimen/forty"
+            android:layout_below="@id/varlayout"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
+            android:layout_toRightOf="@id/inc"
+            android:background="@drawable/button_back"
+            android:text="Add To cart"
+            android:textColor="@color/btntextcolor"
+            android:textSize="@dimen/textsize"></Button>
+
+        <ImageView
+            android:id="@+id/img_productImage"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/ninety"
+            android:layout_below="@id/text_Description"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:src="@drawable/royal"></ImageView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
