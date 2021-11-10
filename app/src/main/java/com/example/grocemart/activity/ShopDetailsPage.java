@@ -119,7 +119,7 @@ public class ShopDetailsPage extends AppCompatActivity {
 
                         allsubCategory = new ArrayList<>();
 
-                        allProductList = new ArrayList<AllProduct_ModelClass>();
+                        //allProductList = new ArrayList<AllProduct_ModelClass>();
 
                         JSONArray jsonArray_AllShop = jsonObject.getJSONArray("All_singleshop_product");
 
@@ -129,6 +129,8 @@ public class ShopDetailsPage extends AppCompatActivity {
 
                             String category_Name = jsonObject_AllShop.getString("Category_name");
                             CategoryName_ModelClass categoryName_modelClass = new CategoryName_ModelClass(category_Name);
+
+                            categoryName.add(categoryName_modelClass);
 
                             //allProductList = new ArrayList<AllProduct_ModelClass>();
 
@@ -141,11 +143,9 @@ public class ShopDetailsPage extends AppCompatActivity {
 
                                 String sub_categoryname = jsonObjectSubcategory.getString("sub_categoryname");
 
-                                SubCategoryName_ModelClass subCategoryName_modelClass = new SubCategoryName_ModelClass(sub_categoryname);
-
                                 Log.d("allsubCategory",allsubCategory.toString());
 
-                                //allProductList = new ArrayList<AllProduct_ModelClass>();
+                                allProductList = new ArrayList<AllProduct_ModelClass>();
 
                                 JSONArray jsonArray_AllProduct = jsonObjectSubcategory.getJSONArray("all_product");
 
@@ -200,11 +200,12 @@ public class ShopDetailsPage extends AppCompatActivity {
 
                                 }
 
+                                SubCategoryName_ModelClass subCategoryName_modelClass = new SubCategoryName_ModelClass(sub_categoryname,allProductList);
+
                                 allsubCategory.add(subCategoryName_modelClass);
 
                             }
 
-                            categoryName.add(categoryName_modelClass);
                         }
 
                         AllShopDetails_ModelClass allShopDetails_modelClass = new AllShopDetails_ModelClass(

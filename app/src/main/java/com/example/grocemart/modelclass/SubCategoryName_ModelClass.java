@@ -1,11 +1,15 @@
 package com.example.grocemart.modelclass;
 
+import java.util.ArrayList;
+
 public class SubCategoryName_ModelClass {
 
     String subcategoryName;
+    ArrayList<AllProduct_ModelClass> allproduct;
 
-    public SubCategoryName_ModelClass(String subcategoryName) {
+    public SubCategoryName_ModelClass(String subcategoryName, ArrayList<AllProduct_ModelClass> allproduct) {
         this.subcategoryName = subcategoryName;
+        this.allproduct = allproduct;
     }
 
     public String getSubcategoryName() {
@@ -16,10 +20,11 @@ public class SubCategoryName_ModelClass {
         this.subcategoryName = subcategoryName;
     }
 
-    @Override
-    public String toString() {
-        return "SubCategoryName_ModelClass{" +
-                "subcategoryName='" + subcategoryName + '\'' +
-                '}';
+    public ArrayList<AllProduct_ModelClass> getAllproduct() {
+        return allproduct;
+    }
+
+    public void setAllproduct(ArrayList<AllProduct_ModelClass> allproduct) {
+        this.allproduct = allproduct;
     }
 }

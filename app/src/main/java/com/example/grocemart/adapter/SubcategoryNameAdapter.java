@@ -24,7 +24,7 @@ public class SubcategoryNameAdapter extends RecyclerView.Adapter<SubcategoryName
 
     Context context;
     ArrayList<SubCategoryName_ModelClass> sub_Category;
-    ArrayList<AllProduct_ModelClass> allProduct = new ArrayList<>();
+    ArrayList<AllProduct_ModelClass> allProduct;
     LinearLayoutManager linearLayoutManager;
     AllProductDetailsAdapter allProductDetailsAdapter;
 
@@ -32,7 +32,7 @@ public class SubcategoryNameAdapter extends RecyclerView.Adapter<SubcategoryName
 
         this.context = shopDetailsPage;
         this.sub_Category = allsubCategory;
-        this.allProduct = allProductList;
+        //this.allProduct = allProductList;
     }
 
     @NonNull
@@ -50,6 +50,9 @@ public class SubcategoryNameAdapter extends RecyclerView.Adapter<SubcategoryName
         SubCategoryName_ModelClass subcategory = sub_Category.get(position);
 
         holder.text_SubCategoryName.setText(subcategory.getSubcategoryName());
+
+        allProduct = new ArrayList<>();
+        allProduct = subcategory.getAllproduct();
 
         linearLayoutManager = new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false);
 
