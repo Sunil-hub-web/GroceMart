@@ -8,13 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.grocemart.R;
 import com.example.grocemart.RecyclerTouchListener;
 import com.example.grocemart.SharedPrefManager;
@@ -22,12 +32,17 @@ import com.example.grocemart.modelclass.AllProductVariation_ModelClass;
 import com.example.grocemart.modelclass.AllProduct_ModelClass;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
 import com.example.grocemart.modelclass.Variation_ModelClass;
+import com.example.grocemart.url.APPURLS;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDetailsAdapter.ViewHolder> {
 
@@ -35,7 +50,8 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
     ArrayList<AllProduct_ModelClass> allProduct;
     Dialog dialogMenu;
     List<AllProductVariation_ModelClass> model_variations;
-    String userId,productId,cityId,shopId,restt_price,varition_Id,countvalue;
+    String userId,productId,cityId,shopId,restt_price,varition_Id,countvalue,t;
+    int count_value;
 
     public AllProductDetailsAdapter(Context context, ArrayList<AllProduct_ModelClass> allProduct) {
 
@@ -60,6 +76,8 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
         AllProduct_ModelClass product = allProduct.get(position);
 
         String url = "https://" + product.getProductImage();
+
+        holder.text_Spinertext.setText("Select Quantity");
 
         //userId = SharedPrefManager.getInstance(context).getUser().getId();
 
@@ -123,6 +141,51 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
             }
         });
 
+        holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                productId = product.getProductId();
+                shopId = product.getShopId();
+                count_value = Integer.valueOf(holder.t2.getText().toString());
+                countvalue = String.valueOf(count_value);
+
+                if(holder.text_Spinertext.getText().toString().trim().equals("Select Quantity")){
+
+                    Toast.makeText(context, "Select Quantity", Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    addItemToCart(userId,productId,countvalue,varition_Id,shopId);
+                }
+
+            }
+        });
+
+        holder.t3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.linearLayout(false);
+
+                t = holder.t2.getText().toString().trim();
+                count_value = Integer.valueOf(holder.t2.getText().toString());
+
+                countvalue = String.valueOf(count_value);
+
+            }
+        });
+
+        holder.t1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.linearLayout(true);
+
+                t = holder.t2.getText().toString().trim();
+
+
+            }
+        });
+
     }
 
     @Override
@@ -132,8 +195,9 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView text_Productname,text_Description,text_Spinertext;
+        TextView text_Productname,text_Description,text_Spinertext,t1, t2, t3;
         ImageView img_productImage;
+        Button btn_AddToCart;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -142,6 +206,74 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
             text_Description = itemView.findViewById(R.id.text_Description);
             img_productImage = itemView.findViewById(R.id.img_productImage);
             text_Spinertext = itemView.findViewById(R.id.text_Spinertext);
+            btn_AddToCart = itemView.findViewById(R.id.btn_AddToCart);
+        }
+
+        private void linearLayout(Boolean x) {
+            int y = Integer.parseInt(t2.getText().toString());
+            if (x) {
+                y++;
+                t2.setText(String.valueOf(y));
+            } else {
+                y--;
+                if (y <= 0) {
+                    t2.setText("1");
+                } else {
+                    t2.setText(String.valueOf(y));
+                }
+            }
         }
     }
+
+    public void addItemToCart(String userId,String productId,String quantity,String varitionsId,String ShopId){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.addItemToCart, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String message = jsonObject.getString("success");
+                    String message1 = jsonObject.getString("msg");
+
+                    if(message.equals("true")){
+
+                        Toast.makeText(context, message1, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                error.printStackTrace ();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("user_id",userId);
+                params.put("product_id",productId);
+                params.put("quantity",quantity);
+                params.put("variation_id",varitionsId);
+                params.put("shop_id",ShopId);
+
+                return params;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);
+
+    }
+
 }
