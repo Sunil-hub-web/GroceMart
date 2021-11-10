@@ -207,6 +207,9 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
             img_productImage = itemView.findViewById(R.id.img_productImage);
             text_Spinertext = itemView.findViewById(R.id.text_Spinertext);
             btn_AddToCart = itemView.findViewById(R.id.btn_AddToCart);
+            t1 = itemView.findViewById(R.id.t1);
+            t2 = itemView.findViewById(R.id.t2);
+            t3 = itemView.findViewById(R.id.t3);
         }
 
         private void linearLayout(Boolean x) {
