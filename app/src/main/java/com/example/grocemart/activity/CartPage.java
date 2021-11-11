@@ -411,7 +411,7 @@ public class CartPage extends AppCompatActivity {
             }
         });
 
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
