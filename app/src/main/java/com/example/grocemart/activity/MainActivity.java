@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Category_Modelcalss> home_Category = new ArrayList<>();
     ArrayList<SubCategory_ModelClass> sub_Category = new ArrayList<>();
 
+    public static String cart_count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -343,6 +345,8 @@ public class MainActivity extends AppCompatActivity {
                     if (message.equals("true")) {
 
                         //Rterive Banner For Home page
+
+                        cart_count = jsonObject.getString("cart_count");
 
                         JSONArray jsonArray_Banner = new JSONArray(banner);
 

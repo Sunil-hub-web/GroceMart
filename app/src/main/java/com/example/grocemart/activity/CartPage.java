@@ -360,7 +360,7 @@ public class CartPage extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void getShapping() {
+    public void getShapping(){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.getShappingCharges, new Response.Listener<String>() {
             @Override

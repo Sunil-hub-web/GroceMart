@@ -10,7 +10,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:id="@+id/shopDetailsRecycler"
-       android:layout_above="@id/bottomNavigation"
+       android:layout_above="@id/floatingactionbutton"
        android:layout_alignParentTop="true">
 
    </androidx.recyclerview.widget.RecyclerView>
@@ -24,6 +24,35 @@
        android:visibility="gone">
 
    </ImageView>
+
+   <ImageView
+       android:id="@+id/floatingactionbutton"
+       android:layout_width="@dimen/forty"
+       android:layout_height="@dimen/forty"
+       android:src="@drawable/cart"
+       android:layout_alignParentRight="true"
+       android:layout_marginRight="@dimen/twenty_five"
+       android:layout_above="@id/bottomNavigation"
+       android:layout_marginBottom="10dp">
+
+   </ImageView>
+
+   <TextView
+       android:id="@+id/text_ItemCount"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="@dimen/ten"
+       android:textColor="#000000"
+       android:textSize="@dimen/textsize"
+       android:text="12"
+       android:textStyle="bold"
+       android:gravity="center"
+       android:layout_alignParentRight="true"
+       android:layout_marginRight="@dimen/five"
+       android:background="@drawable/textcountshape"
+       android:layout_above="@id/bottomNavigation"
+       android:layout_marginBottom="@dimen/thirty"/>
+
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
        android:id="@+id/bottomNavigation"

@@ -30,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.grocemart.RecyclerTouchListener;
 import com.example.grocemart.SharedPrefManager;
+import com.example.grocemart.activity.MainActivity;
 import com.example.grocemart.activity.ProductShopDetails;
 import com.example.grocemart.activity.ShopDetailsPage;
 import com.example.grocemart.modelclass.ProductShop_ModelClass;
@@ -61,6 +62,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     Variation_ModelClass parenting;
 
     ArrayList<String> itemcount = new ArrayList<>();
+
+    public static String count,cart_count;
 
     public ProductShopAdapter(ProductShopDetails productShopDetails, ArrayList<ProductShop_ModelClass> itemArraylist) {
 
@@ -108,6 +111,16 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
 
         // holder.text_Spinertext.setText();
+
+       /* if(count != null){
+
+            ProductShopDetails.text_ItemCount.setText(count);
+        }*/
+
+        cart_count = MainActivity.cart_count;
+
+        ProductShopDetails.text_ItemCount.setText(cart_count);
+
 
 
 
@@ -299,6 +312,10 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                     if(message.equals("true")){
 
                         Toast.makeText(context, message1, Toast.LENGTH_SHORT).show();
+
+                        count = jsonObject.getString("cart_count");
+
+                        ProductShopDetails.text_ItemCount.setText(count);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -328,7 +345,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
             }
         };
 
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);

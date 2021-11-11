@@ -56,6 +56,8 @@ public class ProductShopDetails extends AppCompatActivity {
     ArrayList<ProductShop_ModelClass> itemArraylist;
     List<Variation_ModelClass> variations;
 
+    public static TextView text_ItemCount;
+
 
     String productId, cityId;
     public static TextView itemcounter;
@@ -76,6 +78,7 @@ public class ProductShopDetails extends AppCompatActivity {
         recyclerView = findViewById(R.id.shopDetailsRecycler);
         image_Product = findViewById(R.id.image_Product);
         bottomNavigationView = findViewById(R.id.bottomNavigation);
+        text_ItemCount = findViewById(R.id.text_ItemCount);
 
         getProductDetails(productId, cityId);
 
