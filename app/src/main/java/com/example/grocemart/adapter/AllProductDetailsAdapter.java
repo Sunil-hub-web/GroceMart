@@ -86,6 +86,7 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
         holder.text_Productname.setText(product.getProductName());
         holder.text_Description.setText(product.getProductDesc());
 
+
         holder.text_Spinertext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +150,7 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
                 shopId = product.getShopId();
                 count_value = Integer.valueOf(holder.t2.getText().toString());
                 countvalue = String.valueOf(count_value);
+                userId = SharedPrefManager.getInstance(context).getUser().getId();
 
                 if(holder.text_Spinertext.getText().toString().trim().equals("Select Quantity")){
 

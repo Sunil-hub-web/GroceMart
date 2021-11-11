@@ -58,7 +58,9 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
     String userId,productId,cityId,shopId,restt_price,varition_Id,countvalue;
     int count_value;
+    Variation_ModelClass parenting;
 
+    ArrayList<String> itemcount = new ArrayList<>();
 
     public ProductShopAdapter(ProductShopDetails productShopDetails, ArrayList<ProductShop_ModelClass> itemArraylist) {
 
@@ -173,13 +175,14 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
                         Log.d("gbrdsfbfbvdz", "clicked");
 
-                        Variation_ModelClass parenting = model_variations.get(post);
+                        parenting = model_variations.get(post);
+
                         product.get(position).setVariationId(parenting.getVariation_Id());
                         product.get(position).setSalesPrice(parenting.getVariation_salesPrice());
                         product.get(position).setUnit(parenting.getVariation_unit());
 
                         restt_price = parenting.getVariation_unit();
-                        varition_Id = parenting.getVariation_Id();
+                        //varition_Id = parenting.getVariation_Id();
 
                         holder.text_Spinertext.setText("RS " + parenting.getVariation_salesPrice() + " " + " " + restt_price + " (" + parenting.getVariation_discount() + "%OFF" + ")");
 
@@ -212,6 +215,8 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                     Toast.makeText(context, "Select Quantity", Toast.LENGTH_SHORT).show();
 
                 }else{
+
+                    varition_Id = parenting.getVariation_Id();
 
                     addItemToCart(userId,productId,countvalue,varition_Id,shopId);
                 }

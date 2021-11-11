@@ -40,10 +40,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     String totPrice;
     private Context context;
     private ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
-    int Total,price,quantity;
+    int Total,price,quantity,arraySize;
     String price_total,sum,str_SumTotal,str_Shpping,str_TotalPrice,str_DeletePrice;
-    String userid,productId,variationId;
+    String userid,productId,variationId,str_ArraySize;
     Double sumTotal,d_totPrice,d_Sum,d_sumTotal,d_ShppingCharges,d_TotlAmount,d_deletePrice;
+
 
     public ProductAdapter(CartPage cartPage, ArrayList<CartItem> allCartItem) {
 
@@ -201,6 +202,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 deleteCard(userId,productId,variationId);
                 allCartItem.remove(position);
                 notifyDataSetChanged();
+                arraySize = allCartItem.size();
+                str_ArraySize = String.valueOf(arraySize);
+                CartPage.text_ItemCount.setText(str_ArraySize);
 
                 sum = CartPage.subTotalPrice.getText().toString().trim();
 
@@ -226,6 +230,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 CartPage.text_totalAmount.setText(str_TotalPrice);
 
                 CartPage.text_totalAmount.setText(str_TotalPrice);
+
+                if(allCartItem.size() == 0){
+
+                    CartPage.text_ItemCount.setVisibility(View.GONE);
+
+                    CartPage.rel_MoneyTotal.setVisibility(View.GONE);
+                    CartPage.rel_Total.setVisibility(View.GONE);
+                    CartPage.img_Cart.setVisibility(View.GONE);
+                    CartPage.image_NoResult.setVisibility(View.VISIBLE);
+                }
 
             }
         });

@@ -50,6 +50,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class CartPage extends AppCompatActivity {
 
@@ -58,12 +59,12 @@ public class CartPage extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     Button btn_CheckOut,btn_ApplyCopun;
-    public static TextView subTotalPrice, shippingCharges, coupanCode, text_totalAmount, text_Shapping;
+    public static TextView subTotalPrice, shippingCharges, coupanCode, text_totalAmount, text_Shapping,text_ItemCount;
     int value;
     ArrayList<CartItem> allCartItem = new ArrayList<CartItem>();
 
     ArrayList<ShappingCharges_ModelClass> ShippingCharges = new ArrayList<ShappingCharges_ModelClass>();
-    ImageView image_NoResult;
+    public static ImageView image_NoResult,img_Cart;
     public String productId, variationId, shopId, productImage, productName, shopName, unit,
             salePrice, discount, quantity, userId, str_SubTotalPrice, str_ShippingCharges, str_TotalAmount;
 
@@ -74,7 +75,7 @@ public class CartPage extends AppCompatActivity {
     RecyclerView rv_vars;
     EditText edit_coupanCode;
 
-    RelativeLayout rel_MoneyTotal, rel_Total;
+    public static RelativeLayout rel_MoneyTotal, rel_Total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class CartPage extends AppCompatActivity {
         btn_CheckOut = findViewById(R.id.checkOut);
         subTotalPrice = findViewById(R.id.subTotalPrice);
         image_NoResult = findViewById(R.id.image_NoResult);
+        img_Cart = findViewById(R.id.img_Cart);
         rel_MoneyTotal = findViewById(R.id.rel_MoneyTotal);
         rel_Total = findViewById(R.id.rel_Total);
         shippingCharges = findViewById(R.id.shippingCharges);
@@ -96,6 +98,7 @@ public class CartPage extends AppCompatActivity {
         text_totalAmount = findViewById(R.id.totalAmount);
         btn_ApplyCopun = findViewById(R.id.ApplyCopun);
         edit_coupanCode = findViewById(R.id.coupanCode);
+        text_ItemCount = findViewById(R.id.text_ItemCount);
 
         bottomNavigationView.setSelectedItemId(R.id.cart);
 
@@ -298,9 +301,16 @@ public class CartPage extends AppCompatActivity {
 
                             rel_MoneyTotal.setVisibility(View.GONE);
                             rel_Total.setVisibility(View.GONE);
+                            img_Cart.setVisibility(View.GONE);
                             image_NoResult.setVisibility(View.VISIBLE);
 
                         } else {
+
+                            int size =  allCartItem.size();
+
+                            String str_size = String.valueOf(size);
+
+                            text_ItemCount.setText(str_size);
 
                             rel_MoneyTotal.setVisibility(View.VISIBLE);
                             rel_Total.setVisibility(View.VISIBLE);
@@ -312,6 +322,8 @@ public class CartPage extends AppCompatActivity {
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(productAdapter);
+
+
                         }
 
                     }
@@ -342,7 +354,7 @@ public class CartPage extends AppCompatActivity {
             }
         };
 
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(CartPage.this);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
