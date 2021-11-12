@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CartPage">
+    tools:context=".activity.CartPage"
+    android:background="#EEEEEE">
 
     <TextView
         android:id="@+id/text"
@@ -57,7 +58,6 @@
         </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/rel_MoneyTotal"
@@ -310,4 +310,5 @@
         android:layout_centerInParent="true"
         android:src="@drawable/no_result"
         android:visibility="gone"></ImageView>
+
 </RelativeLayout>

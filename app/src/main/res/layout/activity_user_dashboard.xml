@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.UserDashboard"
-    android:id="@+id/drawer">
+    android:id="@+id/drawer"
+    android:background="#EEEEEE">
 
         <TextView
             android:id="@+id/text"

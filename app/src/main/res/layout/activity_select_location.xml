@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SelectLocation">
+    tools:context=".activity.SelectLocation"
+    android:background="#EEEEEE">
 
   <RelativeLayout
       android:layout_width="match_parent"
@@ -49,7 +50,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
-                  android:layout_margin="@dimen/eleven"
+                  android:layout_margin="@dimen/fifteen"
                   android:layout_marginTop="@dimen/eight"
                   android:background="@drawable/registerback"
                   android:elevation="5dp">
@@ -85,7 +86,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
-                  android:layout_margin="@dimen/eleven"
+                  android:layout_margin="@dimen/fifteen"
                   android:background="@drawable/registerback"
                   android:elevation="5dp">
 

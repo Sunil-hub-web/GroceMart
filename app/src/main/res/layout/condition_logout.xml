@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="@dimen/twenty">
+    android:layout_margin="@dimen/twenty"
+    android:background="#EEEEEE">
 
     <RelativeLayout
         android:layout_width="match_parent"

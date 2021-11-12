@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -50,7 +52,7 @@ public class SelectLocation extends AppCompatActivity {
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
     HashMap<String, ArrayList<PinCode_ModelClass>> hashmap_picode = new HashMap<String, ArrayList<PinCode_ModelClass>>();
-    private Boolean exit = false;
+
     RelativeLayout networkConnection,showDetails;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
@@ -83,6 +85,7 @@ public class SelectLocation extends AppCompatActivity {
             showDetails.setVisibility(View.VISIBLE);
             getCity();
         }
+
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -339,29 +342,6 @@ public class SelectLocation extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(SelectLocation.this);
         requestQueue.add(stringRequest);
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        if (exit) {
-            finish(); // finish activity
-        } else {
-            Toast.makeText(this, "Press Back again to Exit.",Toast.LENGTH_SHORT).show();
-            exit = true;
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    // TODO Auto-generated method stub
-                    Intent a = new Intent(Intent.ACTION_MAIN);
-                    a.addCategory(Intent.CATEGORY_HOME);
-                    a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(a);
-                }
-            }, 3 * 1000);
-        }
     }
 
     @Override

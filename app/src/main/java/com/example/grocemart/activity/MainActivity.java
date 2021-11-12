@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Button btn_GoToShop2;
     EditText edit_Serach;
-
+    private Boolean exit = false;
     BannerAdapter bannerAdapter;
     GroceryAdapter groceryAdapter;
     RestaurantAdapter restaurantAdapter;
@@ -303,16 +304,6 @@ public class MainActivity extends AppCompatActivity {
         });
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        bottomNavigationView.setSelectedItemId(R.id.home);
-
-        Intent intent = new Intent(MainActivity.this, SelectLocation.class);
-        startActivity(intent);
     }
 
     public void homePageBanner(String cityId, String pincodeId, String userId) {
@@ -568,5 +559,30 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
         requestQueue.add(stringRequest);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        /*super.onBackPressed();*/
+
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    Intent a = new Intent(Intent.ACTION_MAIN);
+                    a.addCategory(Intent.CATEGORY_HOME);
+                    a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(a);
+                }
+            }, 3 * 1000);
+        }
     }
 }

@@ -44,4 +44,8 @@
     <string name="entercontact">Enter a valide MobileNumber</string>
     <string name="enteremail">Enter a valide emailAddress</string>
     <string name="enterpassword">Enter a valide password</string>
+
+    <string name="night_mode_off">NIGHT MODE OFF</string>
+    <string name="night_mode_on">NIGHT MODE ON</string>
+
 </resources>
