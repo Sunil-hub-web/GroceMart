@@ -281,4 +281,6 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
 
     }
 
+
+
 }

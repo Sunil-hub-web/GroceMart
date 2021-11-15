@@ -263,4 +263,12 @@ public class ShopDetailsPage extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(ShopDetailsPage.this,MainActivity.class);
+        startActivity(intent);
+    }
 }
