@@ -1,12 +1,18 @@
 package com.example.grocemart.activity;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +43,7 @@ public class SigninPage extends AppCompatActivity {
     TextView text_CreateAccount, text_ForgotPassword;
     EditText edit_fullname, edit_password;
     Button signin;
+    boolean passwordVisiable;
     String fullname, password, userId, userName, userMobileNo, userPassword, userEmailID,wallet_Amount;
 
 
@@ -86,6 +93,43 @@ public class SigninPage extends AppCompatActivity {
                     userLogin(fullname, password);
                 }
 
+            }
+        });
+
+        edit_password.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                final int Right = 2;
+                if(event.getAction() == MotionEvent.ACTION_UP){
+
+                    if(event.getRawX() >= edit_password.getRight() - edit_password.getCompoundDrawables()[Right].getBounds().width()){
+
+                        int selection = edit_password.getSelectionEnd();
+                        if(passwordVisiable){
+
+                            //set Drawable Image here
+                            edit_password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibility_off,0);
+                            // for show Password
+                            edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisiable = false;
+
+                        }else{
+
+                            //set Drawable Image here
+                            edit_password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibility,0);
+                            // for show Password
+                            edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisiable = true;
+                        }
+
+                        edit_password.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }

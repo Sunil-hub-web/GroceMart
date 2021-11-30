@@ -93,7 +93,9 @@
                         android:paddingLeft="20dp"
                         android:textColor="#000000"
                         android:textSize="@dimen/edittextsize"
-                        android:textStyle="normal" />
+                        android:textStyle="normal"
+                        android:drawableRight="@drawable/visibility_off"
+                        android:paddingRight="@dimen/ten"/>
 
                     <TextView
                         android:layout_width="wrap_content"
