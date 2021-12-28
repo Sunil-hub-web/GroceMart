@@ -43,22 +43,24 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
     Context context;
     ArrayList<ViewAddressDetails_ModelClass> address_Details;
     private OnItemClickListener mListener;
-    public static String addressId;
+    public static String addressId,addressdetails,checkoutpage;
     int index;
 
     public ViewaddressDetailsAdapter(AddressDetails addressDetails,
-                                     ArrayList<ViewAddressDetails_ModelClass> addressDetails1) {
+                                     ArrayList<ViewAddressDetails_ModelClass> addressDetails1, String addressdetails) {
 
         this.context = addressDetails;
         this.address_Details = addressDetails1;
+        this.addressdetails = addressdetails;
 
     }
 
     public ViewaddressDetailsAdapter(CheckoutPage checkoutPage,
-                                     ArrayList<ViewAddressDetails_ModelClass> addressDetails1) {
+                                     ArrayList<ViewAddressDetails_ModelClass> addressDetails1,String checkoutpage) {
 
         this.context = checkoutPage;
         this.address_Details = addressDetails1;
+        this.addressdetails = checkoutpage;
 
     }
 
@@ -91,7 +93,16 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
                                     +", "+viewAddress.getEmail()+", "+viewAddress.getCityName()
                                     +", "+viewAddress.getArea()+", "+viewAddress.getAddress()+", "+viewAddress.getPincode());
 
-        holder.addressId.setText(viewAddress.getAddressId());
+        //holder.addressId.setText(viewAddress.getAddressId());
+
+        if(addressdetails.equals("addressdetails")){
+
+            holder.btn_Delete.setVisibility(View.VISIBLE);
+
+        }else if (addressdetails.equals("checkoutpage")) {
+
+            holder.btn_Delete.setVisibility(View.GONE);
+        }
 
         holder.btn_Delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +178,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
 
                 notifyDataSetChanged();
                 String all_values = holder.text_Address.getText().toString().trim();
-                Toast.makeText(context, addressId, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, addressId, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -177,8 +188,8 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
             holder.rel_Click.setBackgroundResource(R.drawable.selectaddressback);
             holder.rel_Click.setElevation(15);
 
-            addressId = holder.addressId.getText().toString().trim();
-            Toast.makeText(context, addressId, Toast.LENGTH_SHORT).show();
+            //addressId = holder.addressId.getText().toString().trim();
+            //Toast.makeText(context, addressId, Toast.LENGTH_SHORT).show();
 
         }
         else {
@@ -209,7 +220,7 @@ public class ViewaddressDetailsAdapter extends RecyclerView.Adapter<ViewaddressD
             text_Address = itemView.findViewById(R.id.addressdetails);
             btn_Delete = itemView.findViewById(R.id.btn_Delete);
             rel_Click = itemView.findViewById(R.id.rel_Click);
-            addressId = itemView.findViewById(R.id.addressId);
+            //addressId = itemView.findViewById(R.id.addressId);
 
             btn_Delete.setOnClickListener(new View.OnClickListener() {
                 @Override

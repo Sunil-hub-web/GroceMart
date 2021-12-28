@@ -1,12 +1,14 @@
 package com.example.grocemart.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grocemart.R;
 import com.example.grocemart.activity.SerachPage;
+import com.example.grocemart.activity.ShopDetailsPage;
+import com.example.grocemart.modelclass.GroceryShop_ModelClass;
 import com.example.grocemart.modelclass.Serach_ModelClass;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -26,13 +31,15 @@ public class SerachAdapter extends RecyclerView.Adapter<SerachAdapter.ViewHolder
     ArrayList<Serach_ModelClass> serachItem;
     ArrayList<Serach_ModelClass> serachItemShow;
     Context context;
+    String cityid;
 
-    public SerachAdapter(SerachPage serachPage, ArrayList<Serach_ModelClass> serachProduct) {
+    public SerachAdapter(SerachPage serachPage, ArrayList<Serach_ModelClass> serachProduct, String cityId) {
 
         this.context = serachPage;
         this.serachItem = serachProduct;
         this.serachItemShow = new ArrayList<>();
         this.serachItemShow.addAll(serachItem);
+        this.cityid = cityId;
 
     }
 
@@ -48,12 +55,27 @@ public class SerachAdapter extends RecyclerView.Adapter<SerachAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull @NotNull SerachAdapter.ViewHolder holder, int position) {
 
-        Serach_ModelClass ser = serachItem.get(position);
+        Serach_ModelClass serachProduct = serachItem.get(position);
 
-        holder.productImage.setImageResource(ser.getImage());
-        holder.shopName.setText(ser.getShop());
-        holder.topProduct.setText(ser.getName());
-        holder.price.setText(ser.getPrice());
+
+        holder.shopName.setText(serachProduct.getName());
+        //holder.text_RProductDesc.setText(restaurantProduct.getProductDesc());
+        String image = "https://"+serachProduct.getImage();
+        Picasso.with(context).load(image).into(holder.productImage);
+
+        holder.clicl_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ShopDetailsPage.class);
+                intent.putExtra("cityId",cityid);
+                intent.putExtra("shopId",serachProduct.getId());
+                context.startActivity(intent);
+
+
+            }
+        });
+
 
     }
 
@@ -83,7 +105,7 @@ public class SerachAdapter extends RecyclerView.Adapter<SerachAdapter.ViewHolder
 
                         if(item.getName().toLowerCase().contains((constraint))){
                             resultData.add(item);
-                        }else if(item.getShop().toLowerCase().contains((constraint))){
+                        }else if(item.getName().toLowerCase().contains((constraint))){
                             resultData.add(item);
                         }
                     }
@@ -112,13 +134,14 @@ public class SerachAdapter extends RecyclerView.Adapter<SerachAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;
         TextView topProduct,shopName,price;
+        RelativeLayout clicl_product;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
             productImage = itemView.findViewById(R.id.productImage);
-            topProduct = itemView.findViewById(R.id.topProduct);
             shopName = itemView.findViewById(R.id.shopName);
-            price = itemView.findViewById(R.id.price);
+            clicl_product = itemView.findViewById(R.id.clicl_product);
+            //price = itemView.findViewById(R.id.price);
 
         }
     }

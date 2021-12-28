@@ -32,6 +32,7 @@ import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.grocemart.R;
 import com.example.grocemart.SharedPrefManager;
+import com.example.grocemart.modelclass.ProductDetails_ModelClass;
 import com.example.grocemart.url.APPURLS;
 import com.squareup.picasso.Picasso;
 
@@ -40,6 +41,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -246,11 +248,11 @@ public class UserProfile extends AppCompatActivity {
                 data != null && data.getData() != null) {
 
             imageUri = data.getData();
-            circleImageView.setImageURI(imageUri);
 
             try {
 
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageUri);
+                circleImageView.setImageBitmap(bitmap);
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap = Bitmap.createScaledBitmap(bitmap, 500, 750, true);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 80, baos); //bm is the bitmap object

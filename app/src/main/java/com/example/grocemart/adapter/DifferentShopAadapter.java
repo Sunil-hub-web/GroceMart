@@ -1,9 +1,11 @@
 package com.example.grocemart.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grocemart.R;
 import com.example.grocemart.activity.DifferentShopName;
+import com.example.grocemart.activity.ShopDetailsPage;
 import com.example.grocemart.modelclass.DifferentShopDetails_ModelClass;
 import com.squareup.picasso.Picasso;
 
@@ -23,11 +26,13 @@ public class DifferentShopAadapter extends RecyclerView.Adapter<DifferentShopAad
 
     Context context;
     ArrayList<DifferentShopDetails_ModelClass> shopdetails;
+    String cityId;
 
-    public DifferentShopAadapter(DifferentShopName differentShopName, ArrayList<DifferentShopDetails_ModelClass> shopDetails) {
+    public DifferentShopAadapter(DifferentShopName differentShopName, ArrayList<DifferentShopDetails_ModelClass> shopDetails, String cityId) {
 
         this.context = differentShopName;
         this.shopdetails = shopDetails;
+        this.cityId = cityId;
     }
 
     @NonNull
@@ -67,6 +72,17 @@ public class DifferentShopAadapter extends RecyclerView.Adapter<DifferentShopAad
 
         }
 
+        holder.btn_GotoShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ShopDetailsPage.class);
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("shopId",shop_Details.getShopId());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -78,6 +94,8 @@ public class DifferentShopAadapter extends RecyclerView.Adapter<DifferentShopAad
 
         TextView text_ShopName,text_ShopAddress,text_ShopAddress1;
         ImageView img_ShopeImage,img_ShopeLogo;
+        Button btn_GotoShop;
+
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
@@ -86,6 +104,7 @@ public class DifferentShopAadapter extends RecyclerView.Adapter<DifferentShopAad
             text_ShopAddress = itemView.findViewById(R.id.text_ShopAddress);
             text_ShopAddress1 = itemView.findViewById(R.id.text_ShopAddress1);
             img_ShopeImage = itemView.findViewById(R.id.img_ShopeImage);
+            btn_GotoShop = itemView.findViewById(R.id.btn_GotoShop);
         }
     }
 }

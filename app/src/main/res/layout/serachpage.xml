@@ -5,67 +5,38 @@
     android:background="#EEEEEE">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/hundred_ten"
-        android:layout_margin="@dimen/five"
-        android:id="@+id/first"
-        android:background="@drawable/homecard_back">
+        android:id="@+id/clicl_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginRight="@dimen/ten"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@drawable/homecard_back"
+        android:elevation="@dimen/five">
 
         <ImageView
-            android:id="@+id/productImage"
-            android:layout_width="@dimen/eighty"
-            android:layout_height="@dimen/ninety"
-            android:src="@drawable/royal"
-            android:layout_margin="5dp"></ImageView>
+            android:id="@+id/product_image"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/hundred"
+            android:src="@drawable/chicken"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:layout_margin="@dimen/ten"></ImageView>
 
         <TextView
-            android:id="@+id/topProduct"
+            android:id="@+id/text_ProductName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ten"
-            android:layout_marginLeft="@dimen/twenty"
-            android:layout_toRightOf="@id/productImage"
+            android:layout_below="@id/product_image"
+            android:layout_margin="@dimen/ten"
+            android:layout_marginRight="20dp"
+            android:text="topproduct"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize"
-            android:textStyle="bold"></TextView>
-        <TextView
-            android:id="@+id/shopName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ten"
-            android:text="@string/ShopNmae"
-            android:layout_below="@id/topProduct"
-            android:layout_toRightOf="@id/productImage"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize"
-            android:layout_marginLeft="@dimen/twenty"
             android:textStyle="bold"></TextView>
 
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1 kg"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/ten"
-            android:layout_marginLeft="@dimen/twenty"
-            android:textSize="@dimen/textsize"
-            android:layout_below="@id/shopName"
-            android:layout_toRightOf="@id/productImage"
-            android:textStyle="bold"></TextView>
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="₹ 145.00"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/ten"
-            android:layout_marginLeft="@dimen/twenty"
-            android:textSize="@dimen/textsize"
-            android:layout_below="@id/shopName"
-            android:layout_toRightOf="@id/quantity"
-            android:textStyle="bold"></TextView>
 
     </RelativeLayout>
 

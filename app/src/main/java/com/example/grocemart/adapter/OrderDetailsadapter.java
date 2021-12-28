@@ -46,7 +46,7 @@ public class OrderDetailsadapter extends RecyclerView.Adapter<OrderDetailsadapte
 
     Context context;
     ArrayList<OrderDetails_ModelClass> order;
-    ArrayList<ProductDetails_ModelClass> product_details = new ArrayList<>();
+    ArrayList<ProductDetails_ModelClass> product_details;
 
 
     String Userid;

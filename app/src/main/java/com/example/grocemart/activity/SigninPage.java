@@ -167,25 +167,33 @@ public class SigninPage extends AppCompatActivity {
                         userPassword = edit_password.getText().toString().trim();
                         wallet_Amount = jsonObject.getString("wallet_amt");
 
-                        if(wallet_Amount.equals("null")){
+                        Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword,wallet_Amount);
+                        SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
+
+
+                        Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
+                        startActivity (intent);
+
+                       /* if(wallet_Amount.equals("null")){
 
                             wallet_Amount = "0";
 
                             Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword,wallet_Amount);
                             SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
 
-                            Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
-                            startActivity (intent);
+                           *//* Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
+                            startActivity (intent);*//*
 
                         }else{
 
                             Login_ModelClass login_modelClass = new Login_ModelClass(userId,userName,userEmailID,userMobileNo,userPassword,wallet_Amount);
                             SharedPrefManager.getInstance(SigninPage.this).userLogin(login_modelClass);
 
-                            Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
-                            startActivity (intent);
+                           *//* Intent intent = new Intent ( SigninPage.this, SelectLocation.class );
+                            startActivity (intent);*//*
 
-                        }
+                        }*/
+
 
                     }
                 } catch (JSONException e) {

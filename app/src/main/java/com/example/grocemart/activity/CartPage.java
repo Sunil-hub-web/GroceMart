@@ -302,6 +302,7 @@ public class CartPage extends AppCompatActivity {
                             rel_MoneyTotal.setVisibility(View.GONE);
                             rel_Total.setVisibility(View.GONE);
                             img_Cart.setVisibility(View.GONE);
+                            text_ItemCount.setVisibility(View.GONE);
                             image_NoResult.setVisibility(View.VISIBLE);
 
                         } else {
@@ -314,6 +315,7 @@ public class CartPage extends AppCompatActivity {
 
                             rel_MoneyTotal.setVisibility(View.VISIBLE);
                             rel_Total.setVisibility(View.VISIBLE);
+                            text_ItemCount.setVisibility(View.VISIBLE);
                             image_NoResult.setVisibility(View.GONE);
 
                             linearLayoutManager = new LinearLayoutManager(CartPage.this, LinearLayoutManager.VERTICAL, false);

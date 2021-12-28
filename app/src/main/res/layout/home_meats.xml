@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#EEEEEE">
+    android:background="#FFFFFF">
 
         <RelativeLayout
-            android:id="@+id/r3"
+            android:id="@+id/rel_Click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/ten"
@@ -43,7 +43,7 @@
                     android:layout_gravity="center"
                     android:scrollHorizontally="true"></TextView>
 
-                 <TextView
+                <!-- <TextView
                      android:id="@+id/text_MProductDesc"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
@@ -56,11 +56,11 @@
                      android:ellipsize="end"
                      android:singleLine="true"
                      android:layout_gravity="center"
-                     android:scrollHorizontally="true"></TextView>
+                     android:scrollHorizontally="true"></TextView>-->
 
             </LinearLayout>
 
-            <Button
+           <!-- <Button
                 android:id="@+id/btn_mgotoShop"
                 android:layout_width="@dimen/hundred_twenty"
                 android:layout_height="@dimen/forty"
@@ -71,7 +71,7 @@
                 android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:textSize="@dimen/textsize"
-                android:layout_centerHorizontal="true"></Button>
+                android:layout_centerHorizontal="true"></Button>-->
 
 
         </RelativeLayout>

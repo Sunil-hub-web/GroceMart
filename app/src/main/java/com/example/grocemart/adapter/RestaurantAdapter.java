@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,11 +52,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         Restaurant_ModelClass restaurantProduct = restaurant.get(position);
 
         holder.text_RProductname.setText(restaurantProduct.getProductName());
-        holder.text_RProductDesc.setText(restaurantProduct.getProductDesc());
+        //holder.text_RProductDesc.setText(restaurantProduct.getProductDesc());
         String image = "https://"+restaurantProduct.getProductImage();
         Picasso.with(context).load(image).into(holder.product_RImage);
 
-        holder.btn_gotoshop.setOnClickListener(new View.OnClickListener() {
+        holder.rel_Click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -66,12 +67,21 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             }
         });
 
+       /* holder.btn_gotoshop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });*/
+
 
     }
 
     @Override
     public int getItemCount() {
-        return restaurant.size();
+
+        return  restaurant.size()>5?5:restaurant.size();
     }
 
     public class Viewholdert extends RecyclerView.ViewHolder {
@@ -79,14 +89,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         ImageView product_RImage;
         TextView text_RProductname,text_RProductDesc;
         Button btn_gotoshop;
+        RelativeLayout rel_Click;
 
         public Viewholdert(@NonNull @NotNull View itemView) {
             super(itemView);
 
             product_RImage = itemView.findViewById(R.id.product_RImage);
             text_RProductname = itemView.findViewById(R.id.text_RProductname);
-            text_RProductDesc = itemView.findViewById(R.id.text_RProductDesc);
-            btn_gotoshop = itemView.findViewById(R.id.gotoshop);
+            //text_RProductDesc = itemView.findViewById(R.id.text_RProductDesc);
+            //btn_gotoshop = itemView.findViewById(R.id.gotoshop);
+            rel_Click = itemView.findViewById(R.id.rel_Click);
 
         }
     }

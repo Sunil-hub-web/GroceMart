@@ -58,7 +58,7 @@ public class AddressDetails extends AppCompatActivity {
     String str_Name,str_Email,str_MobileNo,str_City,str_Area,str_Address,
             str_PinCode,userId,cityid,City_id,city_Name,pincode_Name,
             Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id;
-    Button btn_SaveAddress;
+    Button btn_SaveAddress,btn_cancel;
     Spinner spiner_City,spiner_Pincode;
     Dialog dialog;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
@@ -77,6 +77,7 @@ public class AddressDetails extends AppCompatActivity {
 
         image_back = findViewById(R.id.back);
         btn_AddAddress = findViewById(R.id.addaddress);
+        btn_cancel = findViewById(R.id.btn_cancel);
         AddressRecycler = findViewById(R.id.addressRecycler);
         linearLayoutManager =  new LinearLayoutManager(AddressDetails.this,LinearLayoutManager.VERTICAL,false);
 
@@ -110,6 +111,7 @@ public class AddressDetails extends AppCompatActivity {
         dialog.setContentView(R.layout.address_details);
         dialog.setCancelable(false);
         btn_SaveAddress = dialog.findViewById(R.id.saveaddress);
+        btn_cancel = dialog.findViewById(R.id.btn_cancel);
         EditText edit_Name = dialog.findViewById(R.id.fullName);
         EditText edit_Email = dialog.findViewById(R.id.emailAddress);
         EditText edit_Address = dialog.findViewById(R.id.Address);
@@ -157,6 +159,14 @@ public class AddressDetails extends AppCompatActivity {
                     addAddress(userId,str_Name,str_MobileNo,str_City,str_Address,str_Area,str_Email,str_PinCode);
 
                 }
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
             }
         });
 
@@ -240,6 +250,8 @@ public class AddressDetails extends AppCompatActivity {
 
    public void getaddressDetails(String userid){
 
+        addressDetails.clear();
+
        ProgressDialog progressDialog = new ProgressDialog(AddressDetails.this);
        progressDialog.show();
        progressDialog.setContentView(R.layout.progress_dialog);
@@ -292,9 +304,11 @@ public class AddressDetails extends AppCompatActivity {
                            addressDetails.add(viewAddressDetails_modelClass);
                        }
 
+                       String addressdetails = "addressdetails";
+
                        AddressRecycler.setLayoutManager(linearLayoutManager);
                        AddressRecycler.setHasFixedSize(true);
-                       viewaddressDetailsAdapter = new ViewaddressDetailsAdapter(AddressDetails.this,addressDetails);
+                       viewaddressDetailsAdapter = new ViewaddressDetailsAdapter(AddressDetails.this,addressDetails,addressdetails);
                        AddressRecycler.setAdapter(viewaddressDetailsAdapter);
 
                    }

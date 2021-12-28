@@ -48,7 +48,7 @@ public class SelectLocation extends AppCompatActivity {
     Spinner spiner_City, spiner_pincode;
     Button btn_submit,btn_restartapp;
     String item, City_id, City_Name, Pincode_id, Pincode;
-    String cityid;
+    String cityid,username,password;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
     HashMap<String, ArrayList<PinCode_ModelClass>> hashmap_picode = new HashMap<String, ArrayList<PinCode_ModelClass>>();
@@ -68,6 +68,9 @@ public class SelectLocation extends AppCompatActivity {
         networkConnection = findViewById(R.id.networkConnection);
         showDetails = findViewById(R.id.showDetails);
         btn_restartapp = findViewById(R.id.restartapp);
+
+        username = SharedPrefManager.getInstance(SelectLocation.this).getUser().getName();
+        password = SharedPrefManager.getInstance(SelectLocation.this).getUser().getPassword();
 
         connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 

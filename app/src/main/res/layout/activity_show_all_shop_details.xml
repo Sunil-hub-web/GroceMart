@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ShowAllShopDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top"
+        android:background="@drawable/action_bg"
+        android:elevation="@dimen/five">
+
+        <ImageView
+            android:id="@+id/img_Back"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:src="@drawable/baseline_arrow_back"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_centerVertical="true">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0A22A1"
+            android:textSize="@dimen/edittextsize"
+            android:text="Home"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="29dp"
+            android:textStyle="bold"></TextView>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_marginTop="@dimen/twenty"
+        android:id="@+id/productRecycler">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

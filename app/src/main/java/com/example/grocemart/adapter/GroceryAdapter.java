@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,11 +52,11 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
         Grocery_ModelClass groceryProduct = grocery.get(position);
 
         holder.txt_GproductName.setText(groceryProduct.getProductName());
-        holder.txt_GproductDesc.setText(groceryProduct.getProductDesc());
+        //holder.txt_GproductDesc.setText(groceryProduct.getProductDesc());
         String image = "https://"+groceryProduct.getProductImage();
         Picasso.with(context).load(image).into(holder.gproduct_Image);
 
-        holder.button.setOnClickListener(new View.OnClickListener() {
+        holder.rel_Click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -63,14 +64,24 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
                 intent.putExtra("productId",groceryProduct.getProductId());
                 intent.putExtra("cityId",cityId);
                 context.startActivity(intent);
+
             }
         });
+
+       /* holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });*/
 
     }
 
     @Override
     public int getItemCount() {
-        return grocery.size();
+
+        return  grocery.size()>5?5:grocery.size();
     }
 
     public class ViewModel extends RecyclerView.ViewHolder {
@@ -78,14 +89,16 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.ViewMode
         ImageView gproduct_Image;
         TextView txt_GproductName,txt_GproductDesc;
         Button button;
+        RelativeLayout rel_Click;
 
         public ViewModel(@NonNull @NotNull View itemView) {
             super(itemView);
 
             gproduct_Image = itemView.findViewById(R.id.gproduct_Image);
             txt_GproductName = itemView.findViewById(R.id.txt_GproductName);
-            txt_GproductDesc = itemView.findViewById(R.id.txt_GproductDesc);
-            button = itemView.findViewById(R.id.GoToShop);
+            //txt_GproductDesc = itemView.findViewById(R.id.txt_GproductDesc);
+            //button = itemView.findViewById(R.id.GoToShop);
+            rel_Click = itemView.findViewById(R.id.rel_Click);
 
         }
     }

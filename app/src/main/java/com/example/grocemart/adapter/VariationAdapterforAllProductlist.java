@@ -42,7 +42,7 @@ public class VariationAdapterforAllProductlist extends RecyclerView.Adapter<Vari
 
         AllProductVariation_ModelClass movie = variation.get(position);
 
-        holder.heading.setText(movie.getVariation_unit());
+        holder.heading.setText(movie.getVariation_unit()+" : "+ "Rs - "+movie.getVariation_salesPrice());
 
 
     }

@@ -114,6 +114,8 @@ public class ProductShopDetails extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public void getProductDetails(String productId, String cityId) {

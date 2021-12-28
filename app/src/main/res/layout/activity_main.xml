@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity"
-    android:background="#EEEEEE">
+    android:background="#EEEEEE"
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:id="@+id/serachLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
         android:layout_marginTop="@dimen/ten"
-        android:elevation="25dp"
-        android:layout_margin="@dimen/ten">
+        android:elevation="25dp">
 
         <ImageView
             android:id="@+id/locimage"
@@ -68,7 +68,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -78,12 +79,12 @@
                     android:id="@+id/edit_Serach"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/forty_five"
-                    android:background="@drawable/serach_back"
-                    android:padding="9dp"
-                    android:layout_margin="@dimen/ten"
-                    android:focusable="false"
                     android:layout_centerHorizontal="true"
-                    android:hint="Search"></EditText>
+                    android:layout_margin="@dimen/ten"
+                    android:background="@drawable/serach_back"
+                    android:focusable="false"
+                    android:hint="Search"
+                    android:padding="9dp"></EditText>
 
                 <LinearLayout
                     android:id="@+id/catego"
@@ -114,9 +115,9 @@
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/bannerRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/bannerRecycler">
+                        android:layout_height="match_parent">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -135,27 +136,38 @@
                         android:id="@+id/text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_margin="@dimen/ten"
                         android:text="@string/Grocery"
                         android:textColor="#000000"
                         android:textSize="@dimen/textsize"
                         android:textStyle="bold" />
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:id="@+id/groceryRecycler"
-                                android:layout_marginTop="@dimen/ten"
-                                android:layout_below="@id/text">
+                    <TextView
+                        android:id="@+id/text_GroceryViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ten"
+                        android:text="View All"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"></TextView>
 
-                            </androidx.recyclerview.widget.RecyclerView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/groceryRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/text_GroceryViewAll"
+                        android:layout_marginTop="@dimen/ten"
+                        android:paddingBottom="@dimen/ten">
 
+                    </androidx.recyclerview.widget.RecyclerView>
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/restaurant"
+                    android:id="@+id/groceryShop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/grocery"
@@ -164,29 +176,87 @@
                     android:elevation="5dp">
 
                     <TextView
-                        android:id="@+id/text1"
+                        android:id="@+id/textshop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/ten"
-                        android:text="@string/Restaurant"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_margin="@dimen/ten"
+                        android:text="YOUR FAVOURITE SHOPS"
                         android:textColor="#000000"
                         android:textSize="@dimen/textsize"
                         android:textStyle="bold"
-                        android:layout_marginBottom="@dimen/ten"/>
+                        android:textAllCaps="false"/>
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:id="@+id/restaurantRecycler"
-                                android:layout_marginTop="@dimen/ten"
-                                android:layout_below="@id/text1">
+                    <TextView
+                        android:id="@+id/text_GroceryShopViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ten"
+                        android:text="View All"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"></TextView>
 
-                            </androidx.recyclerview.widget.RecyclerView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/groceryShopRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/text_GroceryShopViewAll"
+                        android:layout_marginTop="@dimen/ten"
+                        android:paddingBottom="@dimen/ten">
+
+                    </androidx.recyclerview.widget.RecyclerView>
 
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/restaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/groceryShop"
+                    android:layout_margin="@dimen/ten"
+                    android:background="@drawable/cardback"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_margin="@dimen/ten"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:text="@string/Restaurant"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"/>
+
+                    <TextView
+                        android:id="@+id/text_RestaurantViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ten"
+                        android:text="View All"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"></TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/restaurantRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/text_RestaurantViewAll"
+                        android:layout_marginTop="@dimen/ten"
+                        android:paddingBottom="@dimen/ten">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/restaurantShop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/restaurant"
@@ -195,26 +265,130 @@
                     android:elevation="5dp">
 
                     <TextView
-                        android:id="@+id/text3"
+                        android:id="@+id/text1shop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/ten"
-                        android:text="@string/Meat"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_margin="@dimen/ten"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:text="RESTAURANTS"
                         android:textColor="#000000"
                         android:textSize="@dimen/textsize"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textAllCaps="false"/>
+
+                    <TextView
+                        android:id="@+id/text_RestaurantShopViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ten"
+                        android:text="View All"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"></TextView>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/restaurantShopRecycler"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/meatsRecycler"
+                        android:layout_below="@id/text_RestaurantShopViewAll"
                         android:layout_marginTop="@dimen/ten"
-                        android:layout_below="@id/text3">
+                        android:paddingBottom="@dimen/ten">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/meat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/restaurantShop"
+                    android:layout_margin="@dimen/ten"
+                    android:background="@drawable/cardback"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_margin="@dimen/ten"
+                        android:text="@string/Meat"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"/>
+
+                    <TextView
+                        android:id="@+id/text_MeatViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ten"
+                        android:text="View All"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"></TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/meatsRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/text_MeatViewAll"
+                        android:layout_marginTop="@dimen/ten"
+                        android:paddingBottom="@dimen/ten">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/meatShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/meat"
+                    android:layout_margin="@dimen/ten"
+                    android:background="@drawable/cardback"
+                    android:elevation="5dp">
+
+                    <TextView
+                        android:id="@+id/text3shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_margin="@dimen/ten"
+                        android:text="SHOPS NEAR YOU"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"/>
+
+                    <TextView
+                        android:id="@+id/text_MeatShopViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ten"
+                        android:text="View All"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textsize"
+                        android:textStyle="bold"></TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/meatsShopRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/text_MeatShopViewAll"
+                        android:layout_marginTop="@dimen/ten"
+                        android:paddingBottom="@dimen/ten">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+
+
 
             </RelativeLayout>
 

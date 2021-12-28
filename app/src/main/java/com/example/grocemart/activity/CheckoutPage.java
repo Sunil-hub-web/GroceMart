@@ -49,16 +49,16 @@ import java.util.Map;
 
 public class CheckoutPage extends AppCompatActivity {
 
-    Button btn_Address,btn_ContinueShoping,btn_procedToCheckout;
-    RadioButton radio_CashOnDelivery,radio_PayOnline,radio_wallet_Amount;
-    TextView subTotalPrice,shippingCharges,totalPrice,wallet_Amountprice,shipping_Name;
+    Button btn_Address, btn_ContinueShoping, btn_procedToCheckout;
+    RadioButton radio_CashOnDelivery, radio_PayOnline, radio_wallet_Amount;
+    TextView subTotalPrice, shippingCharges, totalPrice, wallet_Amountprice, shipping_Name;
     Dialog dialog;
-    String str_Name,str_Email,str_MobileNo,str_City,str_Area,str_Address,
-            str_PinCode,userId,cityid,City_id,city_Name,pincode_Name,
-            Name,Email,MobileNo,City,Area,Address,PinCode,addressId,city_id,str_SubTotalPrice,
-            str_ShippingCharges,str_TotalAmount,str_radioData,str_AddressId,orderId,str_wallet_Amountprice,ShappingName;
-    Button btn_SaveAddress;
-    Spinner spiner_City,spiner_Pincode;
+    String str_Name, str_Email, str_MobileNo, str_City, str_Area, str_Address,
+            str_PinCode, userId, cityid, City_id, city_Name, pincode_Name,
+            Name, Email, MobileNo, City, Area, Address, PinCode, addressId, city_id, str_SubTotalPrice,
+            str_ShippingCharges, str_TotalAmount, str_radioData, str_AddressId, orderId, str_wallet_Amountprice, ShappingName;
+    Button btn_SaveAddress, btn_cancel;
+    Spinner spiner_City, spiner_Pincode;
     ArrayList<City_ModelClass> list_city = new ArrayList<>();
     ArrayList<PinCode_ModelClass> arrayListPincode = new ArrayList<PinCode_ModelClass>();
     ArrayList<ViewAddressDetails_ModelClass> addressDetails = new ArrayList<>();
@@ -87,7 +87,7 @@ public class CheckoutPage extends AppCompatActivity {
         shipping_Name = findViewById(R.id.shipping_Name);
         wallet_Amountprice = findViewById(R.id.wallet_Amountprice);
 
-        linearLayoutManager =  new LinearLayoutManager(CheckoutPage.this,LinearLayoutManager.VERTICAL,false);
+        linearLayoutManager = new LinearLayoutManager(CheckoutPage.this, LinearLayoutManager.VERTICAL, false);
 
         Intent intent = getIntent();
 
@@ -118,7 +118,7 @@ public class CheckoutPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent1 = new Intent(CheckoutPage.this,MainActivity.class);
+                Intent intent1 = new Intent(CheckoutPage.this, MainActivity.class);
                 startActivity(intent1);
             }
         });
@@ -129,15 +129,23 @@ public class CheckoutPage extends AppCompatActivity {
 
                 str_AddressId = viewaddressDetailsAdapter.addressId();
 
-                if(radio_CashOnDelivery.isChecked()){
+                if (str_AddressId == null) {
 
-                    str_radioData = radio_CashOnDelivery.getText().toString().trim();
+                    Toast.makeText(CheckoutPage.this, "Select Your Address", Toast.LENGTH_SHORT).show();
 
-                    placeOrder(userId,str_AddressId,str_ShippingCharges,ShappingName,"","0","0",str_radioData);
+                } else {
 
-                }else{
+                    if (radio_CashOnDelivery.isChecked()) {
 
-                    Toast.makeText(CheckoutPage.this, "Select Your payment Method", Toast.LENGTH_SHORT).show();
+                        str_radioData = radio_CashOnDelivery.getText().toString().trim();
+
+                        placeOrder(userId, str_AddressId, str_ShippingCharges, ShappingName, "", "0", "0", str_radioData);
+
+                    } else {
+
+                        Toast.makeText(CheckoutPage.this, "Select Your payment Method", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
             }
@@ -146,7 +154,7 @@ public class CheckoutPage extends AppCompatActivity {
 
     }
 
-    public void add_Address(){
+    public void add_Address() {
 
         //Show Your Another AlertDialog
 
@@ -154,6 +162,7 @@ public class CheckoutPage extends AppCompatActivity {
         dialog.setContentView(R.layout.address_details);
         dialog.setCancelable(false);
         btn_SaveAddress = dialog.findViewById(R.id.saveaddress);
+        btn_cancel = dialog.findViewById(R.id.btn_cancel);
         EditText edit_Name = dialog.findViewById(R.id.fullName);
         EditText edit_Email = dialog.findViewById(R.id.emailAddress);
         EditText edit_Address = dialog.findViewById(R.id.Address);
@@ -168,27 +177,27 @@ public class CheckoutPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(edit_Name.getText().toString().trim().equals("")){
+                if (edit_Name.getText().toString().trim().equals("")) {
 
                     edit_Name.setError("Please Enter Name");
 
-                }else if (TextUtils.isEmpty(edit_Email.getText())){
+                } else if (TextUtils.isEmpty(edit_Email.getText())) {
 
                     edit_Email.setError("Please Enter Email");
 
-                }else if (TextUtils.isEmpty(edit_MobileNo.getText()) && edit_MobileNo.getText().toString().trim().length() == 10) {
+                } else if (TextUtils.isEmpty(edit_MobileNo.getText()) && edit_MobileNo.getText().toString().trim().length() == 10) {
 
                     edit_MobileNo.setError("Please Enter MobileNumber");
 
-                }else if (TextUtils.isEmpty(edit_Area.getText())) {
+                } else if (TextUtils.isEmpty(edit_Area.getText())) {
 
                     edit_Area.setError("Please Enter Area");
 
-                }else if (TextUtils.isEmpty(edit_Address.getText())) {
+                } else if (TextUtils.isEmpty(edit_Address.getText())) {
 
                     edit_Address.setError("Please Enter Address");
 
-                }else{
+                } else {
 
                     str_Name = edit_Name.getText().toString().trim();
                     str_Email = edit_Email.getText().toString().trim();
@@ -198,9 +207,17 @@ public class CheckoutPage extends AppCompatActivity {
                     str_PinCode = pincode_Name;
                     str_City = City_id;
 
-                    addAddress(userId,str_Name,str_MobileNo,str_City,str_Address,str_Area,str_Email,str_PinCode);
+                    addAddress(userId, str_Name, str_MobileNo, str_City, str_Address, str_Area, str_Email, str_PinCode);
 
                 }
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
             }
         });
 
@@ -210,8 +227,8 @@ public class CheckoutPage extends AppCompatActivity {
         window.setBackgroundDrawableResource(R.drawable.dialogback);
     }
 
-    public void addAddress(String userId,String name,String number,String city,
-                           String address,String area,String email,String pincode){
+    public void addAddress(String userId, String name, String number, String city,
+                           String address, String area, String email, String pincode) {
 
         ProgressDialog progressDialog = new ProgressDialog(CheckoutPage.this);
         progressDialog.show();
@@ -233,7 +250,7 @@ public class CheckoutPage extends AppCompatActivity {
 
                     String message = jsonObject.getString("success");
 
-                    if (message.equals("true")){
+                    if (message.equals("true")) {
 
                         Toast.makeText(CheckoutPage.this, "Address Insterted Success Fully..", Toast.LENGTH_SHORT).show();
 
@@ -250,38 +267,38 @@ public class CheckoutPage extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 progressDialog.dismiss();
-                error.printStackTrace ();
-                Toast.makeText (CheckoutPage.this, "Address not Stored Successfully", Toast.LENGTH_SHORT).show ( );
+                error.printStackTrace();
+                Toast.makeText(CheckoutPage.this, "Address not Stored Successfully", Toast.LENGTH_SHORT).show();
 
             }
-        }){
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String,String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
 
-                params.put("id",userId);
-                params.put("name",name);
-                params.put("number",number);
-                params.put("city_id",city);
-                params.put("address",address);
-                params.put("area_id",area);
-                params.put("email",email);
-                params.put("pincode",pincode);
+                params.put("id", userId);
+                params.put("name", name);
+                params.put("number", number);
+                params.put("city_id", city);
+                params.put("address", address);
+                params.put("area_id", area);
+                params.put("email", email);
+                params.put("pincode", pincode);
 
                 return params;
             }
         };
 
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(CheckoutPage.this);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
 
     }
 
-    public void getaddressDetails(String userid){
+    public void getaddressDetails(String userid) {
 
         ProgressDialog progressDialog = new ProgressDialog(CheckoutPage.this);
         progressDialog.show();
@@ -302,13 +319,13 @@ public class CheckoutPage extends AppCompatActivity {
 
                     String message = jsonObject.getString("success");
 
-                    if(message.equals("true")){
+                    if (message.equals("true")) {
 
                         String address = jsonObject.getString("All_address");
 
                         JSONArray jsonArray = new JSONArray(address);
 
-                        for(int i=0;i<jsonArray.length();i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
 
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
@@ -324,15 +341,17 @@ public class CheckoutPage extends AppCompatActivity {
 
 
                             ViewAddressDetails_ModelClass viewAddressDetails_modelClass = new ViewAddressDetails_ModelClass(
-                                    addressId,city_id,Name,City,Area,PinCode,MobileNo,Address,Email
+                                    addressId, city_id, Name, City, Area, PinCode, MobileNo, Address, Email
                             );
 
                             addressDetails.add(viewAddressDetails_modelClass);
                         }
 
+                        String checkoutpage = "checkoutpage";
+
                         AddressRecycler.setLayoutManager(linearLayoutManager);
                         AddressRecycler.setHasFixedSize(true);
-                        viewaddressDetailsAdapter = new ViewaddressDetailsAdapter(CheckoutPage.this,addressDetails);
+                        viewaddressDetailsAdapter = new ViewaddressDetailsAdapter(CheckoutPage.this, addressDetails, checkoutpage);
                         AddressRecycler.setAdapter(viewaddressDetailsAdapter);
 
                     }
@@ -347,21 +366,21 @@ public class CheckoutPage extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 progressDialog.dismiss();
-                error.printStackTrace ();
+                error.printStackTrace();
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String,String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
 
-                params.put("id",userid);
+                params.put("id", userid);
                 return params;
             }
         };
 
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy( 50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(CheckoutPage.this);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
@@ -560,8 +579,8 @@ public class CheckoutPage extends AppCompatActivity {
     }
 
 
-    public void placeOrder(String userId,String addressId,String shippingAmount, String shappingType,
-                           String couponeCode,String couponeAmount,String walletamtdeduce,String paymentType){
+    public void placeOrder(String userId, String addressId, String shippingAmount, String shappingType,
+                           String couponeCode, String couponeAmount, String walletamtdeduce, String paymentType) {
 
         ProgressDialog progressDialog = new ProgressDialog(CheckoutPage.this);
         progressDialog.show();
@@ -570,7 +589,6 @@ public class CheckoutPage extends AppCompatActivity {
         textView.setText("Order Placed Please wait...");
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCancelable(false);
-
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, APPURLS.placeOrder, new Response.Listener<String>() {
@@ -585,11 +603,13 @@ public class CheckoutPage extends AppCompatActivity {
                     String message = jsonObject.getString("success");
                     String msg = jsonObject.getString("msg");
 
-                    if(message.equals("true")){
+                    if (message.equals("true")) {
 
                         orderId = jsonObject.getString("order_id");
 
                         Toast.makeText(CheckoutPage.this, msg, Toast.LENGTH_SHORT).show();
+
+                        vieworder();
 
                     }
                 } catch (JSONException e) {
@@ -605,21 +625,21 @@ public class CheckoutPage extends AppCompatActivity {
                 error.printStackTrace();
 
             }
-        }){
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String,String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
 
-                params.put("user_id",userId);
-                params.put("adresss_id",addressId);
-                params.put("shipChar",shippingAmount);
-                params.put("shiptype",shappingType);
-                params.put("coupon_code",couponeCode);
-                params.put("code_amnt",couponeAmount);
-                params.put("walletamtdeduce",walletamtdeduce);
-                params.put("payment_type",paymentType);
+                params.put("user_id", userId);
+                params.put("adresss_id", addressId);
+                params.put("shipChar", shippingAmount);
+                params.put("shiptype", shappingType);
+                params.put("coupon_code", couponeCode);
+                params.put("code_amnt", couponeAmount);
+                params.put("walletamtdeduce", walletamtdeduce);
+                params.put("payment_type", paymentType);
 
                 return params;
             }
@@ -629,6 +649,42 @@ public class CheckoutPage extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(CheckoutPage.this);
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
+
+    }
+
+    public void vieworder() {
+
+        Dialog dialog = new Dialog(CheckoutPage.this);
+        dialog.setContentView(R.layout.paymentsuccessfully);
+        dialog.setCancelable(false);
+
+        TextView text_shopping = dialog.findViewById(R.id.shopping);
+        Button button = dialog.findViewById(R.id.view);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(CheckoutPage.this, MyOrderDetails.class);
+                startActivity(intent);
+
+                dialog.dismiss();
+            }
+        });
+
+        text_shopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(CheckoutPage.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        //window.setBackgroundDrawableResource(R.drawable.dialogback);
 
     }
 }

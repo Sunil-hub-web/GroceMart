@@ -48,6 +48,12 @@ public class APPURLS {
 
    public static final String applyCupon = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=applyCupon";
 
+   public static final String getSingleProduct = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getallprocatwise";
+
+   public static final String getSingleShope = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=getallshopcatwise";
+
+   public static final String serachProduct = "http://collegeprojectz.com/grocmart/admin/Api/api.php?method=searchproduct";
+
 
 
 

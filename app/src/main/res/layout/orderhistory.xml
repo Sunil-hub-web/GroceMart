@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/hundred"
+        android:layout_height="@dimen/hundred_ten"
         android:id="@+id/first"
         android:layout_margin="5dp"
         android:background="@drawable/homecard_back">
@@ -14,33 +14,44 @@
         <ImageView
             android:id="@+id/imageCart"
             android:layout_width="@dimen/eighty"
-            android:layout_height="@dimen/ninety"
+            android:layout_height="@dimen/hundred"
             android:src="@drawable/royal"
             android:layout_margin="5dp"></ImageView>
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@id/imageCart"
+            android:layout_toLeftOf="@+id/pricecart"
             android:layout_centerInParent="true">
 
             <TextView
                 android:id="@+id/product_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ten"
                 android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginTop="@dimen/ten"
                 android:text="@string/BBRoyal"
-
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/shop_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight"
+                android:text="@string/ShopNmae"
+                android:layout_below="@id/product_Name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize"
+                android:layout_marginLeft="@dimen/twenty"
                 android:textStyle="bold"></TextView>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/product_Name"
-                android:layout_marginTop="@dimen/ten"
+                android:layout_below="@id/shop_Name"
                 android:id="@+id/qprice"
                 android:layout_marginLeft="@dimen/twenty">
 
@@ -95,6 +106,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/pricecart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -106,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:layout_marginTop="@dimen/ten"
+                android:layout_marginTop="@dimen/fifteen"
                 android:textSize="@dimen/textsize"
                 android:text="Total Price"
                 android:textStyle="bold"></TextView>
@@ -116,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:layout_marginTop="@dimen/ten"
+                android:layout_marginTop="@dimen/five"
                 android:textSize="@dimen/textsize"
                 android:text="500"
                 android:textStyle="bold"

@@ -28,6 +28,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,14 +46,20 @@ import com.example.grocemart.SharedPrefManager;
 import com.example.grocemart.adapter.BannerAdapter;
 import com.example.grocemart.adapter.CategoryAdapter;
 import com.example.grocemart.adapter.GroceryAdapter;
+import com.example.grocemart.adapter.GroceryShopAdapter;
 import com.example.grocemart.adapter.MeatsAdapter;
+import com.example.grocemart.adapter.MeatsShopAdapter;
 import com.example.grocemart.adapter.RestaurantAdapter;
+import com.example.grocemart.adapter.RestaurantShopAdapter;
 import com.example.grocemart.adapter.SubCategoryAdapter;
 import com.example.grocemart.modelclass.Banner_ModelClass;
 import com.example.grocemart.modelclass.Category_Modelcalss;
+import com.example.grocemart.modelclass.GroceryShop_ModelClass;
 import com.example.grocemart.modelclass.Grocery_ModelClass;
+import com.example.grocemart.modelclass.MeatShop_Modelclass;
 import com.example.grocemart.modelclass.Meats_ModelClass;
 import com.example.grocemart.modelclass.Restaurant_ModelClass;
+import com.example.grocemart.modelclass.RestrurantShop_ModelClass;
 import com.example.grocemart.modelclass.SubCategory_ModelClass;
 import com.example.grocemart.url.APPURLS;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -60,6 +67,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,14 +84,14 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView text_AddressDetails, text_Address;
+    TextView text_AddressDetails, text_Address,text_GroceryViewAll,text_GroceryShopViewAll,text_RestaurantViewAll,
+              text_RestaurantShopViewAll,text_MeatViewAll,text_MeatShopViewAll;
     RelativeLayout rel_SerachLocation;
     String cityName, cityId, pincodeId, userId;
     private int FINE_LOCATION_ACCESS_REQUEST_CODE = 10001;
     LocationManager locationManager;
     FusedLocationProviderClient fusedLocationProviderClient;
     BottomNavigationView bottomNavigationView;
-    Button btn_GoToShop2;
     EditText edit_Serach;
     private Boolean exit = false;
     BannerAdapter bannerAdapter;
@@ -92,11 +100,18 @@ public class MainActivity extends AppCompatActivity {
     MeatsAdapter meatsAdapter;
     CategoryAdapter categoryAdapter;
     SubCategoryAdapter subCategoryAdapter;
+    GroceryShopAdapter groceryShopAdapter;
+    RestaurantShopAdapter restaurantShopAdapter;
+    MeatsShopAdapter meatsShopAdapter;
 
     RecyclerView grocery_RecyclerView, restaurant_RecyclerView,
-            banner_RecyclerView, meats_RecyclerView,category_RecyclerView,categoryListRecycler;
+            banner_RecyclerView, meats_RecyclerView,category_RecyclerView,categoryListRecycler,groceryShopRecycler,
+            restaurantShopRecycler,meatsShopRecycler;
     LinearLayoutManager grocery_LinearLayoutManager, restaurant_LinearLayoutManager,
-            banner_LinearLayoutManager, meats_LinearLayoutManager, category_LinearLayoutManager,subcategory_LinearLayoutManager;
+            banner_LinearLayoutManager, meats_LinearLayoutManager,subcategory_LinearLayoutManager,
+            groceryShop_LinearLayoutManager, restaurantShop_LinearLayoutManager, meatsShop_LinearLayoutManager;
+
+    GridLayoutManager category_LinearLayoutManager;
 
     ArrayList<Banner_ModelClass> home_Banner = new ArrayList<>();
     ArrayList<Grocery_ModelClass> home_Grocery = new ArrayList<>();
@@ -104,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Meats_ModelClass> home_Meats = new ArrayList<>();
     ArrayList<Category_Modelcalss> home_Category = new ArrayList<>();
     ArrayList<SubCategory_ModelClass> sub_Category = new ArrayList<>();
+    ArrayList<GroceryShop_ModelClass> home_GroceryShop = new ArrayList<>();
+    ArrayList<RestrurantShop_ModelClass> home_RestaurantShop = new ArrayList<>();
+    ArrayList<MeatShop_Modelclass> home_MeatsShop = new ArrayList<>();
 
     public static String cart_count;
 
@@ -116,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
         text_Address = findViewById(R.id.address);
         rel_SerachLocation = findViewById(R.id.serachLocation);
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-        btn_GoToShop2 = findViewById(R.id.gotoshop);
         banner_RecyclerView = findViewById(R.id.bannerRecycler);
         grocery_RecyclerView = findViewById(R.id.groceryRecycler);
         restaurant_RecyclerView = findViewById(R.id.restaurantRecycler);
@@ -124,6 +141,15 @@ public class MainActivity extends AppCompatActivity {
         category_RecyclerView = findViewById(R.id.categoryRecycler);
         categoryListRecycler = findViewById(R.id.categoryListRecycler);
         edit_Serach = findViewById(R.id.edit_Serach);
+        text_GroceryShopViewAll = findViewById(R.id.text_GroceryShopViewAll);
+        text_GroceryViewAll = findViewById(R.id.text_GroceryViewAll);
+        text_RestaurantViewAll = findViewById(R.id.text_RestaurantViewAll);
+        text_RestaurantShopViewAll = findViewById(R.id.text_RestaurantShopViewAll);
+        text_MeatViewAll = findViewById(R.id.text_MeatViewAll);
+        text_MeatShopViewAll = findViewById(R.id.text_MeatShopViewAll);
+        meatsShopRecycler = findViewById(R.id.meatsShopRecycler);
+        restaurantShopRecycler = findViewById(R.id.restaurantShopRecycler);
+        groceryShopRecycler = findViewById(R.id.groceryShopRecycler);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -212,6 +238,98 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent1 = new Intent(MainActivity.this,SerachPage.class);
                 startActivity(intent1);
+            }
+        });
+
+        text_GroceryViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ShowAllProductDetails.class);
+                intent.putExtra("productName","Grocery");
+              /*  intent.putExtra("City_Name",cityName);
+                intent.putExtra("pincodeId",pincodeId);*/
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("category_id","9");
+                startActivity(intent);
+            }
+        });
+
+        text_MeatViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ShowAllProductDetails.class);
+                intent.putExtra("productName","Meats");
+              /*  intent.putExtra("City_Name",cityName);
+                intent.putExtra("pincodeId",pincodeId);*/
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("category_id","11");
+                startActivity(intent);
+
+            }
+        });
+
+        text_RestaurantViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ShowAllProductDetails.class);
+                intent.putExtra("productName","Restaurant");
+              /*  intent.putExtra("City_Name",cityName);
+                intent.putExtra("pincodeId",pincodeId);*/
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("category_id","10");
+                startActivity(intent);
+
+            }
+        });
+
+        text_GroceryShopViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(MainActivity.this, ShowAllShopDetails.class);
+                intent.putExtra("productName","YOUR FAVOURITE SHOPS");
+                intent.putExtra("City_Name",cityName);
+                intent.putExtra("pincodeId",pincodeId);
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("category_id","9");
+                startActivity(intent);
+
+            }
+        });
+
+        text_RestaurantShopViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ShowAllShopDetails.class);
+                intent.putExtra("productName","RESTAURANTS");
+                intent.putExtra("City_Name",cityName);
+                intent.putExtra("pincodeId",pincodeId);
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("category_id","10");
+                startActivity(intent);
+
+
+            }
+        });
+
+        text_MeatShopViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(MainActivity.this, ShowAllShopDetails.class);
+                intent.putExtra("productName","SHOPS NEAR YOU");
+                intent.putExtra("City_Name",cityName);
+                intent.putExtra("pincodeId",pincodeId);
+                intent.putExtra("cityId",cityId);
+                intent.putExtra("category_id","11");
+                startActivity(intent);
+
             }
         });
     }
@@ -332,6 +450,9 @@ public class MainActivity extends AppCompatActivity {
                     String Restaurant = jsonObject.getString("All_Restaurant");
                     String Meats = jsonObject.getString("All_Meats");
                     String category = jsonObject.getString("All_category");
+                    String All_MeatShope = jsonObject.getString("All_MeatShope");
+                    String All_GroceryShope = jsonObject.getString("All_GroceryShope");
+                    String All_RestrurantShope = jsonObject.getString("All_RestrurantShope");
 
                     if (message.equals("true")) {
 
@@ -360,7 +481,7 @@ public class MainActivity extends AppCompatActivity {
                         banner_RecyclerView.setHasFixedSize(true);
                         banner_RecyclerView.setAdapter(bannerAdapter);
 
-                       /* final int interval_time = 2000;
+                        final int interval_time = 2000;
                         Handler handler = new Handler();
                         Runnable runnable = new Runnable() {
                             int count = 0;
@@ -379,7 +500,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         };
-                        handler.postDelayed(runnable,interval_time);*/
+                        handler.postDelayed(runnable,interval_time);
 
 
                         LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
@@ -477,13 +598,11 @@ public class MainActivity extends AppCompatActivity {
 
                         // Retrive category in Home Page;
 
-
                         JSONArray jsonArray_category = new JSONArray(category);
 
                         for (int h = 0; h < jsonArray_category.length(); h++) {
 
                             JSONObject jsonObject_Category = jsonArray_category.getJSONObject(h);
-
 
                             Category_Modelcalss category_modelcalss = new Category_Modelcalss(
 
@@ -522,11 +641,94 @@ public class MainActivity extends AppCompatActivity {
 
                         Log.d("array",home_Category.toString());
 
-                        category_LinearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                        category_LinearLayoutManager = new GridLayoutManager(MainActivity.this,3, GridLayoutManager.VERTICAL, false);
                         categoryAdapter = new CategoryAdapter(MainActivity.this, home_Category);
                         category_RecyclerView.setLayoutManager(category_LinearLayoutManager);
                         category_RecyclerView.setHasFixedSize(true);
                         category_RecyclerView.setAdapter(categoryAdapter);
+
+                        //Retrive Meat Shop Details
+
+                        JSONArray jsonArray_MeatShope = new JSONArray(All_MeatShope);
+
+                        for (int m = 0;m<jsonArray_MeatShope.length();m++){
+
+                            JSONObject jsonObject_MeatShope = jsonArray_MeatShope.getJSONObject(m);
+
+                            String shop_id = jsonObject_MeatShope.getString("shop_id");
+                            String shop_name = jsonObject_MeatShope.getString("shop_name");
+                            String shop_banner = jsonObject_MeatShope.getString("shop_banner");
+                            String shop_logo = jsonObject_MeatShope.getString("shop_logo");
+
+                            MeatShop_Modelclass meatShop_modelclass = new MeatShop_Modelclass(
+                                    shop_id,shop_name,shop_banner,shop_logo
+                            );
+
+                            home_MeatsShop.add(meatShop_modelclass);
+
+                        }
+
+                        meatsShop_LinearLayoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false);
+                        meatsShopAdapter = new MeatsShopAdapter(MainActivity.this, home_MeatsShop,cityId);
+                        meatsShopRecycler.setLayoutManager(meatsShop_LinearLayoutManager);
+                        meatsShopRecycler.setHasFixedSize(true);
+                        meatsShopRecycler.setAdapter(meatsShopAdapter);
+
+                        //Retrive GroceryShop Shop Details
+
+                        JSONArray jsonArray_GroceryShope = new JSONArray(All_GroceryShope);
+
+                        for (int n = 0;n<jsonArray_GroceryShope.length();n++){
+
+                            JSONObject jsonObject_GroceryShope = jsonArray_GroceryShope.getJSONObject(n);
+
+                            String shop_id = jsonObject_GroceryShope.getString("shop_id");
+                            String shop_name = jsonObject_GroceryShope.getString("shop_name");
+                            String shop_banner = jsonObject_GroceryShope.getString("shop_banner");
+                            String shop_logo = jsonObject_GroceryShope.getString("shop_logo");
+
+                            GroceryShop_ModelClass groceryShop_modelClass = new GroceryShop_ModelClass(
+                                    shop_id,shop_name,shop_banner,shop_logo
+                            );
+
+                            home_GroceryShop.add(groceryShop_modelClass);
+
+                        }
+
+                        groceryShop_LinearLayoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false);
+                        groceryShopAdapter = new GroceryShopAdapter(MainActivity.this, home_GroceryShop,cityId);
+                        groceryShopRecycler.setLayoutManager(groceryShop_LinearLayoutManager);
+                        groceryShopRecycler.setHasFixedSize(true);
+                        groceryShopRecycler.setAdapter(groceryShopAdapter);
+
+                        //Retrive RestrurantShope Shop Details
+
+                        JSONArray jsonArray_RestrurantShope = new JSONArray(All_RestrurantShope);
+
+                        for (int n = 0;n<jsonArray_RestrurantShope.length();n++){
+
+                            JSONObject jsonObject_RestrurantShope = jsonArray_RestrurantShope.getJSONObject(n);
+
+                            String shop_id = jsonObject_RestrurantShope.getString("shop_id");
+                            String shop_name = jsonObject_RestrurantShope.getString("shop_name");
+                            String shop_banner = jsonObject_RestrurantShope.getString("shop_banner");
+                            String shop_logo = jsonObject_RestrurantShope.getString("shop_logo");
+
+                            RestrurantShop_ModelClass restrurantShop_modelClass = new RestrurantShop_ModelClass(
+                                    shop_id,shop_name,shop_banner,shop_logo
+                            );
+
+                            home_RestaurantShop.add(restrurantShop_modelClass);
+
+                        }
+
+                        restaurantShop_LinearLayoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false);
+                        restaurantShopAdapter = new RestaurantShopAdapter(MainActivity.this, home_RestaurantShop,cityId);
+                        restaurantShopRecycler.setLayoutManager(restaurantShop_LinearLayoutManager);
+                        restaurantShopRecycler.setHasFixedSize(true);
+                        restaurantShopRecycler.setAdapter(restaurantShopAdapter);
+
+
 
                     }
                 } catch (JSONException e) {

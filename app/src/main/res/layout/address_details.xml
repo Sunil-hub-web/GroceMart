@@ -175,7 +175,52 @@
 
         </LinearLayout>
 
-        <Button
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_below="@+id/address"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/twenty"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/saveaddress"
+                android:layout_width="@dimen/hundred"
+                android:layout_weight="1"
+                android:layout_height="@dimen/forty_five"
+                android:background="@drawable/button_back"
+                android:text="Save Address"
+                android:textColor="@color/btntextcolor"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textSize="@dimen/textsize"
+                android:textAllCaps="false"
+                android:layout_below="@+id/address"
+                android:layout_margin="@dimen/ten"></Button>
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="@dimen/hundred"
+                android:layout_weight="1"
+                android:layout_height="@dimen/forty_five"
+                android:background="@drawable/button_bg"
+                android:text="Cancel Address"
+                android:textColor="@color/btntextcolor"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textSize="@dimen/textsize"
+                android:textAllCaps="false"
+                android:layout_below="@+id/address"
+                android:layout_margin="@dimen/ten"></Button>
+
+
+
+        </LinearLayout>
+
+       <!-- <Button
             android:id="@+id/saveaddress"
             android:layout_width="@dimen/three_hundred"
             android:layout_height="@dimen/forty_five"
@@ -188,7 +233,7 @@
             android:textSize="@dimen/textsize"
             android:textAllCaps="false"
             android:layout_below="@+id/address"
-            android:layout_margin="@dimen/thirty"></Button>
+            android:layout_margin="@dimen/thirty"></Button>-->
 
     </RelativeLayout>
 

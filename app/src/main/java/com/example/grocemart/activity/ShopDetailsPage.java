@@ -1,5 +1,6 @@
 package com.example.grocemart.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,6 +39,7 @@ import com.example.grocemart.modelclass.SubCategoryName_ModelClass;
 import com.example.grocemart.modelclass.SubCategory_ModelClass;
 import com.example.grocemart.modelclass.Variation_ModelClass;
 import com.example.grocemart.url.APPURLS;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
@@ -67,6 +70,9 @@ public class ShopDetailsPage extends AppCompatActivity {
     private static final String TAG = "ShopDetailsPage";
     String cityId, shop_Id;
 
+    BottomNavigationView bottomNavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +82,7 @@ public class ShopDetailsPage extends AppCompatActivity {
         recycler_SubCategoryName = findViewById(R.id.recycler_SubCategoryName);
         shopName = findViewById(R.id.shopName);
         ShopAddress = findViewById(R.id.ShopAddress);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
 
         Intent intent = getIntent();
 
@@ -83,6 +90,39 @@ public class ShopDetailsPage extends AppCompatActivity {
         shop_Id = intent.getStringExtra("shopId");
 
         getShopDetails(cityId, shop_Id);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.cart:
+                        startActivity(new Intent(getApplicationContext(), CartPage.class));
+                        overridePendingTransition(0, 0);
+
+                        return true;
+
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(), SerachPage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
 
     }
 

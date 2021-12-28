@@ -3,6 +3,7 @@ package com.example.grocemart.adapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,8 +84,10 @@ public class AllProductDetailsAdapter extends RecyclerView.Adapter<AllProductDet
 
         Picasso.with(context).load(url).into(holder.img_productImage);
 
+
+
         holder.text_Productname.setText(product.getProductName());
-        holder.text_Description.setText(product.getProductDesc());
+        holder.text_Description.setText(Html.fromHtml(product.getProductDesc()));
 
 
         holder.text_Spinertext.setOnClickListener(new View.OnClickListener() {

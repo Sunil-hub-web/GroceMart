@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +48,7 @@ public class MyOrderDetails extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     String order_id,order_status,shiping_type,shipping_charge,payment_mode,subtotal,
             total,delivery_date,timeSlot,userId,productId,productName,productQuantity,
-            productImage,productPrice,name,state,city,pincode,address,phoneNumber;
+            productImage,productPrice,name,state,city,pincode,address,phoneNumber,shop_name;
 
     OrderDetailsadapter orderDetailsadapter;
 
@@ -154,9 +157,10 @@ public class MyOrderDetails extends AppCompatActivity {
                                 productQuantity = jsonObject1_order.getString("qty");
                                 productImage = jsonObject1_order.getString("img");
                                 productPrice = jsonObject1_order.getString("price");
+                                shop_name = jsonObject1_order.getString("shop_name");
 
                                 ProductDetails_ModelClass productDetails_modelClass = new ProductDetails_ModelClass(
-                                        productId,productName,productQuantity,productImage,productPrice
+                                        productId,productName,productQuantity,productImage,productPrice,shop_name
                                 );
 
                                 product.add(productDetails_modelClass);
@@ -209,6 +213,5 @@ public class MyOrderDetails extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(MyOrderDetails.this);
         requestQueue.add(stringRequest);
     }
-
 
 }

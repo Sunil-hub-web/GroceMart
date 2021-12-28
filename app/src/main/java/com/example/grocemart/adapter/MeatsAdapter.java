@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,11 +53,11 @@ public class MeatsAdapter extends RecyclerView.Adapter<MeatsAdapter.ViewHolder> 
         Meats_ModelClass meatsProduct = meats.get(position);
 
         holder.text_MProductname.setText(meatsProduct.getProductName());
-        holder.text_MProductDesc.setText(meatsProduct.getProductDesc());
+        //holder.text_MProductDesc.setText(meatsProduct.getProductDesc());
         String image = "https://"+meatsProduct.getProductImage();
         Picasso.with(context).load(image).into(holder.mproduct_Image);
 
-        holder.btn_mgotoShop.setOnClickListener(new View.OnClickListener() {
+        holder.rel_Click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -67,11 +68,20 @@ public class MeatsAdapter extends RecyclerView.Adapter<MeatsAdapter.ViewHolder> 
             }
         });
 
+       /* holder.btn_mgotoShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });*/
+
     }
 
     @Override
     public int getItemCount() {
-        return meats.size();
+
+        return  meats.size()>5?5:meats.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -79,14 +89,16 @@ public class MeatsAdapter extends RecyclerView.Adapter<MeatsAdapter.ViewHolder> 
         ImageView mproduct_Image;
         TextView text_MProductname,text_MProductDesc;
         Button btn_mgotoShop;
+        RelativeLayout rel_Click;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
             mproduct_Image = itemView.findViewById(R.id.mproduct_Image);
             text_MProductname = itemView.findViewById(R.id.text_MProductname);
-            text_MProductDesc = itemView.findViewById(R.id.text_MProductDesc);
-            btn_mgotoShop = itemView.findViewById(R.id.btn_mgotoShop);
+            //text_MProductDesc = itemView.findViewById(R.id.text_MProductDesc);
+            //btn_mgotoShop = itemView.findViewById(R.id.btn_mgotoShop);
+            rel_Click = itemView.findViewById(R.id.rel_Click);
         }
     }
 }

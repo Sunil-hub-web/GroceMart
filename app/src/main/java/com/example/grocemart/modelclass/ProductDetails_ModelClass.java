@@ -2,16 +2,17 @@ package com.example.grocemart.modelclass;
 
 public class ProductDetails_ModelClass {
 
-    String productId,productName,productQuantity,productImage,productPrice;
+    String productId,productName,productQuantity,productImage,productPrice,shop_name;
 
     public ProductDetails_ModelClass(String productId, String productName, String productQuantity,
-                                     String productImage, String productPrice) {
+                                     String productImage, String productPrice,String shop_name) {
 
         this.productId = productId;
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productImage = productImage;
         this.productPrice = productPrice;
+        this.shop_name = shop_name;
     }
 
     public String getProductId() {
@@ -52,5 +53,13 @@ public class ProductDetails_ModelClass {
 
     public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public String getShop_name() {
+        return shop_name;
+    }
+
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
     }
 }

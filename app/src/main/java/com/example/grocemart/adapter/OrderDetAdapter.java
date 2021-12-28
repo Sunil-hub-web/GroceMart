@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grocemart.R;
 import com.example.grocemart.modelclass.ProductDetails_ModelClass;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +45,14 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
     public void onBindViewHolder(@NonNull @NotNull OrderDetAdapter.MyViewHolder holder, int position) {
 
         ProductDetails_ModelClass productdet = product.get(position);
+
+        String image = "https://"+productdet.getProductImage();
+        Picasso.with(context).load(image).into(holder.imageCart);
+
         holder.product_Name.setText(productdet.getProductName());
         holder.quantity.setText(productdet.getProductQuantity());
         holder.product_Price.setText(productdet.getProductPrice());
+        holder.shop_Name.setText(productdet.getShop_name());
 
         str_quantity = productdet.getProductQuantity();
         str_productPrice = productdet.getProductPrice();
@@ -69,7 +75,7 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageCart;
-        TextView product_Name,quantity,product_Price,totalPrice;
+        TextView product_Name,quantity,product_Price,totalPrice,shop_Name;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
@@ -78,6 +84,7 @@ public class OrderDetAdapter extends RecyclerView.Adapter<OrderDetAdapter.MyView
             quantity = itemView.findViewById(R.id.quantity);
             product_Price = itemView.findViewById(R.id.product_Price);
             totalPrice = itemView.findViewById(R.id.totalPrice);
+            shop_Name = itemView.findViewById(R.id.shop_Name);
         }
     }
 }

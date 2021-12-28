@@ -7,9 +7,9 @@
     <string name="Account">Dashboard</string>
 
 
-    <string name="Grocery">Grocery</string>
-    <string name="Restaurant">Restaurant</string>
-    <string name="Meat">Meat</string>
+    <string name="Grocery">GROCERY</string>
+    <string name="Restaurant">DELICACIES NEAR YOU</string>
+    <string name="Meat">MEATS</string>
     <string name="SelectYourLocation">Select Your Location</string>
     <string name="register">Register</string>
     <string name="changePassword">Change Password</string>
@@ -27,7 +27,7 @@
     <string name="loc">Select Your Location</string>
 
 
-    <string name="BBRoyal">BB Royal Organic - Toor Dal</string>
+    <string name="BBRoyal">BB Royal Organic - Toor Dal -  500kg</string>
     <string name="BiriyaniMasala">Aachi Biriyani Masala</string>
     <string name="title_activity_show_location">Map</string>
     <string name="ShopNmae">Narendra Shop</string>

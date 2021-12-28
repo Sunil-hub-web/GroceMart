@@ -53,12 +53,13 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     Context context;
     ArrayList<ProductShop_ModelClass> product;
     String t;
+    int count_value;
     Dialog dialogMenu;
     List<Variation_ModelClass> model_variations;
     List<ProductShop_ModelClass> itemlist ;
 
     String userId,productId,cityId,shopId,restt_price,varition_Id,countvalue;
-    int count_value;
+
     Variation_ModelClass parenting;
 
     ArrayList<String> itemcount = new ArrayList<>();
@@ -87,7 +88,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     public void onBindViewHolder(@NonNull @NotNull ProductShopAdapter.ViewHolder holder, int position) {
 
         ProductShop_ModelClass productShop = product.get(position);
-        Variation_ModelClass variation = productShop.getVariation().get(position);
+        //Variation_ModelClass variation = productShop.getVariation().get(position);
 
 
         Log.d("Ranjeetadapter",position +"");
@@ -120,9 +121,6 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
         cart_count = MainActivity.cart_count;
 
         ProductShopDetails.text_ItemCount.setText(cart_count);
-
-
-
 
         holder.btn_Gotoshop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +211,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
             }
         });
+
 
         holder.btn_AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override

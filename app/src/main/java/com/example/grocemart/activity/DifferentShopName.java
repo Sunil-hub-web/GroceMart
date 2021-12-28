@@ -105,7 +105,7 @@ public class DifferentShopName extends AppCompatActivity {
                         }else{
 
                             shopdetails_layoutmanager = new GridLayoutManager(DifferentShopName.this,1,GridLayoutManager.VERTICAL,false);
-                            differentShopAadapter = new DifferentShopAadapter(DifferentShopName.this,shopDetails);
+                            differentShopAadapter = new DifferentShopAadapter(DifferentShopName.this,shopDetails,cityId);
                             recyclerShopDetails.setLayoutManager(shopdetails_layoutmanager);
                             recyclerShopDetails.setHasFixedSize(true);
                             recyclerShopDetails.setAdapter(differentShopAadapter);
